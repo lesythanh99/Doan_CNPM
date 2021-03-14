@@ -1,0 +1,6 @@
+.ques.active{
+    display: block;
+}
+.ques{
+    display: none;
+}

@@ -3,6 +3,7 @@ import {Helmet} from 'react-helmet';
 import {Link} from 'react-router-dom';
 import Icon from '@mdi/react'
 import { mdiCubeOutline  } from '@mdi/js'
+import Test from './Etest/test';
 const Home = () =>(
     <Fragment>
         <Helmet><title>Trắc nghiệm tiếng Anh</title></Helmet>
@@ -19,7 +20,7 @@ const Home = () =>(
                 <h1>Trắc nghiệm Tiếng Anh</h1>
                 <div className="play">
                     <ul>
-                        <li><Link className="buttonplay"  to="/play/huongdan">Play</Link></li>
+                        <li><Link className="buttonplay"  to="/test">Play</Link></li>
                     </ul>
                 </div>
                 <div className="authcontainer">
