@@ -1,5 +1,5 @@
 import psycopg2
-from model.question import question as ques
+from question import question as ques
 class question:
     def __init__(self, conn):
         self.conn = conn
