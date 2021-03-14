@@ -10,11 +10,11 @@ class question:
         con = None
         try:
             con = psycopg2.connect(
-                user=self.connect_db["user"],
-                password=self.connect_db["password"],
-                host=self.connect_db["host"],
-                port=self.connect_db["port"],
-                database=self.connect_db["database"],
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
             )
             cur = con.cursor()
             sql = "INSERT INTO listquestion VALUES (%s,%s,%s,%s,%s,%s,%s) "
@@ -41,11 +41,11 @@ class question:
         con = None
         try:
             con = psycopg2.connect(
-                user=self.connect_db["user"],
-                password=self.connect_db["password"],
-                host=self.connect_db["host"],
-                port=self.connect_db["port"],
-                database=self.connect_db["database"],
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
             )
             cur = con.cursor()
             sql = "SELECT * FROM listquestion OFFSET floor(random()*40) LIMIT 15"
