@@ -44,6 +44,7 @@ function Test() {
         data[index] = choose;
         setYourChoose(data);
     }
+    // CHẤM ĐIỂM Ở ĐÂY , SỬ DỤNG PROPS NẾU MUỐN CHUYỂN ĐIỂM QUA TRANG KHÁC
     const submitTest = () => {
         console.log(yourChoose);
         var point = 0;
