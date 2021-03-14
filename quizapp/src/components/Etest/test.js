@@ -51,7 +51,7 @@ function Test() {
         listItems.map((item, index) => {
             if (item.ansCorrect === yourChoose[index]) point++;
         });
-        console.log(point);
+        alert("Point : " + point);
     }
     const isCAT = (index, ans) => {
         if (yourChoose[index] === ans) return 'primary';
