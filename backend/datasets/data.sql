@@ -1,5 +1,5 @@
 create table listquestion (
-    idques serial primary key not null,
+    idques SERIAL PRIMARY KEY,
     ques text,
     ansa text,
     ansb text,

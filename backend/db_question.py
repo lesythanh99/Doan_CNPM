@@ -17,9 +17,8 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "INSERT INTO listquestion VALUES (%s,%s,%s,%s,%s,%s,%s) "
+            sql = "INSERT INTO listquestion (ques, ansa, ansb, ansc, ansd, anscorrect) VALUES (%s,%s,%s,%s,%s,%s) "
             result = (
-                data.idques,
                 data.ques,
                 data.ansA,
                 data.ansB,
