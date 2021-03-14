@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request, redirect
 import os
 
-from actions.db_question import actions.db_question as db
-from model.question import model.question as ques
+from db_question import db_question as db
+from question import question as ques
 
 
 from flask_cors import CORS
