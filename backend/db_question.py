@@ -47,8 +47,7 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "SELECT * FROM listquestion "
-            # OFFSET floor(random()*40) LIMIT 15
+            sql = "select * from listquestion order by random() limit 10"
             cur.execute(sql)
             con.commit()
             rows = cur.fetchall()
