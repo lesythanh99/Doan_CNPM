@@ -25,7 +25,7 @@ con_db['database'] = 'my_db'
 def hello_world():
     return "Hello World ! :D"
 
-@app.route('/play'):
+@app.route('/play')
 def getAllQuestion():
     result = db.question(con_db).getQuestion()
     return jsonify({
