@@ -32,7 +32,15 @@ def getAllQuestion():
         'data' : result
     }), 200
 
-
+@app.route('/insert', methods=['POST'])
+def insertQuestion():
+    conn = db.question(con_db)
+    data = request.json
+    sheet = ques.question(data['idques'],data['ques'], data['ansA'], data['ansB'], data['ansC'], data['ansD'], data['ansCorrect'])
+    result = conn.insert(sheet)
+    return jsonify({
+        'data' : result
+    }), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
