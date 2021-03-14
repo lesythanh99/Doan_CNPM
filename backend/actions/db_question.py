@@ -19,7 +19,7 @@ class question:
             con.close()
             return 'RE'
         except (Exception, psycopg2.DatabaseError) as error:
-            result str(error)
+            return str(error)
         finally:
             if con is not None:
                 con.close()
@@ -44,7 +44,7 @@ class question:
             con.close()
             return ans
         except (Exception, psycopg2.DatabaseError) as error:
-            result str(error)
+            return str(error)
         finally:
             if con is not None:
                 con.close()
