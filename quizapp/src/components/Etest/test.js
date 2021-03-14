@@ -54,8 +54,8 @@ function Test() {
         console.log(point);
     }
     const isCAT = (index, ans) => {
-        if (yourChoose[index] === ans) return 'success';
-        return 'primary'
+        if (yourChoose[index] === ans) return 'primary';
+        return 'secondary'
     }
     React.useEffect(() => {
         notifyData();
