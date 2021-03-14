@@ -7,5 +7,4 @@ create table listquestion (
     ansd text,
     anscorrect text
 );
-SELECT	* FROM listquestion OFFSET floor(random() * ( SELECT COUNT(*) FROM listquestion)) LIMIT 2;
-select * from listquestion order by random() limit 2;
+select * from listquestion order by random() limit 10;
