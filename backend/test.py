@@ -1,7 +1,7 @@
 import requests
 
 data = {}
-data['idques'] = ""
+data['idques'] = ''
 data['ques'] = "This is the question ?"
 data['ansA'] = "Answer A"
 data['ansB'] = "Answer B"

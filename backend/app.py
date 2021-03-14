@@ -36,7 +36,7 @@ def getAllQuestion():
 def insertQuestion():
     conn = db.question(con_db)
     data = request.json
-    sheet = ques.question(data['idques'],data['ques'], data['ansA'], data['ansB'], data['ansC'], data['ansD'], data['ansCorrect'])
+    sheet = ques.question(1,data['ques'], data['ansA'], data['ansB'], data['ansC'], data['ansD'], data['ansCorrect'])
     result = conn.insert(sheet)
     return jsonify({
         'data' : result
