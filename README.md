@@ -18,8 +18,8 @@
 4. Thêm dữ liệu bằng cách sửa các thông tin và chạy file backend/test.py: 
 -   py test.py      |       python test.py      |       python3 test.py     |       
 # Build and Run Server
-1.Stop and remove old container: sudo docker stop backend && sudo docker rm backend
-2.Build image:
-- cd ./Doan_CNPM/backend/
-- docker build -t backend .
-3.Run the container: sudo docker run -d --name backend --env dp_ip=10.0.2.128 -p 5000:5000 backend
+1. Stop and remove old container: sudo docker stop backend && sudo docker rm backend
+2. Build image:
+-   cd ./Doan_CNPM/backend/
+-   docker build -t backend .
+3. Run the container: sudo docker run -d --name backend --env dp_ip=10.0.2.128 -p 5000:5000 backend
