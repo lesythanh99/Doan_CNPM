@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, redirect
 import os
-
+import json
 import db_question as db
 import question as ques
 
@@ -35,7 +35,7 @@ def getAllQuestion():
 @app.route('/getscore', methods=['POST'])
 def getScore():
     listAns = []
-    listAns.append(request.json)
+    listAns.append(json.loads(request.json))
     conn = db.question(con_db)
     result = conn.getScore(listAns)
     return jsonify({
