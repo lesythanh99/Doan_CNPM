@@ -77,14 +77,14 @@ class question:
             cur = con.cursor()
             for row in listAns:
                 sql = 'SELECT anscorrect from listquestion where %s = idques'
-                v = (row.idques,)
+                v = (row['idques'],)
                 cur.execute(sql,v)
                 con.commit()
                 r = cur.fetchone()
                 if r :
                     c = ques()
                     c.parseQuestion(r)
-                    if c.ansCorrect == row.ans:
+                    if c.ansCorrect == row['ans']:
                         score = score + 1
             return score
         except (Exception, psycopg2.DatabaseError) as error:
