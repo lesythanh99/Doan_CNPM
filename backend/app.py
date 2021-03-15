@@ -37,7 +37,9 @@ def getScore():
     listAns = request.json
     # conn = db.question(con_db)
     # result = conn.getScore(listAns)
-    result = listAns[0]['idques']
+    for i in range(len(listAns)):
+        print(listAns[i])
+    result = listAns
     return jsonify({
         'data' : result
     }), 200
