@@ -74,11 +74,11 @@ class question:
                 port=self.conn["port"],
                 database=self.conn["database"],
             )
-            cur = con.cursor()
             for row in listAns:
                 sql = 'SELECT anscorrect from listquestion where %s = idques'
                 a = ans()
                 a.parseAnswer(row)
+                cur = con.cursor()
                 cur.execute(sql,(a.idques, ))
                 con.commit()
                 r = cur.fetchone()
