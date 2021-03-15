@@ -34,7 +34,8 @@ def getAllQuestion():
 
 @app.route('/getscore', methods=['POST'])
 def getScore():
-    listAns = request.json
+    listAns = []
+    listAns.append(request.json)
     conn = db.question(con_db)
     result = conn.getScore(listAns)
     return jsonify({
