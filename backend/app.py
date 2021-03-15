@@ -41,6 +41,8 @@ def getScore():
     for i in range(len(dataNow)):
         if listAns[i]['idques'] == dataNow[i]['idques']:
             score = score + 1
+        else:
+            score = score - 1
     result = score
     return jsonify({
         'data' : result
