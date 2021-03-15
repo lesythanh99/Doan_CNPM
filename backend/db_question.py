@@ -63,3 +63,14 @@ class question:
         finally:
             if con is not None:
                 con.close()
+    # def getScore(self, listAns):
+    #     con = None
+    #     try:
+    #         con = psycopg2.connect(
+    #             user=self.conn["user"],
+    #             password=self.conn["password"],
+    #             host=self.conn["host"],
+    #             port=self.conn["port"],
+    #             database=self.conn["database"],
+    #         )
+    #         cur = con.cursor()

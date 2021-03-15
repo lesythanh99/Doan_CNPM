@@ -20,7 +20,7 @@ const Home = () =>(
                 <h1>Trắc nghiệm Tiếng Anh</h1>
                 <div className="play">
                     <ul>
-                        <li><Link className="buttonplay"  to="/play/huongdan">Play</Link></li>
+                        <li><Link className="buttonplay"  to="/test">Play</Link></li>
                     </ul>
                 </div>
                 <div className="authcontainer">

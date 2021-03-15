@@ -6,18 +6,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 function Test() {
     const [listItems, setListItems] = React.useState([]);
     const [activeNow, setActiveNow] = React.useState(0);
-    const [yourChoose, setYourChoose] = React.useState({
-        '0': '',
-        '1': '',
-        '2': '',
-        '3': '',
-        '4': '',
-        '5': '',
-        '6': '',
-        '7': '',
-        '8': '',
-        '9': '',
-    });
+    const [yourChoose, setYourChoose] = React.useState([]);
     const notifyData = () => {
         CRUD.getQuestion().then((res) => {
             setListItems(res.data.data);
@@ -40,9 +29,9 @@ function Test() {
         if (index < listItems.length - 1) setActiveNow(index + 1);
         return;
     }
-    const isChoose = (index, choose) => {
+    const isChoose = (idques, choose) => {
         var data = { ...yourChoose };
-        data[index] = choose;
+        data[idques] = choose;
         setYourChoose(data);
     }
     // CHẤM ĐIỂM Ở ĐÂY , SỬ DỤNG PROPS NẾU MUỐN CHUYỂN ĐIỂM QUA TRANG KHÁC
@@ -54,8 +43,8 @@ function Test() {
         });
         alert("Point : " + point);
     }
-    const isCAT = (index, ans) => {
-        if (yourChoose[index] === ans) return 'option answer active';
+    const isCAT = (idques, ans) => {
+        if (yourChoose[idques] === ans) return 'option answer active';
         return 'option answer'
     }
     React.useEffect(() => {
@@ -78,12 +67,12 @@ function Test() {
                         </div>
                         <h5>{"Question " + (index + 1) + " : " + item.ques}</h5>
                         <div className="options-container">
-                            <p className = {isCAT(index,item.ansA)}  onClick={() => isChoose(index, item.ansA)}  >{"A. " + item.ansA} </p>
-                            <p className = {isCAT(index,item.ansB)}  onClick={() => isChoose(index, item.ansB)}  >{"B. " + item.ansB} </p>
+                            <p className = {isCAT(item.idques,item.ansA)}  onClick={() => isChoose(item.idques, item.ansA)}  >{"A. " + item.ansA} </p>
+                            <p className = {isCAT(item.idques,item.ansB)}  onClick={() => isChoose(item.idques, item.ansB)}  >{"B. " + item.ansB} </p>
                         </div>
                         <div className="options-container">
-                            <p className = {isCAT(index,item.ansC)}  onClick={() => isChoose(index, item.ansC)}  >{"C. " + item.ansC} </p>
-                            <p className = {isCAT(index,item.ansD)}  onClick={() => isChoose(index, item.ansD)}  >{"D. " + item.ansD} </p>
+                            <p className = {isCAT(item.idques,item.ansC)}  onClick={() => isChoose(item.idques, item.ansC)}  >{"C. " + item.ansC} </p>
+                            <p className = {isCAT(item.idques,item.ansD)}  onClick={() => isChoose(item.idques, item.ansD)}  >{"D. " + item.ansD} </p>
                         </div>
                         <div className="button-container">
                             <button  id="previous-button" onClick={() => goPre(index)}>Previous</button>
