@@ -39,11 +39,9 @@ def getScore():
     listAns = request.json
     score = 0
     result = listAns
-    # for i in listAns:
-    #     c = ans()
-    #     c.parseAnswer(i)
-    #     result = c.toJson()
-    #     break
+    for i in listAns:
+        result = i
+        break
             
     return jsonify({
         'data' : result
