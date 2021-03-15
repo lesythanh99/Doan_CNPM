@@ -40,7 +40,7 @@ def getScore():
     score = 0
     result = listAns
     for i in listAns:
-        result = i
+        result = i[0]
         break
             
     return jsonify({
