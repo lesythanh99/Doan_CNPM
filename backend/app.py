@@ -27,7 +27,6 @@ def hello_world():
 @app.route('/play')
 def getAllQuestion():
     result = db.question(con_db).getQuestion()
-    dataNow = result
     return jsonify({
         'data' : result
     }), 200
@@ -35,9 +34,10 @@ def getAllQuestion():
 @app.route('/getscore', methods=['POST'])
 def getScore():
     listAns = []
-    listAns.append(json.loads(request.json))
-    conn = db.question(con_db)
-    result = conn.getScore(listAns)
+    listAns = request.json
+    # conn = db.question(con_db)
+    # result = conn.getScore(listAns)
+    result = listAns[0]['idques']
     return jsonify({
         'data' : result
     }), 200
