@@ -75,7 +75,7 @@ class question:
                 database=self.conn["database"],
             )
             for row in listAns:
-                sql = 'SELECT anscorrect from listquestion where %s = idques'
+                sql = 'SELECT anscorrect from listquestion where idques = `%s`'
                 a = ans()
                 a.parseAnswer(row)
                 cur = con.cursor()
