@@ -3,7 +3,7 @@ import os
 
 import db_question as db
 import question as ques
-
+import answer as ans
 
 from flask_cors import CORS
 
@@ -38,15 +38,12 @@ def getAllQuestion():
 def getScore():
     listAns = request.json
     score = 0
-    result = ''
+    result = None
     for i in listAns:
-        result = i['ans'];
+        c = ans()
+        c.parseAnswer(i)
+        result = c.toJson()
         break
-        for j in dataNow:
-            if i['idques'] == j['idques']:
-                if i['ans'] == j['ansCorrect']:
-                    score += 1
-    # result = score
             
     return jsonify({
         'data' : result
