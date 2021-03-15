@@ -20,6 +20,7 @@ con_db['host'] = str(dp_ip)
 con_db['port'] = '5432'
 con_db['database'] = 'my_db'
 
+dataNow = []
 
 @app.route('/')
 def hello_world():
@@ -28,6 +29,15 @@ def hello_world():
 @app.route('/play')
 def getAllQuestion():
     result = db.question(con_db).getQuestion()
+    return jsonify({
+        'data' : result
+    }), 200
+
+@app.route('/getscore', methods=['POST'])
+def getScore():
+    listAns = request.json
+    conn = db.question(con_db)
+    result = conn.getScore(listAns)
     return jsonify({
         'data' : result
     }), 200
