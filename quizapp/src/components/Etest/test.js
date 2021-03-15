@@ -52,14 +52,14 @@ function Test() {
     const submitTest = () => {
         console.log(yourChoose);
         var point = 0;
-        // listItems.map((item, index) => {
-        //     if (item.ansCorrect === yourChoose[index]['ans'] && item.idques === yourChoose[index]['idques']) point++;
-        // });
-
-        CRUD.getScore(yourChoose).then(res =>{
-            console.log(res);
-            point = res.data;
+        listItems.map((item, index) => {
+            if (item.ansCorrect === yourChoose[index]['ans'] && item.idques === yourChoose[index]['idques']) point++;
         });
+
+        // CRUD.getScore(yourChoose).then(res =>{
+        //     console.log(res);
+        //     point = res.data;
+        // });
 
         alert("Point : " + point);
     }

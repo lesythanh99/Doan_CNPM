@@ -35,11 +35,8 @@ def getAllQuestion():
 def getScore():
     listAns = []
     listAns = request.json
-    # conn = db.question(con_db)
-    # result = conn.getScore(listAns)
-    for i in listAns:
-        print(i)
-    result = type(listAns)
+    conn = db.question(con_db)
+    result = conn.getScore(listAns)
     return jsonify({
         'data' : result
     }), 200
