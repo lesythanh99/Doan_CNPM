@@ -38,12 +38,12 @@ def getAllQuestion():
 def getScore():
     listAns = request.json
     score = 0
-    result = None
-    for i in listAns:
-        c = ans()
-        c.parseAnswer(i)
-        result = c.toJson()
-        break
+    result = listAns
+    # for i in listAns:
+    #     c = ans()
+    #     c.parseAnswer(i)
+    #     result = c.toJson()
+    #     break
             
     return jsonify({
         'data' : result
