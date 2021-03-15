@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{Component,Fragment} from 'react';
+import {Helmet} from 'react-helmet';
 import CRUD from '../../services/crud';
-import './test.css';
+import './test.scss';
 import { Container, Row, Col, Button } from 'reactstrap';
 function Test() {
     const [listItems, setListItems] = React.useState([]);
@@ -54,43 +55,49 @@ function Test() {
         alert("Point : " + point);
     }
     const isCAT = (index, ans) => {
-        if (yourChoose[index] === ans) return 'primary';
-        return 'secondary'
+        if (yourChoose[index] === ans) return 'option answer active';
+        return 'option answer'
     }
     React.useEffect(() => {
         notifyData();
     }, []);
     return (
-        <Container>
-            <Row>
-                <Col>
+                <div>
+
                     {
                         listItems?.map((item, index) => (
-                            <div className={isActive(index)}>
-                                <div>
-                                    <h2>{"Question " + (index + 1) + " : " + item.ques}</h2>
-                                    <Button color = {isCAT(index,item.ansA)} onClick={() => isChoose(index, item.ansA)} size='lg' block>{"A. " + item.ansA}</Button>{" "}
-                                    <Button color = {isCAT(index,item.ansB)} onClick={() => isChoose(index, item.ansB)} size='lg' block>{"B. " + item.ansB}</Button>{" "}
-                                    <Button color = {isCAT(index,item.ansC)} onClick={() => isChoose(index, item.ansC)} size='lg' block>{"C. " + item.ansC}</Button>{" "}
-                                    <Button color = {isCAT(index,item.ansD)} onClick={() => isChoose(index, item.ansD)} size='lg' block>{"D. " + item.ansD}</Button>{" "}
-                                </div>
-                                <div>
-                                    <br />
-                                    <Button onClick={() => goPre(index)}>Pre</Button>{" "}
-                                    <span>{index + 1}</span>{" "}
-                                    <Button onClick={() => goNext(index)} >Next</Button>
-                                </div>
-                            </div>
+                            <div>
+                <Fragment>
+                    <Helmet><title>Trắc nghiệm</title></Helmet>
+                    <div className="questions" className={isActive(index)}>
+                        <div className="timer-container">
+                            <p>
+                                <span className="left" style={{float:'left'}}><span className="mdi mdi-set-center mdi-24px lifeline-icon">{index + 1}/10</span></span>
+                                <span className="right">2:15 <span className="mdi mdi-clock-outline mdi-24px"></span></span>
+                            </p>
+                        </div>
+                        <h5>{"Question " + (index + 1) + " : " + item.ques}</h5>
+                        <div className="options-container">
+                            <p className = {isCAT(index,item.ansA)}  onClick={() => isChoose(index, item.ansA)}  >{"A. " + item.ansA} </p>
+                            <p className = {isCAT(index,item.ansB)}  onClick={() => isChoose(index, item.ansB)}  >{"B. " + item.ansB} </p>
+                        </div>
+                        <div className="options-container">
+                            <p className = {isCAT(index,item.ansC)}  onClick={() => isChoose(index, item.ansC)}  >{"C. " + item.ansC} </p>
+                            <p className = {isCAT(index,item.ansD)}  onClick={() => isChoose(index, item.ansD)}  >{"D. " + item.ansD} </p>
+                        </div>
+                        <div className="button-container">
+                            <button  id="previous-button" onClick={() => goPre(index)}>Previous</button>
+                            <button  id="next-button" onClick={() => goNext(index)}>Next</button>
+                        </div>
+                        
+                    </div>
+                </Fragment>
+            </div>
                         ))
                     }
-                </Col>
-            </Row>
-            <Row>
-                <Col>
                     <Button onClick={() => submitTest()}>Submit</Button>
-                </Col>
-            </Row>
-        </Container>
+
+                    </div>
     );
 }
 export default Test;
