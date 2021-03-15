@@ -39,11 +39,13 @@ def getScore():
     listAns = request.json
     score = 0
     for i in listAns:
+        result = i['ans'];
+        break
         for j in dataNow:
             if i['idques'] == j['idques']:
                 if i['ans'] == j['ansCorrect']:
                     score += 1
-    result = score
+    # result = score
             
     return jsonify({
         'data' : result
