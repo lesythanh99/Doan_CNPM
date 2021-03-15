@@ -20,7 +20,6 @@ con_db['host'] = str(dp_ip)
 con_db['port'] = '5432'
 con_db['database'] = 'my_db'
 
-dataNow = []
 
 @app.route('/')
 def hello_world():
@@ -37,13 +36,8 @@ def getAllQuestion():
 @app.route('/getscore', methods=['POST'])
 def getScore():
     listAns = request.json
-    score = 0
-    # for i in range(len(dataNow)):
-    #     if listAns[i]['idques'] == dataNow[i]['idques']:
-    #         score = score + 1
-    #     else:
-    #         score = score - 1
-    result = dataNow
+    conn = db.question(con_db)
+    result = conn.getScore(listAns)
     return jsonify({
         'data' : result
     }), 200

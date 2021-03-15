@@ -74,18 +74,16 @@ class question:
                 port=self.conn["port"],
                 database=self.conn["database"],
             )
-            for row in listAns:
+            for i in range(len(listAns)):
                 sql = 'SELECT anscorrect from listquestion where idques = `%s`'
-                a = ans()
-                a.parseAnswer(row)
                 cur = con.cursor()
-                cur.execute(sql,(a.idques, ))
+                cur.execute(sql,(listAns[i]['idques'], ))
                 con.commit()
                 r = cur.fetchone()
                 if r :
                     c = ques()
                     c.parseQuestion(r)
-                    if c.ansCorrect == a.ans:
+                    if c.ansCorrect == listAns[i]['ans']:
                         score = score + 1
             return score
         except (Exception, psycopg2.DatabaseError) as error:
