@@ -74,7 +74,7 @@ class question:
                 database=self.conn["database"],
             )
             for i in range(len(listAns)):
-                sql = 'SELECT anscorrect from listquestion where idques = %s'
+                sql = 'SELECT anscorrect from listquestion where idques = `%s`'
                 cur = con.cursor()
                 cur.execute(sql,(listAns[i]['idques'], ))
                 con.commit()
