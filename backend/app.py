@@ -39,7 +39,7 @@ def getScore():
     # result = conn.getScore(listAns)
     for i in listAns:
         print(i)
-    result = listAns
+    result = type(listAns)
     return jsonify({
         'data' : result
     }), 200
