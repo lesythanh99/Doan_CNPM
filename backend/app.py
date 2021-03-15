@@ -38,11 +38,10 @@ def getAllQuestion():
 def getScore():
     listAns = request.json
     score = 0
-    result = listAns
-    for i in listAns:
-        result = i[0]['idques']
-        break
-            
+    for i in range(len(dataNow)):
+        if listAns[i]['idques'] == dataNow[i]['idques']:
+            score = score + 1
+    result = score
     return jsonify({
         'data' : result
     }), 200
