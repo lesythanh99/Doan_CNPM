@@ -85,7 +85,7 @@ class question:
                     c = ques()
                     c.parseQuestion(r)
                     if c.ansCorrect == row.ans:
-                        score++
+                        score = score + 1
             return score
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
