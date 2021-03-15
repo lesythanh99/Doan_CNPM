@@ -3,7 +3,6 @@ import os
 
 import db_question as db
 import question as ques
-from answer import answer as ans
 
 from flask_cors import CORS
 

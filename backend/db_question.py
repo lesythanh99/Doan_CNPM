@@ -1,6 +1,5 @@
 import psycopg2
 from question import question as ques
-from answer import answer as ans
 
 class question:
     def __init__(self, conn):
@@ -65,7 +64,7 @@ class question:
                 con.close()
     def getScore(self, listAns):
         con = None
-        score = 0
+        score = 10
         try:
             con = psycopg2.connect(
                 user=self.conn["user"],
@@ -75,7 +74,7 @@ class question:
                 database=self.conn["database"],
             )
             for i in range(len(listAns)):
-                sql = 'SELECT anscorrect from listquestion where idques = `%s`'
+                sql = 'SELECT anscorrect from listquestion where idques = %s'
                 cur = con.cursor()
                 cur.execute(sql,(listAns[i]['idques'], ))
                 con.commit()
