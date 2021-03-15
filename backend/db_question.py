@@ -1,6 +1,6 @@
 import psycopg2
 from question import question as ques
-
+from answer import answer as ans
 
 class question:
     def __init__(self, conn):
@@ -77,15 +77,16 @@ class question:
             cur = con.cursor()
             for row in listAns:
                 sql = 'SELECT anscorrect from listquestion where %s = idques'
-                v = (row['idques'],)
-                cur.execute(sql,v)
+                a = ans()
+                a.parseAnswer(row)
+                cur.execute(sql,(a.idques, ))
                 con.commit()
                 r = cur.fetchone()
                 if r :
                     c = ques()
                     c.parseQuestion(r)
                     if c.ansCorrect == row['ans']:
-                        score = score + 1
+                            score = score + 1
             return score
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
