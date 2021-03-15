@@ -38,6 +38,7 @@ def getAllQuestion():
 def getScore():
     listAns = request.json
     score = 0
+    result = ''
     for i in listAns:
         result = i['ans'];
         break
