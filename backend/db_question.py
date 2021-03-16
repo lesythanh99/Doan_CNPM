@@ -62,33 +62,4 @@ class question:
         finally:
             if con is not None:
                 con.close()
-    def getScore(self, listAns):
-        con = None
-        score = 10
-        try:
-            con = psycopg2.connect(
-                user=self.conn["user"],
-                password=self.conn["password"],
-                host=self.conn["host"],
-                port=self.conn["port"],
-                database=self.conn["database"],
-            )
-            
-            # for i in range(len(listAns)):
-            #     sql = 'SELECT anscorrect from listquestion where idques = '+ listAns[i]['idques'] +''
-            #     cur = con.cursor()
-            #     cur.execute(sql)
-            #     con.commit()
-            #     r = cur.fetchone()
-            #     if r :
-            #         c = ques()
-            #         c.parseQuestion(r)
-            #         if c.ansCorrect == listAns[i]['ans']:
-            #             score = score + 1
-            return score
-        except (Exception, psycopg2.DatabaseError) as error:
-            return str(error)
-        finally:
-            if con is not None:
-                con.close()
-
+    

@@ -31,15 +31,6 @@ def getAllQuestion():
         'data' : result
     }), 200
 
-@app.route('/getscore', methods=['POST'])
-def getScore():
-    listAns = []
-    listAns = request.json
-    conn = db.question(con_db)
-    result = conn.getScore(listAns)
-    return jsonify({
-        'data' : result
-    }), 200
 
 @app.route('/insert', methods=['POST'])
 def insertQuestion():
