@@ -74,8 +74,8 @@ def register():
 def login():
     conn = db_acc.account(con_db)
     data = request.json
-    sheet = acc.account(data['email'],data['password'])
-    result = conn.getLogin(sheet)
+    
+    result = conn.getLogin(data['email'],data['password'])
     return jsonify({"data": result}), 200 
 
 @app.route("/get-account")

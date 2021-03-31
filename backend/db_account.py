@@ -67,7 +67,7 @@ class account:
         finally:
             if con is not None:
                 con.close()
-    def getLogin(self, data):
+    def getLogin(self, email, password):
         con = None
         try:
             con = psycopg2.connect(
@@ -78,8 +78,8 @@ class account:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql1 = "SELECT * from account where email = %s and password = %s"
-            cur.execute(sql1, (data.email,data.password,))
+            sql1 = "SELECT * from account where (email = %s and password = %s)"
+            cur.execute(sql1, (email, password,))
             con.commit()
             arr = cur.fetchall()
             if len(arr) > 0 :
