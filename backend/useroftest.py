@@ -9,7 +9,7 @@ class useroftest:
         self.idOfTest = data[1]
         self.idOfUser = data[2]
         self.scoreOfUser = data[3]
-    def toJon(self):
+    def toJson(self):
         return {
             'id':self.id,
             'idOfTest':self.idOfTest,
