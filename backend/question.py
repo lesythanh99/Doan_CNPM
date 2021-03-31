@@ -23,14 +23,15 @@ class question:
 
     def parseQuestion(self, data):
         self.idques = data[0]
-        self.content = data[1]
-        self.ansA = data[2]
-        self.ansB = data[3]
-        self.ansC = data[4]
-        self.ansD = data[5]
-        self.ansCorrect = data[6]
-        self.swapAns = data[7]
-        self.idOfTest = data[8]
+        self.idOfTest = data[1]
+        self.content = data[2]
+        self.ansA = data[3]
+        self.ansB = data[4]
+        self.ansC = data[5]
+        self.ansD = data[6]
+        self.ansCorrect = data[7]
+        self.swapAns = data[8]
+        
 
     def toJson(self):
         return {
