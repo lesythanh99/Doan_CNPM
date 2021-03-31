@@ -7,7 +7,8 @@ import account as acc
 import db_account as db_acc
 import test as tes
 import db_test as db_tes
-
+import useroftest as use
+import db_useroftest as db_use
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -136,8 +137,28 @@ def makeTest():
     result = conn.insert(sheet)
     return jsonify({"data": result}), 200
 
+# ------------------------------------------------------------------------------------------------
+@app.route("/score-of-me", methods=["POST"])
+def scoreOfMe():
+    conn = db_use.useroftest(con_db)
+    data = request.json
+    result = conn.getScoreOfMe(data['idOfUser'])
+    return jsonify({"data": result}), 200
 
+@app.route("/score-of-test", methods=["POST"])
+def scoreOfTest():
+    conn = db_use.useroftest(con_db)
+    data = request.json
+    result = conn.getScoreOfMe(data['idOfTest'])
+    return jsonify({"data": result}), 200
 
+@app.route("/get-score", methods=["POST"])
+def makeScore():
+    conn = db_use.useroftest(con_db)
+    data = request.json
+    sheet = use.useroftest(1,data['idOfTest'],data['idOfUser'],data['scoreOfUser'])
+    result = conn.insert(sheet)
+    return jsonify({"data": result}), 200
 
 
 # ------------------------------------------------------------------------------------------------
