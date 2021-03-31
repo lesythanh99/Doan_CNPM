@@ -9,7 +9,7 @@ class question:
         ansD=None,
         ansCorrect=None,
         swapAns=None,
-        idOfTest=None,
+        idOfTest=None
     ):
         self.idques = idques
         self.ques = ques
