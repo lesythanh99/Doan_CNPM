@@ -24,9 +24,10 @@ con_db['database'] = 'my_db'
 def hello_world():
     return "Hello World ! :D"
 # Lay danh sach cau hoi
-@app.route('/play')
-def getAllQuestion():
-    result = db.question(con_db).getQuestion()
+@app.route('/play-test', methods=['POST'])
+def getQuestionByIdTest():
+    data = request.json
+    result = db.question(con_db).getQuestion(data['idOfTest'])
     return jsonify({
         'data' : result
     }), 200

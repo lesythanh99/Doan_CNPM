@@ -37,7 +37,7 @@ class question:
             if con is not None:
                 con.close()
 
-    def getQuestion(self):
+    def getQuestion(self, idOfTest):
         con = None
         try:
             con = psycopg2.connect(
@@ -48,8 +48,8 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "select * from listquestion order by random() limit 10"
-            cur.execute(sql)
+            sql = "select * from listquestion where idOfTest = %s"
+            cur.execute(sql, (idOfTest,))
             con.commit()
             rows = cur.fetchall()
             ans = []
