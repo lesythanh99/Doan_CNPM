@@ -5,6 +5,8 @@ import db_question as db_ques
 import question as ques
 import account as acc
 import db_account as db_acc
+import test as tes
+import db_test as db_tes
 
 from flask_cors import CORS
 
@@ -25,6 +27,8 @@ con_db["database"] = "my_db"
 def hello_world():
     return "Hello World ! :D"
 
+
+# ------------------------------------------------------------------------------------------
 
 # Lay danh sach cau hoi
 @app.route("/play-test", methods=["POST"])
@@ -54,6 +58,9 @@ def insertQuestion():
     return jsonify({"data": result}), 200
 
 
+# -----------------------------------------------------------------------------
+
+
 @app.route("/register", methods=["POST"])
 def register():
     conn = db_acc.account(con_db)
@@ -68,29 +75,72 @@ def register():
         data["company"],
     )
     result = conn.insert(sheet)
-    return jsonify({"data": result}),200
+    return jsonify({"data": result}), 200
+
 
 @app.route("/login", methods=["POST"])
 def login():
     conn = db_acc.account(con_db)
     data = request.json
-    result = conn.getLogin(data['email'],data['password'])
-    return jsonify({"data": result}), 200 
+    result = conn.getLogin(data["email"], data["password"])
+    return jsonify({"data": result}), 200
+
 
 @app.route("/update-info", methods=["PUT"])
 def updateInfo():
     conn = db_acc.account(con_db)
     data = request.json
-    sheet = acc.account(data['idOfUser'],data['email'],data['password'],data['nameUser'],data['dateOfBirth'],data['adress'],data['company'])
+    sheet = acc.account(
+        data["idOfUser"],
+        data["email"],
+        data["password"],
+        data["nameUser"],
+        data["dateOfBirth"],
+        data["adress"],
+        data["company"],
+    )
     result = conn.update(sheet)
-    return jsonify({"data": result}), 200 
-    
+    return jsonify({"data": result}), 200
+
+
 @app.route("/get-account")
 def getAccount():
-    data = request.json
     result = db_acc.account(con_db).getAccount()
     return jsonify({"data": result}), 200
 
+
+# ------------------------------------------------------------------------------------------------
+
+
+@app.route("/get-test")
+def getTest():
+    result = db_tes.test(con_db).getTest()
+    return jsonify({"data": result}), 200
+
+@app.route("/create-test", methods=["POST"])
+def makeTest():
+    conn = db_tes.account(con_db)
+    data = request.json
+    sheet = tes.test(
+        1,
+        data["timeStart"],
+        data["timeFinish"],
+        data["status"],
+        data["nameTest"],
+        data["numOfQuestion"],
+        data["isEnable"],
+        data["author"],
+        data["passwdOfTest"],
+        data["limitOfNumUser"],
+    )
+    result = conn.insert(sheet)
+    return jsonify({"data": result}), 200
+
+
+
+
+
+# ------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
