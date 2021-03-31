@@ -20,8 +20,8 @@ class account:
             con.commit()
             arr = cur.fetchall()
             if len(arr) > 0 :
-                return 'Exists'
                 con.close()
+                return 'Exists'
             sql = "INSERT INTO account (email, password, nameUser, dateOfBirth, adress, company) VALUES (%s,%s,%s,%s,%s,%s) "
             result = (
                 data.email,
@@ -83,9 +83,10 @@ class account:
             con.commit()
             arr = cur.fetchall()
             if len(arr) > 0 :
-                return 'RE'
                 con.close()
-            return "None"
+                return 'RE'
+            con.close()
+            return len(arr)
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
