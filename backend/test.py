@@ -10,5 +10,5 @@ data['ansD'] = "Answer D"
 data['ansCorrect'] = "Answer A"
 data['swapAns'] = '2'
 data['idOftest'] = '1'
-report = requests.post('http://localhost:5000/insert', json=data)
+report = requests.post('http://localhost:5000/create-question', json=data)
 print(report.text)
