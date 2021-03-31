@@ -92,3 +92,24 @@ class account:
         finally:
             if con is not None:
                 con.close()
+    def update(self, data):
+        con = None
+        try:
+            con = psycopg2.connect(user=self.connect_db['user'],
+                                   password=self.connect_db['password'],
+                                   host=self.connect_db['host'],
+                                   port=self.connect_db['port'],
+                                   database=self.connect_db['database'])
+            cur = con.cursor()
+            sql = "UPDATE account SET password = %s, nameUser = %s, dateOfBirth = %s, adress = %s, company = %s WHERE idOfUser = %s"
+            result = (data.password, data.nameUser, data.dateOfBirth, data.adress, data.company, data.idOfUser)
+            cur.execute(sql, result)
+            con.commit()
+            con.close()
+            return "RE"
+
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()

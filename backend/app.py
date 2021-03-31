@@ -74,10 +74,17 @@ def register():
 def login():
     conn = db_acc.account(con_db)
     data = request.json
-    
     result = conn.getLogin(data['email'],data['password'])
     return jsonify({"data": result}), 200 
 
+@app.route("/update-info", methods=["PUT"])
+def updateInfo():
+    conn = db_acc.account(con_db)
+    data = request.json
+    sheet = acc.account(data['idOfUser'],data['email'],data['password'],data['nameUser'],data['dateOfBirth'],data['adress'],data['company'])
+    result = conn.update(sheet)
+    return jsonify({"data": result}), 200 
+    
 @app.route("/get-account")
 def getAccount():
     data = request.json
