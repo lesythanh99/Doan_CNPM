@@ -67,3 +67,26 @@ class account:
         finally:
             if con is not None:
                 con.close()
+    def getLogin(self, data):
+        con = None
+        try:
+            con = psycopg2.connect(
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
+            )
+            sql1 = "SELECT * from account where email = %s and password = %s"
+            cur.execute(sql1, (data.email,data.password,))
+            con.commit()
+            arr = cur.fetchall()
+            if len(arr) > 0 :
+                return 'RE'
+                con.close()
+            return "None"
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()

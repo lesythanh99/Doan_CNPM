@@ -68,7 +68,15 @@ def register():
         data["company"],
     )
     result = conn.insert(sheet)
-    return jsonify({"data": result})
+    return jsonify({"data": result}) :200
+
+@app.route("/login", methods=["POST"])
+def login():
+    conn = db_acc.account(con_db)
+    data = request.json
+    sheet = acc.account(data['email'],data['password'])
+    result = conn.getLogin(sheet)
+    return jsonify({"data": result}) : 200 
 
 @app.route("/get-account")
 def getAccount():
