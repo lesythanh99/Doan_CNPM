@@ -95,11 +95,13 @@ class account:
     def update(self, data):
         con = None
         try:
-            con = psycopg2.connect(user=self.connect_db['user'],
-                                   password=self.connect_db['password'],
-                                   host=self.connect_db['host'],
-                                   port=self.connect_db['port'],
-                                   database=self.connect_db['database'])
+            con = psycopg2.connect(
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
+            )
             cur = con.cursor()
             sql = "UPDATE account SET password = %s, nameUser = %s, dateOfBirth = %s, adress = %s, company = %s WHERE idOfUser = %s"
             result = (data.password, data.nameUser, data.dateOfBirth, data.adress, data.company, data.idOfUser)

@@ -18,5 +18,5 @@ data["nameUser"] = "Le Si Thanh"
 data["dateOfBirth"] = "04/04/1999"
 data["adress"] = 'Da Nang'
 data["company"] = "DAUer"
-report = requests.post('http://localhost:5000/update-info', json=data)
+report = requests.put('http://localhost:5000/update-info', json=data)
 print(report.text)
