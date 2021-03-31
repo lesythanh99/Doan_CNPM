@@ -119,7 +119,7 @@ def getTest():
 
 @app.route("/create-test", methods=["POST"])
 def makeTest():
-    conn = db_tes.account(con_db)
+    conn = db_tes.test(con_db)
     data = request.json
     sheet = tes.test(
         1,
