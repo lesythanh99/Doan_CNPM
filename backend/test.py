@@ -10,6 +10,6 @@ data = {}
 # data['ansCorrect'] = "Answer A"
 # # data['swapAns'] = '2'
 # data['idOfTest'] = '2'
-data['idOfTest'] = 1
+data['idOfTest'] = 2
 report = requests.post('http://localhost:5000/play-test', json=data)
 print(report.text)
