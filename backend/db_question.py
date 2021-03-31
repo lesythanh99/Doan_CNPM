@@ -48,7 +48,7 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "select * from listquestion where idOfTest = %s"
+            sql = "select * from listQuestion where idOfTest = %s"
             cur.execute(sql, (idOfTest,))
             con.commit()
             rows = cur.fetchall()
