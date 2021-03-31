@@ -37,7 +37,7 @@ create table listUserOfTest (
     id  SERIAL PRIMARY KEY,
     idOfTest smallint,
     idOfUser smallint,
-    scoreOfUser decimal
+    scoreOfUser text
 );
 
 

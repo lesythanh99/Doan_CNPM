@@ -149,7 +149,7 @@ def scoreOfMe():
 def scoreOfTest():
     conn = db_use.useroftest(con_db)
     data = request.json
-    result = conn.getScoreOfMe(data['idOfTest'])
+    result = conn.getScoreOfTest(data['idOfTest'])
     return jsonify({"data": result}), 200
 
 @app.route("/get-score", methods=["POST"])

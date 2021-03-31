@@ -29,10 +29,10 @@ data = {}
 # data['passwdOfTest'] = '12345678'
 # data['limitOfNumUser'] = '20'
 
-data['idOfUser'] = '2'
-# data['idOfTest'] = '2'
+# data['idOfUser'] = '2'
+data['idOfTest'] = '1'
 # data['scoreOfUser'] = '9.9'
 
 
-report = requests.post('http://localhost:5000/score-of-me', json=data)
+report = requests.post('http://localhost:5000/score-of-test', json=data)
 print(report.text)
