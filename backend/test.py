@@ -10,6 +10,12 @@ data = {}
 # data['ansCorrect'] = "Answer A"
 # # data['swapAns'] = '2'
 # data['idOfTest'] = '2'
-data['idOfTest'] = 2
-report = requests.post('http://localhost:5000/play-test', json=data)
+
+data['email'] = 'nhat_1751220075@dau.edu.vn'
+data['password'] = '123456789'
+data["nameUser"] = "Nguyen Cong Nhat"
+data["dateOfBirth"] = "21/09/1999"
+data["adress"] = 'Da Nang'
+data["company"] = "DAU"
+report = requests.post('http://localhost:5000/register', json=data)
 print(report.text)

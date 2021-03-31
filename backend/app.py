@@ -56,7 +56,7 @@ def insertQuestion():
 
 @app.route("/register", methods=["POST"])
 def register():
-    conn = db_acc.question(con_db)
+    conn = db_acc.account(con_db)
     data = request.json
     sheet = acc.account(
         1,
