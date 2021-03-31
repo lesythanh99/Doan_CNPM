@@ -1,5 +1,5 @@
 import psycopg2
-import  account from account as acc
+from  account import  account as acc
 
 class account:
     def __init__(self, conn):
