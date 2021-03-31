@@ -77,6 +77,7 @@ class account:
                 port=self.conn["port"],
                 database=self.conn["database"],
             )
+            cur = con.cursor()
             sql1 = "SELECT * from account where email = %s and password = %s"
             cur.execute(sql1, (data.email,data.password,))
             con.commit()
