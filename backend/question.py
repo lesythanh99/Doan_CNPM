@@ -2,7 +2,7 @@ class question:
     def __init__(
         self,
         idques=None,
-        ques=None,
+        content=None,
         ansA=None,
         ansB=None,
         ansC=None,
@@ -12,7 +12,7 @@ class question:
         idOfTest=None
     ):
         self.idques = idques
-        self.ques = ques
+        self.content = content
         self.ansA = ansA
         self.ansB = ansB
         self.ansC = ansC
@@ -23,7 +23,7 @@ class question:
 
     def parseQuestion(self, data):
         self.idques = data[0]
-        self.ques = data[1]
+        self.content = data[1]
         self.ansA = data[2]
         self.ansB = data[3]
         self.ansC = data[4]
@@ -36,7 +36,7 @@ class question:
         return {
             "idques": self.idques,
             "idOfTest": self.idOfTest,
-            "ques": self.ques,
+            "content": self.content,
             "ansA": self.ansA,
             "ansB": self.ansB,
             "ansC": self.ansC,

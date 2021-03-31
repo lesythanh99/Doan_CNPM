@@ -16,16 +16,16 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "INSERT INTO listquestion (content, ansA, ansB, ansC, ansD, ansCorrect, swapAns, idoftest) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) "
+            sql = "INSERT INTO listquestion (content, ansA, ansB, ansC, ansD, ansCorrect, swapAns, idOfTest) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) "
             result = (
-                data.ques,
+                data.content,
                 data.ansA,
                 data.ansB,
                 data.ansC,
                 data.ansD,
                 data.ansCorrect,
                 data.swapAns,
-                data.idOftest,
+                data.idOfTest,
             )
             cur.execute(sql, result)
             con.commit()
