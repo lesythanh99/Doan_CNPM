@@ -1,5 +1,6 @@
 create table listQuestion (
     idOfQuestion SERIAL PRIMARY KEY,
+    idOfTest smallint,
     content text,
     ansA text,
     ansB text,

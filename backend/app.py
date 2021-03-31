@@ -23,7 +23,7 @@ con_db['database'] = 'my_db'
 @app.route('/')
 def hello_world():
     return "Hello World ! :D"
-
+# Lay danh sach cau hoi
 @app.route('/play')
 def getAllQuestion():
     result = db.question(con_db).getQuestion()
@@ -31,8 +31,8 @@ def getAllQuestion():
         'data' : result
     }), 200
 
-
-@app.route('/insert', methods=['POST'])
+# Them cau hoi
+@app.route('/create-question', methods=['POST'])
 def insertQuestion():
     conn = db.question(con_db)
     data = request.json

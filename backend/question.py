@@ -9,6 +9,7 @@ class question:
         ansD=None,
         ansCorrect=None,
         swapAns=None,
+        idoftest=None,
     ):
         self.idques = idques
         self.ques = ques
@@ -18,6 +19,7 @@ class question:
         self.ansD = ansD
         self.ansCorrect = ansCorrect
         self.swapAns = swapAns
+        self.idoftest = idoftest
 
     def parseQuestion(self, data):
         self.idques = data[0]
@@ -28,10 +30,12 @@ class question:
         self.ansD = data[5]
         self.ansCorrect = data[6]
         self.swapAns = data[7]
+        self.idoftest = data[8]
 
     def toJson(self):
         return {
             "idques": self.idques,
+            "idoftest": self.idoftest,
             "ques": self.ques,
             "ansA": self.ansA,
             "ansB": self.ansB,
