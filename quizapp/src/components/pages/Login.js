@@ -1,33 +1,42 @@
 import React from 'react';
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-function Login(){
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+const useStyles = makeStyles((theme) => ({
+    root: {
+        
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}));
+function Login() {
+    const classes = useStyles();
     return (
-        <>
-            <Container fluid = {true}>
-                <Row>
-                    <Col>
-                        <div>
-                            <div>
+        <div className={classes.root}>
+            <Grid container spacing={3}>
+                <Grid item xs={9}>
+                    <Paper>
 
-                            </div>
-                            <div>
-                                <div>
-                                    <Form>
-                                        <FormGroup>
-                                            <Input type = 'text'></Input>
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <Input type = 'text'></Input>
-                                        </FormGroup>
-                                    </Form>
-                                    <Button>Đăng Nhập</Button>
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </>
+                    </Paper>
+                </Grid>
+                <Grid item xs={3}>
+                        <h1>Sign In</h1>
+                        <form>
+                            <Paper>
+                            <TextField id="outlined-basic" label="User Name" variant="outlined"  fullWidth/>
+                            </Paper>
+                            <Paper>
+                            <TextField id="outlined-basic" label="Password" variant="outlined"  fullWidth/>
+                            </Paper>
+                        </form>
+                </Grid>
+            </Grid>
+        </div>
     );
 }
 export default Login;

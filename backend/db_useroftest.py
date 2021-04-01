@@ -1,7 +1,7 @@
 import psycopg2
-from question import question as ques
+from useroftest import useroftest as use
 
-class question:
+class useroftest:
     def __init__(self, conn):
         self.conn = conn
 
@@ -16,16 +16,11 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "INSERT INTO listquestion (content, ansA, ansB, ansC, ansD, ansCorrect, swapAns, idOfTest) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) "
+            sql = "INSERT INTO listUserOfTest (idOfTest,idOfUser,scoreOfUser) VALUES (%s,%s,%s) "
             result = (
-                data.content,
-                data.ansA,
-                data.ansB,
-                data.ansC,
-                data.ansD,
-                data.ansCorrect,
-                data.swapAns,
                 data.idOfTest,
+                data.idOfUser,
+                data.scoreOfUser,
             )
             cur.execute(sql, result)
             con.commit()
@@ -37,7 +32,7 @@ class question:
             if con is not None:
                 con.close()
 
-    def getQuestion(self, idOfTest):
+    def getScoreOfMe(self, idOfUser):
         con = None
         try:
             con = psycopg2.connect(
@@ -48,14 +43,41 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "select * from listQuestion where idOfTest = %s"
+            sql = "select * from listUserOfTest where idOfUser = %s"
+            cur.execute(sql, (idOfUser,))
+            con.commit()
+            rows = cur.fetchall()
+            ans = []
+            for row in rows:
+                r = use()
+                r.parseData(row)
+                ans.append(r.toJson())
+            con.close()
+            return ans
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()
+    def getScoreOfTest(self, idOfTest):
+        con = None
+        try:
+            con = psycopg2.connect(
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
+            )
+            cur = con.cursor()
+            sql = "select * from listUserOfTest where idOfTest = %s"
             cur.execute(sql, (idOfTest,))
             con.commit()
             rows = cur.fetchall()
             ans = []
             for row in rows:
-                r = ques()
-                r.parseQuestion(row)
+                r = use()
+                r.parseData(row)
                 ans.append(r.toJson())
             con.close()
             return ans

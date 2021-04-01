@@ -1,7 +1,8 @@
 import psycopg2
-from question import question as ques
+from test import test as tes
 
-class question:
+
+class test:
     def __init__(self, conn):
         self.conn = conn
 
@@ -16,16 +17,17 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "INSERT INTO listquestion (content, ansA, ansB, ansC, ansD, ansCorrect, swapAns, idOfTest) VALUES (%s,%s,%s,%s,%s,%s,%s,%s) "
+            sql = "INSERT INTO test (timeStart, timeFinish, status, nameTest, numOfQuestion, isEnable, author, passwdOfTest,limitOfNumUser) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
             result = (
-                data.content,
-                data.ansA,
-                data.ansB,
-                data.ansC,
-                data.ansD,
-                data.ansCorrect,
-                data.swapAns,
-                data.idOfTest,
+                data.timeStart,
+                data.timeFinish,
+                data.status,
+                data.nameTest,
+                data.numOfQuestion,
+                data.isEnable,
+                data.author,
+                data.passwdOfTest,
+                data.limitOfNumUser,
             )
             cur.execute(sql, result)
             con.commit()
@@ -36,8 +38,7 @@ class question:
         finally:
             if con is not None:
                 con.close()
-
-    def getQuestion(self, idOfTest):
+    def getTest(self):
         con = None
         try:
             con = psycopg2.connect(
@@ -48,14 +49,14 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "select * from listQuestion where idOfTest = %s"
-            cur.execute(sql, (idOfTest,))
+            sql = "select * from test"
+            cur.execute(sql)
             con.commit()
             rows = cur.fetchall()
             ans = []
             for row in rows:
-                r = ques()
-                r.parseQuestion(row)
+                r = tes()
+                r.parseTest(row)
                 ans.append(r.toJson())
             con.close()
             return ans
@@ -64,4 +65,3 @@ class question:
         finally:
             if con is not None:
                 con.close()
-    

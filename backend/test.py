@@ -1,12 +1,48 @@
-import requests
-
-data = {}
-data['idques'] = ''
-data['ques'] = "This is the question ?"
-data['ansA'] = "Answer A"
-data['ansB'] = "Answer B"
-data['ansC'] = "Answer C"
-data['ansD'] = "Answer D"
-data['ansCorrect'] = "Answer A"
-report = requests.post('http://localhost:5000/insert', json=data)
-print(report.text)
+class test:
+    def __init__(
+        self,
+        idOfTest=None,
+        timeStart=None,
+        timeFinish=None,
+        status=None,
+        nameTest=None,
+        numOfQuestion=None,
+        isEnable=None,
+        author=None,
+        passwdOfTest=None,
+        limitOfNumUser=None,
+    ):
+        self.idOfTest = idOfTest
+        self.timeStart = timeStart
+        self.timeFinish = timeFinish
+        self.status = status
+        self.nameTest = nameTest
+        self.numOfQuestion = numOfQuestion
+        self.isEnable = isEnable
+        self.author = author
+        self.passwdOfTest = passwdOfTest
+        self.limitOfNumUser = limitOfNumUser
+    def parseTest(self,data):
+        self.idOfTest = data[0]
+        self.timeStart = data[1]
+        self.timeFinish = data[2]
+        self.status = data[3]
+        self.nameTest = data[4]
+        self.numOfQuestion = data[5]
+        self.isEnable = data[6]
+        self.author = data[7]
+        self.passwdOfTest = data[8]
+        self.limitOfNumUser = data[9]
+    def toJson(self):
+        return {
+            'idOfTest':self.idOfTest,
+            'timeStart':self.timeStart,
+            'timeFinish':self.timeFinish,
+            'status':self.status,
+            'nameTest':self.nameTest,
+            'numOfQuestion':self.numOfQuestion,
+            'isEnable':self.isEnable,
+            'author':self.author,
+            'passwdOfTest':self.passwdOfTest,
+            'limitOfNumUser':self.limitOfNumUser,
+        }
