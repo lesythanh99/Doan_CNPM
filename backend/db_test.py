@@ -39,7 +39,7 @@ class test:
                 c = tes()
                 c.parseTest(row)
                 con.close()
-                return c
+                return c.toJson()
             con.close()
             return "Fail"
         except (Exception, psycopg2.DatabaseError) as error:
