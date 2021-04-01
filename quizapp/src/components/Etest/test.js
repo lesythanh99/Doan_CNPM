@@ -3,6 +3,8 @@ import {Helmet} from 'react-helmet';
 import CRUD from '../../services/crud';
 import './test.scss';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { makeStyles } from '@material-ui/core/styles';
+import Alert from '@material-ui/lab/Alert'; 
 function Test() {
     const [listItems, setListItems] = React.useState([]);
     const [activeNow, setActiveNow] = React.useState(0);
@@ -51,42 +53,41 @@ function Test() {
         notifyData();
     }, []);
     return (
-                <div>
-
-                    {
-                        listItems?.map((item, index) => (
-                            <div>
-                <Fragment>
-                    <Helmet><title>Trắc nghiệm</title></Helmet>
-                    <div className="questions" className={isActive(index)}>
-                        <div className="timer-container">
-                            <p>
-                                <span className="left" style={{float:'left'}}><span className="mdi mdi-set-center mdi-24px lifeline-icon">{index + 1}/10</span></span>
-                                <span className="right">2:15 <span className="mdi mdi-clock-outline mdi-24px"></span></span>
-                            </p>
-                        </div>
-                        <h5>{"Question " + (index + 1) + " : " + item.ques}</h5>
-                        <div className="options-container">
-                            <p className = {isCAT(item.idques,item.ansA)}  onClick={() => isChoose(item.idques, item.ansA)}  >{"A. " + item.ansA} </p>
-                            <p className = {isCAT(item.idques,item.ansB)}  onClick={() => isChoose(item.idques, item.ansB)}  >{"B. " + item.ansB} </p>
-                        </div>
-                        <div className="options-container">
-                            <p className = {isCAT(item.idques,item.ansC)}  onClick={() => isChoose(item.idques, item.ansC)}  >{"C. " + item.ansC} </p>
-                            <p className = {isCAT(item.idques,item.ansD)}  onClick={() => isChoose(item.idques, item.ansD)}  >{"D. " + item.ansD} </p>
-                        </div>
-                        <div className="button-container">
-                            <button  id="previous-button" onClick={() => goPre(index)}>Previous</button>
-                            <button  id="next-button" onClick={() => goNext(index)}>Next</button>
-                        </div>
-                        
+            <div>
+                <Alert severity="warning">Kiểm tra kỹ trước khi submit</Alert>
+                {
+                listItems?.map((item, index) => (
+                    <div>
+                        <Fragment>
+                            <Helmet><title>Trắc nghiệm</title></Helmet>
+                            <div className="questions" className={isActive(index)}>
+                                <div className="timer-container">
+                                    <p>
+                                        <span className="left" style={{float:'left'}}><span className="mdi mdi-set-center mdi-24px lifeline-icon">{index + 1}/10</span></span>
+                                        <span className="right">2:15 <span className="mdi mdi-clock-outline mdi-24px"></span></span>
+                                    </p>
+                                </div>
+                                <h5>{"Question " + (index + 1) + " : " + item.ques}</h5>
+                                <div className="options-container">
+                                    <p className = {isCAT(item.idques,item.ansA)}  onClick={() => isChoose(item.idques, item.ansA)}  >{"A. " + item.ansA} </p>
+                                    <p className = {isCAT(item.idques,item.ansB)}  onClick={() => isChoose(item.idques, item.ansB)}  >{"B. " + item.ansB} </p>
+                                </div>
+                                <div className="options-container">
+                                    <p className = {isCAT(item.idques,item.ansC)}  onClick={() => isChoose(item.idques, item.ansC)}  >{"C. " + item.ansC} </p>
+                                    <p className = {isCAT(item.idques,item.ansD)}  onClick={() => isChoose(item.idques, item.ansD)}  >{"D. " + item.ansD} </p>
+                                </div>
+                                <div className="button-container">
+                                    <button  id="previous-button" onClick={() => goPre(index)}>Previous</button>
+                                    <button  id="next-button" onClick={() => goNext(index)}>Next</button>
+                                </div>
+                                
+                            </div>
+                        </Fragment>
                     </div>
-                </Fragment>
-            </div>
-                        ))
+))
                     }
                     <Button onClick={() => submitTest()}>Submit</Button>
-
-                    </div>
+            </div>
     );
 }
 export default Test;
