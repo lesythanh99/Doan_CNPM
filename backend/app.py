@@ -46,7 +46,7 @@ def insertQuestion():
     data = request.json
     sheet = ques.question(
         1,
-        data["ques"],
+        data["content"],
         data["ansA"],
         data["ansB"],
         data["ansC"],
