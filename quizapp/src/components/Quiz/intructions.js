@@ -10,11 +10,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-// img intructions
-// import answer from '../../assets/img/answer.png';
-// import fiftyfifty from '../../assets/img/fiftyfifty.png';
-// import options from '../../assets/img/options.png';
+import Button from '@material-ui/core/Button';
 import quiz from '../../assets/img/quiz.png'
+import { Hidden } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,31 +36,7 @@ export default function ControlledAccordions() {
     setExpanded(isExpanded ? panel : false);
   };
   return (
-    // <Fragment>
-    //     <Helmet><title>Hướng dẫn</title></Helmet>
-    //     <div className="intructions container">
-    //         <h1>Làm thế nào để chơi game ?</h1>
-    //         <p>Ensure you read this guide from start tho finish.</p>
-    //         <ul className="browser-default" id="main-list">
-    //             <li>The game has a duration of 15 minutes and ends as soon as your time elapses.</li>
-    //             <li>Each game consists of 15 questions.</li>
-    //             <li>
-    //                 Every question contains 4 options.
-    //                 <img src={quiz} alt="Quiz app options example" height="400px" width="900px"></img>
-    //             </li>
-    //             <li>
-    //                 Select the option which best answers the question by clicking (or selecting) it.
-    //                 <img src={quiz} alt="Quiz app options example" height="400px" width="900px" ></img>
-    //             </li>
-    //         </ul>
-    //         <div>
-    //             <span className="left"><Link to="/">No take me back</Link></span>
-    //             <span className="right"><Link to="/play/quiz">Okey, Let's do this</Link></span>
-    //         </div>
-    //     </div>
-    // </Fragment>
-
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" className="intructions">
       <h2>Hướng dẫn sử dụng trước khi dùng</h2>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
@@ -110,16 +84,22 @@ export default function ControlledAccordions() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}>Advanced settings</Typography>
-          <Typography className={classes.secondaryHeading}>
-            Filtering has been entirely disabled for whole web server
-              </Typography>
+          <Typography className={classes.heading}>Chuyển câu</Typography>
+            {/* <Typography className={classes.secondaryHeading}>
+             
+            </Typography> */}
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Typography>
+                Bạn có thể chọn đáp án và nhấn "Next" để sang câu kế tiếp.Quay lại câu trước đó bằng cách nhất nút "Previous"
               </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <img src={quiz} alt="Quiz app options example" height="400px" width="900px" ></img>
+            </Grid>
+          </Grid>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
@@ -128,15 +108,36 @@ export default function ControlledAccordions() {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography className={classes.heading}>Personal data</Typography>
+          <Typography className={classes.heading}>Nộp bài</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
+            <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Typography>
+                Sau khi chọn xong đáp án tất cả các câu nhấn "Submit" để nộp bài. Hoặc để đến hết thời gian hệ thống sẽ tự động nộp
               </Typography>
+            </Grid>
+            <Grid item xs={12}>
+                <img src={quiz} alt="Quiz app options example" height="400px" width="900px" ></img>
+            </Grid>
+          </Grid>
         </AccordionDetails>
       </Accordion>
+      
+        <Container maxWidth="xs">
+          <Grid container spacing={3}>
+            <Grid item xs>
+              <Button variant="contained" style={{marginTop:"10px"}}><Link to="/">Quay lại</Link></Button>
+            </Grid>
+            <Grid item xs>
+              <Button variant="contained" style={{visibility:"hidden"}}>Default</Button>
+            </Grid>
+            <Grid item xs>
+              <Button variant="contained" style={{marginTop:"10px"}}><Link to="/test">Bắt đầu</Link></Button>
+            </Grid>
+          </Grid>
+        </Container>
+      
     </Container>
   );
 }
