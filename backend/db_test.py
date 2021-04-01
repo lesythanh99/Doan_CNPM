@@ -31,7 +31,7 @@ class test:
             )
             cur.execute(sql, result)
             con.commit()
-            sql1 = "SELECT * FROM test ORDER BY idOfTest LIMIT 1"
+            sql1 = "SELECT * FROM test ORDER BY idOfTest DESC LIMIT 1"
             cur.execute(sql1)
             con.commit()
             row = cur.fetchone()
