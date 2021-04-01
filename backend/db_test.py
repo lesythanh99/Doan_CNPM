@@ -31,8 +31,17 @@ class test:
             )
             cur.execute(sql, result)
             con.commit()
+            sql1 = "SELECT * FROM test ORDER BY idOfTest LIMIT 1"
+            cur.execute(sql1)
+            con.commit()
+            row = cur.fetchone()
+            if row:
+                c = tes()
+                c.parseTest(row)
+                con.close()
+                return c
             con.close()
-            return "RE"
+            return "Fail"
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
