@@ -6,16 +6,22 @@ import Play from './components/Quiz/Play';
 import QuizSummary from './components/Quiz/QuizSummary';
 import Login from './components/pages/Login.js';
 import Test from './components/Etest/test';
+import ChooseTest from './components/Etest/choosetest';
+import PlayTest from './components/Etest/playtest';
+
 function App() {
   return (
+    <div>
+      
     <Router>
+        
         <Route path="/" exact component = {Home}/>
-        <Route path="/test" eact component = {Test}/>
-        <Route path="/play/huongdan" component = {quizInstructions}/>
-        <Route path="/play/quiz" component = {Play}/>
-        <Route path="/play/quizSummary" component = {QuizSummary}/>
+        <Route path="/:idofuser" exact component = {Home}/>
+        <Route path="/:idofuser/choose-test" eact component = {ChooseTest}/>
+        <Route path="/:idofuser/play-test/:idoftest" component = {PlayTest}/>
         <Route path = '/login' component = {Login} />
     </Router>
+    </div>
   );
 }
 

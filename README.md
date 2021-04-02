@@ -15,8 +15,8 @@
     - \c my_db
     - DB name : my_db
     - Các bảng ở file : backend/datasets/data.sql
-4. Thêm dữ liệu bằng cách sửa các thông tin và chạy file backend/test.py: 
--   py test.py      |       python test.py      |       python3 test.py     |       
+4. Thêm dữ liệu bằng cách sửa các thông tin và chạy file backend/try.py: 
+-   py try.py      |       python try.py      |       python3 try.py     |       
 # Build and Run Server
 1. Stop and remove old container: sudo docker stop backend && sudo docker rm backend
 2. Build image:

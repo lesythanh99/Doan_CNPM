@@ -1,8 +1,11 @@
 import HttpRequest from "./http-common";
-const getQuestion = async () =>{
-    return await HttpRequest.get("http://192.168.1.17:5000/play");
+const getQuestion = (data) =>{
+    return  HttpRequest.post("http://192.168.1.17:5000/play-test",data);
 }
-const getScore = (listAns) => {
-    return HttpRequest.post("http://localhost:5000/getscore", listAns);
+const getScore = () => {
+    return HttpRequest.post("http://192.168.1.17:5000/get-score");
 }
-export default {getQuestion, getScore};
+const getTest = async () =>{
+    return HttpRequest.get("http://192.168.1.17:5000/get-test");
+}
+export default {getQuestion, getScore,getTest};

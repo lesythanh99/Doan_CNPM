@@ -36,7 +36,10 @@ export default function ControlledAccordions() {
     setExpanded(isExpanded ? panel : false);
   };
   return (
+    <div>
+
     <Container maxWidth="lg" className="intructions">
+      
       <h2>Hướng dẫn sử dụng trước khi dùng</h2>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
@@ -139,5 +142,6 @@ export default function ControlledAccordions() {
         </Container>
       
     </Container>
+    </div>
   );
 }
