@@ -51,7 +51,9 @@ function PlayTest() {
             'scoreOfUser' : score,
         }
 
-        console.log(mjson);
+        CRUD.getScore(mjson).then((res) => {
+            console.log(res);
+        })
     }
     const isActive = (index) => {
         if (index === activeNow) {

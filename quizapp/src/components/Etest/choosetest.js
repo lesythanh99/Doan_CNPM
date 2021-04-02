@@ -1,78 +1,4 @@
-// import React from 'react';
-// import Navbar from '../Navbar'
-// import Container from "@material-ui/core/Container";
-// import Card from "@material-ui/core/Card";
-// import Typography from "@material-ui/core/Typography";
-// import CardContent from "@material-ui/core/CardContent";
-// import CardMedia from "@material-ui/core/CardMedia";
-// import Button from '@material-ui/core/Button';
-// import { makeStyles } from "@material-ui/core/styles";
-// import Grid from "@material-ui/core/Grid";
-// import CRUD from '../../services/crud'
 
-// const useStyles = makeStyles({
-//   card: {
-//     maxWidth: 345,
-//     boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
-//     backgroundColor: "#fafafa",
-//   },
-//   media: {
-//     height: 300,
-//   },
-// });
-// function Test(){
-//     const [data, setData] = React.useState([]);
-//     React.useEffect(() => {
-//         CRUD.getTest().then(res => {
-//             console.log(res);
-//             setData(res.data.data);
-//         }) ;
-//       }, [data]);
-//       const classes = useStyles();
-//     return(
-//         <div>
-//             <Navbar />
-//             <Container>
-//                 <Typography
-//                 color="textPrimary"
-//                 gutterBottom
-//                 variant="h2"
-//                 align="center"
-//                 >
-//                 React Material UI Example{" "}
-//                 </Typography>
-//                 <Grid container spacing={3}>
-//                 {data.map((character) => (
-//                     <Grid item xs={12} sm={4} key={character.id}>
-//                     <Card className={classes.card}>
-//                         <CardMedia
-//                         className={classes.media}
-//                         image={character.img_url}
-//                         />
-
-//                         <CardContent>
-//                         <Typography color="primary" variant="h5">
-//                             {character.name}
-//                         </Typography>
-
-//                         <Typography color="textSecondary" variant="subtitle2">
-//                             {character.status}
-//                         </Typography>
-//                         <Button size="small" color="primary">
-//                             Vào Làm
-//                         </Button>
- 
-//                         </CardContent>
-                        
-//                     </Card>
-//                     </Grid>
-//                 ))}
-//                 </Grid>
-//             </Container>
-//         </div>
-//     );
-// }
-// export default Test;
 import React from 'react';
 import Navbar from '../Navbar'
 import Container from "@material-ui/core/Container";
@@ -85,6 +11,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Link,useHistory  } from 'react-router-dom';
 import CRUD from '../../services/crud'
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 const useStyles = makeStyles({
       card: {
         maxWidth: 345,
@@ -99,6 +31,7 @@ const useStyles = makeStyles({
 
 
   function PaginationComponent() {
+    const [open, setOpen] = React.useState(false);
     const [data, setData] = React.useState([]);
   
     const [currentPage, setcurrentPage] = React.useState(1);
@@ -107,13 +40,35 @@ const useStyles = makeStyles({
     const [pageNumberLimit, setpageNumberLimit] = React.useState(3);
     const [maxPageNumberLimit, setmaxPageNumberLimit] = React.useState(3);
     const [minPageNumberLimit, setminPageNumberLimit] = React.useState(0);
+    const [posData, setPosData] = React.useState([]);
 
-    let history = useHistory();
     
+
+    function onChangedata(e){
+      e.preventDefault();
+
+      var data = { ...posData, }
+      data['pdata'] = e.target.value;
+      setPosData(data);
+    }
+    let history = useHistory();
+    function handleOk(item){
+      console.log(posData.pdata);
+     if(item.passwdOfTest == posData.pdata){
+      history.push('/1'+'/play-test/'+item.idOfTest);
+     }
+    }
     const renderData = (data) => {
         const vaothi = (id) => {
-            history.push('/play-test/'+id)
-        }
+            setOpen(true);
+    }
+    // const handleClickOpen = () => {
+    //   setOpen(true);
+    // };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
         return (
             <>
             <h2 style={{textAlign: 'center'}}>Chọn bài thi</h2>
@@ -132,7 +87,6 @@ const useStyles = makeStyles({
                             
                                 </Typography>
                                 <Grid >
-                                    {/* <Grid item xs={12} sm={3} > */}
                                     <Card >
                                         <CardContent>
                                         <Typography color="primary" variant="h5">
@@ -142,7 +96,7 @@ const useStyles = makeStyles({
                                         <Typography color="textSecondary" variant="subtitle2">
                                             {todo.status}
                                         </Typography>
-                                            <Button onClick = {() => vaothi(todo.idOfTest)} size="small" color="primary">
+                                            <Button onClick = {() => vaothi(todo.idOfTest) } size="small" color="primary">
                                                 Vào Làm
                                             </Button>
                                         </CardContent>
@@ -151,6 +105,34 @@ const useStyles = makeStyles({
                             
                                 </Grid>
                             </Container>
+                          <form>
+                            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Nhập mã vào thi</DialogTitle>
+                                <DialogContent>
+                                  <DialogContentText>
+                                    Mã của bạn: 
+                                  </DialogContentText>
+                                  <TextField
+                                    onChange={onChangedata}
+                                    autoFocus
+                                    margin="dense"
+                                    id="name"
+                                    label="code"
+                                    type="text"
+                                    fullWidth
+                                    
+                                  />
+                                </DialogContent>
+                                <DialogActions>
+                                  <Button onClick={handleClose} color="primary">
+                                    Cancel
+                                  </Button>
+                                  <Button onClick={() => handleOk(todo)} color="primary">
+                                    Subscribe
+                                  </Button>
+                                </DialogActions>
+                              </Dialog>
+                              </form>
                         </div>
                     </>
                     );
@@ -188,15 +170,9 @@ const useStyles = makeStyles({
       }
     });
   
-    // React.useEffect(() => {
-    //    //fetch("https://finalspaceapi.com/api/v0/character/?limit=12")
-    //   fetch("http://192.168.1.17:5000/get-test") 
-    //     .then((response) => response.json())
-    //     .then((json) => setData(json));
-    // }, []);
     React.useEffect(() => {
                 CRUD.getTest().then(res => {
-                    console.log(res);
+                    //console.log(data);
                     setData(res.data.data);
                 }) ;
     }, [data]);
