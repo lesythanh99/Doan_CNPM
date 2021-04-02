@@ -118,6 +118,12 @@ def getTest():
     result = db_tes.test(con_db).getTest()
     return jsonify({"data": result}), 200
 
+@app.route("/get-test-by-id", methods=["POST"] )
+def getTestById():
+    data = request.json
+    result = db_tes.test(con_db).getTestById(data['idOfTest'])
+    return jsonify({"data": result}), 200
+
 @app.route("/create-test", methods=["POST"])
 def makeTest():
     conn = db_tes.test(con_db)
