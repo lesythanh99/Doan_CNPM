@@ -17,7 +17,7 @@ class test:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "INSERT INTO test (timeStart, timeFinish, status, nameTest, numOfQuestion, isEnable, author, passwdOfTest,limitOfNumUser) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+            sql = "INSERT INTO test (timeStart, timeFinish, status, nameTest, numOfQuestion, isEnable, idOfUser, passwdOfTest,limitOfNumUser) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
             result = (
                 data.timeStart,
                 data.timeFinish,
@@ -25,7 +25,7 @@ class test:
                 data.nameTest,
                 data.numOfQuestion,
                 data.isEnable,
-                data.author,
+                data.idOfUser,
                 data.passwdOfTest,
                 data.limitOfNumUser,
             )
@@ -47,6 +47,35 @@ class test:
         finally:
             if con is not None:
                 con.close()
+
+    def getTestById(self, id):
+        con = None
+        try:
+            con = psycopg2.connect(
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
+            )
+            cur = con.cursor()
+            sql = "select * from test where idOfUser = %s"
+            cur.execute(sql, (id,))
+            con.commit()
+            rows = cur.fetchall()
+            ans = []
+            for row in rows:
+                r = tes()
+                r.parseTest(row)
+                ans.append(r.toJson())
+            con.close()
+            return ans
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()
+
     def getTest(self):
         con = None
         try:

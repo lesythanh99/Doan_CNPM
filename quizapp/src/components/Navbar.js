@@ -31,6 +31,7 @@ const useStyles = makeStyles({
 const navLinks = [
   { title: `Trang chủ`, path: `/home` },
   { title: `Bài thi`, path: `/choose-test` },
+  { title: `Tạo bài thi`, path: `/createTest` },
   { title: `blog`, path: `/blog` },
   { title: `contact`, path: `/contact` },
   { title: `faq`, path: `/faq` }

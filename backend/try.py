@@ -19,20 +19,24 @@ data = {}
 # data["adress"] = 'Da Nang'
 # data["company"] = "DAUer"
 
-data['timeStart'] = '07:30'
-data['timeFinish'] = "07:50"
-data['status'] = "Chua bat dau"
-data['nameTest'] = "TOLEICA"
-data['numOfQuestion'] = "30"
-data['isEnable'] = "0"
-data['author'] = "Mr A"
-data['passwdOfTest'] = '12345678'
-data['limitOfNumUser'] = '20'
+# data['timeStart'] = '07:30'
+# data['timeFinish'] = "07:50"
+# data['status'] = "Chua bat dau"
+# data['nameTest'] = "TOLEICA"
+# data['numOfQuestion'] = "30"
+# data['isEnable'] = "0"
+# data['idOfUser'] = "2"
+# data['passwdOfTest'] = '12345678'
+# data['limitOfNumUser'] = '20'
 
 # data['idOfUser'] = '2'
 # data['idOfTest'] = '1'
 # data['scoreOfUser'] = '9.9'
 
+# data['email'] = 'nhat_1751220075@dau.edu.vn'
+# data['password'] = '123456789'
 
-report = requests.post('http://localhost:5000/create-test', json=data)
+data['idOfUser'] = '1'
+
+report = requests.post('http://localhost:5000/score-of-me', json=data)
 print(report.text)

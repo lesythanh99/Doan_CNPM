@@ -8,7 +8,7 @@ class test:
         nameTest=None,
         numOfQuestion=None,
         isEnable=None,
-        author=None,
+        idOfUser=None,
         passwdOfTest=None,
         limitOfNumUser=None,
     ):
@@ -19,7 +19,7 @@ class test:
         self.nameTest = nameTest
         self.numOfQuestion = numOfQuestion
         self.isEnable = isEnable
-        self.author = author
+        self.idOfUser = idOfUser
         self.passwdOfTest = passwdOfTest
         self.limitOfNumUser = limitOfNumUser
     def parseTest(self,data):
@@ -30,7 +30,7 @@ class test:
         self.nameTest = data[4]
         self.numOfQuestion = data[5]
         self.isEnable = data[6]
-        self.author = data[7]
+        self.idOfUser = data[7]
         self.passwdOfTest = data[8]
         self.limitOfNumUser = data[9]
     def toJson(self):
@@ -42,7 +42,7 @@ class test:
             'nameTest':self.nameTest,
             'numOfQuestion':self.numOfQuestion,
             'isEnable':self.isEnable,
-            'author':self.author,
+            'idOfUser':self.idOfUser,
             'passwdOfTest':self.passwdOfTest,
             'limitOfNumUser':self.limitOfNumUser,
         }
