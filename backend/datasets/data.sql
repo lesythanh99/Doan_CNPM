@@ -18,7 +18,7 @@ create table test (
     nameTest text,
     numOfQuestion smallint,
     isEnable smallint,
-    author text,
+    idOfUser smallint,
     passwdOfTest text,
     limitOfNumUser int
 );

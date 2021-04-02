@@ -130,7 +130,7 @@ def makeTest():
         data["nameTest"],
         data["numOfQuestion"],
         data["isEnable"],
-        data["author"],
+        data["idOfUser"],
         data["passwdOfTest"],
         data["limitOfNumUser"],
     )
