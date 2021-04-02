@@ -8,6 +8,7 @@ import Login from './components/pages/Login.js';
 import Test from './components/Etest/test';
 import ChooseTest from './components/Etest/choosetest';
 import PlayTest from './components/Etest/playtest';
+import makeTest from './components/pages/createTest';
 
 function App() {
   return (
@@ -16,10 +17,11 @@ function App() {
     <Router>
         
         <Route path="/" exact component = {Home}/>
-        <Route path="/:idofuser" exact component = {Home}/>
+        {/* <Route path="/:idofuser" exact component = {Home}/> */}
         <Route path="/:idofuser/choose-test" eact component = {ChooseTest}/>
         <Route path="/:idofuser/play-test/:idoftest" component = {PlayTest}/>
         <Route path = '/login' component = {Login} />
+        <Route path = '/createTest' component = {makeTest} />
     </Router>
     </div>
   );
