@@ -47,6 +47,7 @@ class test:
         finally:
             if con is not None:
                 con.close()
+
     def getTestById(self, id):
         con = None
         try:
@@ -74,7 +75,8 @@ class test:
         finally:
             if con is not None:
                 con.close()
-        def getTest(self):
+
+    def getTest(self):
         con = None
         try:
             con = psycopg2.connect(

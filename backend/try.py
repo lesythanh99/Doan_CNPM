@@ -33,8 +33,10 @@ data = {}
 # data['idOfTest'] = '1'
 # data['scoreOfUser'] = '9.9'
 
-data['email'] = 'nhat_1751220075@dau.edu.vn'
-data['password'] = '123456789'
+# data['email'] = 'nhat_1751220075@dau.edu.vn'
+# data['password'] = '123456789'
 
-report = requests.post('http://localhost:5000/login', json=data)
+data['idOfTest'] = '1'
+
+report = requests.post('http://localhost:5000/get-test-by-id', json=data)
 print(report.text)
