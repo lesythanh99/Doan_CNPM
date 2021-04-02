@@ -81,12 +81,17 @@ class account:
             sql1 = "SELECT * from account where (email = %s and password = %s)"
             cur.execute(sql1, (email, password,))
             con.commit()
-            arr = cur.fetchall()
-            if len(arr) > 0 :
+            rows = cur.fetchall()
+            if len(rows) > 0 :
                 con.close()
-                return 'RE'
+                ans = []
+                for row in rows:
+                    r = acc()
+                    r.parseAccount(row)
+                    ans.append(r.toJson())
+                return ans
             con.close()
-            return len(arr)
+            return "Fail"
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
         finally:
