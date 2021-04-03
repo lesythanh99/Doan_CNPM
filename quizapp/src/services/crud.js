@@ -18,4 +18,7 @@ const getScoreOfMe = (data) => {
 const getScoreOfTest = (data) => {
     return HttpRequest.post("http://192.168.1.17:5000/score-of-test", data);
 }
-export default { getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest };
+const login = (data) => {
+    return HttpRequest.post("http://192.168.1.4:5000/login",data);
+}
+export default { getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login };
