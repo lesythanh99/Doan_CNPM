@@ -22,26 +22,30 @@ function Login(props) {
     e.preventDefault();
     setPostData({ ...postData, password: e.target.value }); //Only change contact name in postData
   }
+  
+  let { idofuser } = useParams();
+    function handleOnClickSubmit(e) {
+      e.preventDefault();
+      CRUD.login(postData)
+        .then((response) => {
 
-  function handleOnClickSubmit(e) {
-    e.preventDefault();
-    CRUD.login(postData)
-      .then((response) => {
-        if(response.data.data == 'Fail'){
-          alert('Đăng nhập thất bại');
-        }else{
-          history.push("/");
-        }
-      })
+          if (response.data.data == 'Fail') {
+            alert('Đăng nhập thất bại');
+          } else {
+            response.data.data.map(item => (
+              idofuser = item.idOfUser,
+              console.log(idofuser),
+              history.push("/"+idofuser+"/choose-test")
+            ));
+            //history.push("/login");
+          }
+        })
       .catch((error) => {
         console.log(error.message);
       });
-    console.log("CustomerName : " + JSON.stringify(postData));
+    console.log("Send data : " + JSON.stringify(postData));
 
   }
-
-
-  const [form, setForm] = useState(0);
 
   return (
     <div className="App">
