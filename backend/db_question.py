@@ -75,7 +75,7 @@ class question:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "UPDATE listQuestion  SET idOfTest = %s, content = %s, ansA = %s, ansB = %s, ansC = %s, ansD = %s, ansCorrect = %s, swapAns = %s, WHERE idOfQuestion = %s"
+            sql = "UPDATE listQuestion  SET idOfTest = %s, content = %s, ansA = %s, ansB = %s, ansC = %s, ansD = %s, ansCorrect = %s, swapAns = %s WHERE idOfQuestion = %s"
             result = (data.idOfTest,data.content,data.ansA,data.ansB,data.ansC,data.ansD,data.ansCorrect,data.swapAns,data.idOfQuestion,)
             cur.execute(sql, result)
             con.commit()

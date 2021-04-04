@@ -1,15 +1,16 @@
 import requests
 
 data = {}
-# data['idques'] = ''
-# data['ques'] = "This is the question ?"
-# data['ansA'] = "Answer A"
-# data['ansB'] = "Answer B"
-# data['ansC'] = "Answer C"
-# data['ansD'] = "Answer D"
-# data['ansCorrect'] = "Answer A"
-# # data['swapAns'] = '2'
-# data['idOfTest'] = '2'
+data['idOfQuestion'] = '6'
+data['idOfTest'] = '11'
+data['content'] = "This is the question NNNNNNNNN ?"
+data['ansA'] = "Answer A"
+data['ansB'] = "Answer B"
+data['ansC'] = "Answer C"
+data['ansD'] = "Answer D"
+data['ansCorrect'] = "Answer A"
+data['swapAns'] = '2'
+# data['idOfTest'] = '10'
 
 # data['idOfUser'] = '2'
 # data['email'] = 'thanh_1751220074@dau.edu.vn'
@@ -36,7 +37,7 @@ data = {}
 # data['email'] = 'nhat_1751220075@dau.edu.vn'
 # data['password'] = '123456789'
 
-data['idOfUser'] = '1'
+# data['idOfUser'] = '1'
 
-report = requests.post('http://localhost:5000/score-of-me', json=data)
+report = requests.post('http://localhost:5000/update-question', json=data)
 print(report.text)
