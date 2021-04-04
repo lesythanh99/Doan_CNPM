@@ -1,7 +1,7 @@
 class question:
     def __init__(
         self,
-        idques=None,
+        idOfQuestion=None,
         content=None,
         ansA=None,
         ansB=None,
@@ -11,7 +11,7 @@ class question:
         swapAns=None,
         idOfTest=None
     ):
-        self.idques = idques
+        self.idOfQuestion = idOfQuestion
         self.content = content
         self.ansA = ansA
         self.ansB = ansB
@@ -22,7 +22,7 @@ class question:
         self.idOfTest = idOfTest
 
     def parseQuestion(self, data):
-        self.idques = data[0]
+        self.idOfQuestion = data[0]
         self.idOfTest = data[1]
         self.content = data[2]
         self.ansA = data[3]
@@ -35,7 +35,7 @@ class question:
 
     def toJson(self):
         return {
-            "idques": self.idques,
+            "idOfQuestion": self.idOfQuestion,
             "idOfTest": self.idOfTest,
             "content": self.content,
             "ansA": self.ansA,

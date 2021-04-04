@@ -58,7 +58,31 @@ def insertQuestion():
     result = conn.insert(sheet)
     return jsonify({"data": result}), 200
 
+@app.route("/update-question", methods=["POST"])
+def updateQuestion():
+    conn = db_ques.question(con_db)
+    data = request.json
+    sheet = ques.question(
+        data['idOfQuestion'],
+        data["content"],
+        data["ansA"],
+        data["ansB"],
+        data["ansC"],
+        data["ansD"],
+        data["ansCorrect"],
+        data["swapAns"],
+        data["idOfTest"],
+    )
+    result = conn.update(sheet)
+    return jsonify({"data": result}), 200
 
+@app.route("/delete-question", methods=["POST"])
+def deleteQuestion():
+    conn = db_ques.question(con_db)
+    data = request.json
+    result = conn.delete(data['idOfQuestion'])
+    return jsonify({"data": result}), 200
+    
 # -----------------------------------------------------------------------------
 
 
