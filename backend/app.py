@@ -82,7 +82,7 @@ def deleteQuestion():
     data = request.json
     result = conn.delete(data['idOfQuestion'])
     return jsonify({"data": result}), 200
-    
+
 # -----------------------------------------------------------------------------
 
 
@@ -146,6 +146,12 @@ def getTest():
 def getTestById():
     data = request.json
     result = db_tes.test(con_db).getTestById(data['idOfUser'])
+    return jsonify({"data": result}), 200
+
+@app.route("/get-test-by-name", methods=["POST"] )
+def getTestByName():
+    data = request.json
+    result = db_tes.test(con_db).getTestById(data['nameTest'])
     return jsonify({"data": result}), 200
 
 @app.route("/create-test", methods=["POST"])

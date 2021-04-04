@@ -1,16 +1,16 @@
 import requests
 
 data = {}
-data['idOfQuestion'] = '6'
+# data['idOfQuestion'] = '6'
+# data['idOfTest'] = '11'
+# data['content'] = "This is the question NNNNNNNNN ?"
+# data['ansA'] = "Answer A"
+# data['ansB'] = "Answer B"
+# data['ansC'] = "Answer C"
+# data['ansD'] = "Answer D"
+# data['ansCorrect'] = "Answer A"
+# data['swapAns'] = '2'
 data['idOfTest'] = '11'
-data['content'] = "This is the question NNNNNNNNN ?"
-data['ansA'] = "Answer A"
-data['ansB'] = "Answer B"
-data['ansC'] = "Answer C"
-data['ansD'] = "Answer D"
-data['ansCorrect'] = "Answer A"
-data['swapAns'] = '2'
-# data['idOfTest'] = '10'
 
 # data['idOfUser'] = '2'
 # data['email'] = 'thanh_1751220074@dau.edu.vn'
@@ -39,5 +39,5 @@ data['swapAns'] = '2'
 
 # data['idOfUser'] = '1'
 
-report = requests.post('http://localhost:5000/update-question', json=data)
+report = requests.post('http://localhost:5000/play-test', json=data)
 print(report.text)
