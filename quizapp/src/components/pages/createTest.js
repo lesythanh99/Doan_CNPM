@@ -6,8 +6,8 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar'
 
-const urladd = "http://192.168.1.4:5000/create-test";
-const urladdques = "http://192.168.1.4:5000/create-question";
+const urladd = "http://192.168.43.169:5000/create-test";
+const urladdques = "http://192.168.43.169:5000/create-question";
 
 let count = 1;
 
@@ -23,7 +23,7 @@ class App extends Component {
       nameTest: '',
       numOfQuestion: '',
       isEnable: 1,
-      author: '',
+      idOfUser: 0,
       passwdOfTest: '',
       limitOfNumUser: '',
       idOfTest: '',
@@ -43,6 +43,8 @@ class App extends Component {
     await axios.post(urladd, this.state.form).then(response => {
       this.handleinsert();
       this.state.form.idOfTest = response.data.data.idOfTest;
+      console.log("->" +this.state.form.idOfTest);
+      console.log(response);
       this.state.form.numQ = response.data.data.numOfQuestion;
     }).catch(error => {
       console.log(error.message);
@@ -58,10 +60,6 @@ class App extends Component {
     }).catch(error => {
       console.log(error.message);
     })
-  }
-
-  sendthru=()=>{
-    
   }
 
   handleinsert = () => {
@@ -129,7 +127,7 @@ class App extends Component {
                 <AvField name="passwdOfTest" label="mật khẩu" type="text" onChange={this.handleChange} value={form ? form.passwdOfTest : ''} required />
                 <AvField name="limitOfNumUser" label="giới hạn lượt làm bài" type="text" onChange={this.handleChange} value={form ? form.limitOfNumUser : ''} required />
                 <AvField name="status" label="status" type="text" onChange={this.handleChange} value={form ? form.status : ''} required />
-                <AvField name="author" label="người tạo đề" type="text" onChange={this.handleChange} value={form ? form.author : ''} required />
+                <AvField name="idOfUser" type="hidden" onChange={this.handleChange} value={form ? form.idOfUser = 1 : ''} required />
                 <AvField name="numOfQuestion" label="số câu hỏi" type="text" onChange={this.handleChange} value={form ? form.numOfQuestion : ''} required />
                 <AvField name="isEnable" type="hidden" onChange={this.handleChange} value={form ? form.isEnable = '1' : ''} required />
               </AvForm>
