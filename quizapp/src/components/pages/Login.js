@@ -1,42 +1,115 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-const useStyles = makeStyles((theme) => ({
-    root: {
-        
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-}));
-function Login() {
-    const classes = useStyles();
-    return (
-        <div className={classes.root}>
-            <Grid container spacing={3}>
-                <Grid item xs={9}>
-                    <Paper>
+import React, { useState } from 'react';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
+import axios from "axios";
+import { useHistory } from 'react-router-dom';
+import CRUD from "../../services/crud";
+import { useParams } from "react-router";
 
-                    </Paper>
-                </Grid>
-                <Grid item xs={3}>
-                        <h1>Sign In</h1>
-                        <form>
-                            <Paper>
-                            <TextField id="outlined-basic" label="User Name" variant="outlined"  fullWidth/>
-                            </Paper>
-                            <Paper>
-                            <TextField id="outlined-basic" label="Password" variant="outlined"  fullWidth/>
-                            </Paper>
-                        </form>
-                </Grid>
-            </Grid>
-        </div>
-    );
+function Login(props) {
+  const [postData, setPostData] = React.useState({
+    email: "",
+    password: "",
+
+  });
+
+  let history = useHistory();
+
+  function handleChangeEmail(e) {
+    e.preventDefault();
+    setPostData({ ...postData, email: e.target.value }); //Only change customer name in postData
+  }
+  function handleChangePass(e) {
+    e.preventDefault();
+    setPostData({ ...postData, password: e.target.value }); //Only change contact name in postData
+  }
+  let { idofuser } = useParams();
+  function handleOnClickSubmit(e) {
+    e.preventDefault();
+    CRUD.login(postData)
+      .then((response) => {
+
+        if (response.data.data == 'Fail') {
+          alert('Đăng nhập thất bại');
+        } else {
+          response.data.data.map(item => (
+            idofuser = item.idOfUser,
+            console.log(idofuser),
+            history.push("/"+idofuser+"/choose-test")
+          ));
+          //history.push("/login");
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    console.log("Send data : " + JSON.stringify(postData));
+
+  }
+
+
+  const [form, setForm] = useState(0);
+
+  return (
+    <div className="App">
+      <h1>Trang đăng nhập</h1>
+      <div className="col-sm-6 offset-sm-3">
+        <AvForm >
+          <AvField name="email" label="email" type="text" onChange={handleChangeEmail} value={postData.email} required />
+          <AvField name="password" label="password" type="password" onChange={handleChangePass} value={postData.password} required />
+        </AvForm>
+        <button className="btn btn-success" onClick={handleOnClickSubmit}>Đăng nhập
+            </button>
+      </div>
+    </div>
+  );
+
 }
 export default Login;
+
+// function Login() {
+//   const state = {
+//       data: [],
+//       form: {
+//         email: '',
+//         password: '',
+//         }
+//     }
+    // const handlepost = async () => {
+    //     await axios.post(url, this.state.form).then(response => {
+    //       //console.log(response.data.data);
+    //         if(response.data.data == 'Fail'){
+    //             alert('Đăng nhập thất bại');
+    //         }else{
+    //           alert('trang chủ');
+    //         }
+    //     }).catch(error => {
+    //       console.log(error.message);
+    //     })
+
+    //   }
+
+    // const [email, setEmail]= useState("");
+    // const [pass, setPass]= useState("");
+    // const history = useHistory();
+    // useEffect(() => {
+    //     if(localStorage.getItem('user-info')){
+    //         history.push("/add");
+    //     }
+    // }, [])
+    // function Login(){
+    //     console.warn(email,pass);
+    //     let item={email,pass};
+    //     let rs = await fetch("http://192.168.1.4:5000/get-account",{
+    //         method: "POST",
+    //         headers:{
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json"
+    //         },
+    //         body:JSON.stringify(item)
+    //     });
+    //     rs = await rs.json();
+    //     localStorage.setItem("user-info",JSON.stringify(rs));
+    //     history.push("add")
+    // }
+
+
