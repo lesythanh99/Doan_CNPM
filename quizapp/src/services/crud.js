@@ -19,24 +19,20 @@ const getScoreOfTest = (data) => {
     return HttpRequest.post("http://192.168.1.4:5000/score-of-test", data);
 }
 const login = (data) => {
-<<<<<<< HEAD
     return HttpRequest.post("http://192.168.1.17:5000/login",data);
-=======
-    return HttpRequest.post("hthttp://192.168.1.4:5000/login",data);
-}
-const deleteQuestion = (data) => {
-    return HttpRequest.post("http://192.168.1.4:5000/delete-question", data);
-}
-const updateQuestion = (data) => {
-    return HttpRequest.post("http://192.168.1.4:5000/update-question", data);
-}
-const addQuestion = (data) => {
-    return HttpRequest.post("hthttp://192.168.1.4:5000/create-question",data);
->>>>>>> 6627e2977ea097f7e4aa4f07c1c11904ce61592a
 }
 
-const urladd = "http://192.168.1.17:5000/create-test";
-const urladdques = "http://192.168.1.17:5000/create-question";
-const urlgettest = "http://192.168.1.17:5000/get-test";
 
-export default { deleteQuestion, updateQuestion, addQuestion, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login , urladd, urladdques, urlgettest};
+
+const addTest = "http://192.168.1.4:5000/create-test";
+const getTests = "http://192.168.1.4:5000/get-test";
+
+
+const getQuestions="http://192.168.1.4:5000/play-test";
+const deleteQuestion = "http://192.168.1.4:5000/delete-question";
+const updateQuestion = "http://192.168.1.4:5000/update-question";
+const addQuestion = "http://192.168.1.4:5000/create-question";
+
+
+
+export default {addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login , addTest, getTests};

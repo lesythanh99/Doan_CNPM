@@ -6,13 +6,7 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import {  Button,Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Navbar from '../Navbar';
-//import CRUD from "../../services/crud";
-
-
-const getQuestion="http://192.168.1.4:5000/play-test";
-const deleteQuestion = "http://192.168.1.4:5000/delete-question";
-const updateQuestion = "http://192.168.1.4:5000/update-question";
-const addQuestion = "http://192.168.1.4:5000/create-question";
+import CRUD from "../../services/crud";
 
 
 
@@ -24,8 +18,12 @@ state={
   id:{
     idOfTest: ''
   },
+  id2:{
+    idOfQuestion: ''
+  },
   form:{
     idOfQuestion: '',
+    idOfTest: '',
     content: '',
     ansA: '',
     ansB: '',
@@ -41,15 +39,15 @@ state={
 handleget=()=>{
 // var a = parseInt(idOfTest);
 this.state.id.idOfTest = window.location.pathname.substr(-1);
-console.log(this.state.form.idOfQuestion);
-  axios.post(getQuestion, this.state.id).then(response=>{
+console.log(this.state.id);
+  axios.post(CRUD.getQuestions, this.state.id).then(response=>{
     this.setState({data: response.data.data});
     console.log(response.data.data);
   }).catch(error=>{
     console.log(error.message);
   })
 
-// CRUD.getQuestion(a).then(response=>{
+// CRUD.getQuestions(a).then(response=>{
 //   this.setState({data: response.data.data});
 //   //console.log(window.location.pathname.substr(-1));
 // }).catch(error=>{
@@ -59,7 +57,7 @@ console.log(this.state.form.idOfQuestion);
 
 handlepost=async()=>{
   //delete this.state.form.idOfQuestion;
- await axios.post(addQuestion,this.state.form).then(response=>{
+ await axios.post(CRUD.addQuestion,this.state.form).then(response=>{
     this.handleinsert();
     this.handleget();
   }).catch(error=>{
@@ -68,17 +66,18 @@ handlepost=async()=>{
 }
 
 handleput=()=>{
-  
-  axios.post(updateQuestion+this.state.form.idOfQuestion, this.state.form).then(response=>{
+  // this.state.id2.idOfQuestion = this.state.form.idOfQuestion;
+  // console.log(this.state.id2);
+  axios.post(CRUD.updateQuestion, this.state.form).then(response=>{
     this.handleinsert();
     this.handleget();
   })
 }
 
 handledelete=()=>{
- 
-  axios.post(deleteQuestion, this.state.form.idOfQuestion).then(response=>{
-    console.log(this.state.form.idOfQuestion);
+  this.state.id2.idOfQuestion = this.state.form.idOfQuestion;
+  console.log(this.state.id2);
+  axios.post(CRUD.deleteQuestion, this.state.id2).then(response=>{
     this.setState({handledelete: false});
     this.handleget();
   })
@@ -93,6 +92,7 @@ selectedItem=(item)=>{
     cc: 'update',
     form: {
         idOfQuestion: item.idOfQuestion,
+        idOfTest: item.idOfTest,
         content: item.content,
         ansA: item.ansB,
         ansB: item.ansB,
@@ -135,6 +135,7 @@ console.log(this.state.form);
       <thead>
         <tr>
           <th>ID</th>
+          <th>idOfTest</th>
           <th>content</th>
           <th>ansA</th>
           <th>ansB</th>
@@ -149,6 +150,7 @@ console.log(this.state.form);
           return(
             <tr>
               <td>{item.idOfQuestion}</td>
+              <td>{item.idOfTest}</td>
               <td>{item.content}</td>
               <td>{item.ansA}</td>
               <td>{item.ansB}</td>
@@ -180,6 +182,7 @@ console.log(this.state.form);
                 <ModalBody>
                 <div>
                     <AvForm >
+                        <AvField name="idOfTest"  type="hidden" onChange={this.handleChange} value={form?form.idOfTest=this.state.id.idOfTest: ''} required />
                         <AvField name="content" label="content" type="text" onChange={this.handleChange} value={form?form.content: '' } required />
                         <AvField name="ansA" label="ansA" type="text" onChange={this.handleChange} value={form?form.ansA: '' } required />
                         <AvField name="ansB" label="ansB" type="text" onChange={this.handleChange} value={form?form.ansB: '' } required />
