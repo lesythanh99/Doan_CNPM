@@ -10,6 +10,8 @@ import ChooseTest from './components/Etest/choosetest';
 import PlayTest from './components/Etest/playtest';
 import makeTest from './components/pages/createTest';
 import ScoreBoard from './components/pages/ScoreBoard';
+import changeQ from './components/pages/changeQuestion';
+
 function App() {
   return (
     <div>
@@ -23,6 +25,7 @@ function App() {
         <Route path = '/login' component = {Login} />
         <Route path = '/createTest' component = {makeTest} />
         <Route path= '/:idofuser/scoreboard' component = {ScoreBoard}/>
+        <Route path="/change-question/:idoftest" component={changeQ} />
     </Router>
     </div>
   );

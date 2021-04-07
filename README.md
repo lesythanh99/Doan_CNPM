@@ -16,7 +16,8 @@
     - DB name : my_db
     - Các bảng ở file : backend/datasets/data.sql
 4. Thêm dữ liệu bằng cách sửa các thông tin và chạy file backend/try.py: 
--   py try.py      |       python try.py      |       python3 try.py     |       
+-   py try.py      |       python try.py      |       python3 try.py     |      
+5, Kill port: sudo kill -9 $(sudo lsof -t -i:5432) 
 # Build and Run Server
 1. Stop and remove old container: sudo docker stop backend && sudo docker rm backend
 2. Build image:
