@@ -21,7 +21,7 @@ function App() {
         <Route path="/" exact component = {Home}/>
         {/* <Route path="/:idofuser" exact component = {Home}/> */}
         <Route path="/:idofuser/choose-test" eact component = {ChooseTest}/>
-        <Route path="/play-test/:idoftest" component = {PlayTest}/>
+        <Route path="/:idofuser/play-test/:idoftest" component = {PlayTest}/>
         <Route path = '/login' component = {Login} />
         <Route path = '/createTest' component = {makeTest} />
         <Route path= '/:idofuser/scoreboard' component = {ScoreBoard}/>

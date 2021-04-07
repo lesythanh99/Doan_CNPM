@@ -15,7 +15,7 @@ function Home(){
     const { idofuser } = useParams(); 
     let history = useHistory();
     const choosetest = (id) => {
-        history.push('/choose-test/'+id)
+        history.push(idofuser +'/choose-test/')
     }
     return(
         <Fragment>

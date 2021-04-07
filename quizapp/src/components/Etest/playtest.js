@@ -111,7 +111,7 @@ function PlayTest() {
     const history = useHistory()
 
     const goBack = (item) => {
-        history.push('/choose-test/choose-test');
+        history.push('/choose-test/');
     }
 
     return (
