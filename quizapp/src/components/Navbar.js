@@ -10,7 +10,13 @@ import {
 } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { Link, useHistory } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams
+} from "react-router-dom";
 
 const useStyles = makeStyles({
   navbarDisplayFlex: {
@@ -37,9 +43,11 @@ const navLinks = [
   { title: `faq`, path: `/faq` }
 ];
 
-function Header() {
+function Header(item) {
+  const { idofuser } = useParams();
   const classes = useStyles();
 
+  let history = useHistory();
   return (
     <AppBar position="static">
       <Toolbar>
