@@ -60,8 +60,9 @@ function PaginationComponent() {
     console.log(data);
     console.log(item);
      if(item.passwdOfTest == posData.pdata){
-      history.push('/1'+'/play-test/'+item.idOfTest);
+      history.push('/play-test/'+item.idOfTest);
      }
+     console.log("id cua nguoi dung: "+item.idOfUser);
   }
   const renderData = (data) => {
     const vaothi = (item) => {

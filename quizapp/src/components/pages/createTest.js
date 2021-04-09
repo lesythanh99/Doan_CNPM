@@ -5,9 +5,7 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar'
-
-const urladd = "http://192.168.1.4:5000/create-test";
-const urladdques = "http://192.168.1.4:5000/create-question";
+import CRUD from "../../services/crud";
 
 let count = 1;
 
@@ -23,7 +21,7 @@ class App extends Component {
       nameTest: '',
       numOfQuestion: '',
       isEnable: 1,
-      author: '',
+      idOfUser: 0,
       passwdOfTest: '',
       limitOfNumUser: '',
       idOfTest: '',
@@ -39,10 +37,24 @@ class App extends Component {
     }
   }
 
+
+
+  handleget = () => {
+    axios.get(CRUD.getTests).then(response => {
+      this.setState({ data: response.data.data });
+      console.log(response);
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
   handlepost = async () => {
-    await axios.post(urladd, this.state.form).then(response => {
+    await axios.post(CRUD.addTest, this.state.form).then(response => {
       this.handleinsert();
       this.state.form.idOfTest = response.data.data.idOfTest;
+      // console.log("->" +this.state.form.idOfTest);
+      // console.log(response);
+      this.handleget();
       this.state.form.numQ = response.data.data.numOfQuestion;
     }).catch(error => {
       console.log(error.message);
@@ -51,17 +63,13 @@ class App extends Component {
   }
 
   handlepostquestion = async () => {
-    await axios.post(urladdques, this.state.form).then(response => {
-      count+=1;
+    await axios.post(CRUD.addQuestion, this.state.form).then(response => {
+      count += 1;
       console.log(count);
       //this.handleinsertquestion();
     }).catch(error => {
       console.log(error.message);
     })
-  }
-
-  sendthru=()=>{
-    
   }
 
   handleinsert = () => {
@@ -72,10 +80,10 @@ class App extends Component {
     this.setState({ handleinsertquestion: !this.state.handleinsertquestion });
   }
 
-  handleclose = () => {
-    this.setState({ handleinsert: this.state.handleinsert });
-    this.setState({ handleinsertquestion: this.state.handleinsertquestion });
+  componentDidMount() {
+    this.handleget();
   }
+
 
   handlenumquestion = () => {
     let num = this.state.form.numQ;
@@ -84,7 +92,7 @@ class App extends Component {
       this.handleinsertquestion();
       count = 0;
       alert('Tạo bài thi thành công!');
-    }else{
+    } else {
       //this.handleinsertquestion();
       document.getElementById('content').value = '';
       document.getElementById('ansA').value = '';
@@ -108,11 +116,35 @@ class App extends Component {
   render() {
     const { form } = this.state;
     return (
-      
+
       <div className="App">
         <Navbar />
-        <button style={{marginLeft: '600px', marginTop: '20px'}} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
-        <Modal isOpen={this.state.handleinsert} style={{maxHeight: '100%'}}>
+        <button style={{ marginLeft: '600px', marginTop: '20px' }} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
+        <br /><br />
+        <table className="table ">
+          <thead>
+            <tr>
+              <th>Tên bài thi</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.data.map(item => {
+              return (
+                <tr>
+                  <td>{item.nameTest}</td>
+                  <td>
+                    <button className="btn btn-primary" ><Link style={{color: 'white', textDecoration: 'none'}} to={`/change-question/${item.idOfTest}`}>sửa</Link> </button>
+                    
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+
+        
+        <Modal isOpen={this.state.handleinsert} style={{ maxHeight: '100%' }}>
           <ModalHeader style={{ display: 'block' }}>
             {this.state.cc === 'insert' ?
               <span>Nhập thông tin</span> :
@@ -129,7 +161,7 @@ class App extends Component {
                 <AvField name="passwdOfTest" label="mật khẩu" type="text" onChange={this.handleChange} value={form ? form.passwdOfTest : ''} required />
                 <AvField name="limitOfNumUser" label="giới hạn lượt làm bài" type="text" onChange={this.handleChange} value={form ? form.limitOfNumUser : ''} required />
                 <AvField name="status" label="status" type="text" onChange={this.handleChange} value={form ? form.status : ''} required />
-                <AvField name="author" label="người tạo đề" type="text" onChange={this.handleChange} value={form ? form.author : ''} required />
+                <AvField name="idOfUser" type="hidden" onChange={this.handleChange} value={form ? form.idOfUser = 1 : ''} required />
                 <AvField name="numOfQuestion" label="số câu hỏi" type="text" onChange={this.handleChange} value={form ? form.numOfQuestion : ''} required />
                 <AvField name="isEnable" type="hidden" onChange={this.handleChange} value={form ? form.isEnable = '1' : ''} required />
               </AvForm>
@@ -160,6 +192,7 @@ class App extends Component {
             <span style={{ float: 'right' }} onClick={() => this.handleinsertquestion()}>x</span>
           </ModalHeader>
           <ModalBody>
+
             <div>
               <AvForm >
                 <AvField name="idOfTest" type="hidden" onChange={this.handleChange} value={form ? form.idOfTest = form.idOfTest : ''} required />
@@ -171,14 +204,13 @@ class App extends Component {
                 <AvField name="ansCorrect" id="ansCorrect" label="Đáp án đúng" type="text" onChange={this.handleChange} value={form ? form.ansCorrect : ''} required />
                 <AvField name="swapAns" id="swapAns" label="Xáo đáp án" type="text" onChange={this.handleChange} value={form ? form.swapAns : ''} required />
               </AvForm>
-
             </div>
 
           </ModalBody>
 
           <ModalFooter>
             {this.state.cc === 'insert' ?
-              <button className="btn btn-success" onClick={() => { this.handlepostquestion(); this.handlenumquestion()}}>
+              <button className="btn btn-success" onClick={() => { this.handlepostquestion(); this.handlenumquestion() }}>
                 Next
                   </button> : <button className="btn btn-primary">
                 Preview
