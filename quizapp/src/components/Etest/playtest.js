@@ -97,6 +97,7 @@ function PlayTest() {
                                     </p>
                                 </div>
                                 <h5>{"Question " + (index + 1) + " : " + item.content}</h5>
+                                
                                 <div className="options-container">
                                     <p className= {isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"A." + item.ansA} </p>
                                     <p className= {isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"B." + item.ansB} </p>
