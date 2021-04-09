@@ -127,6 +127,11 @@ def updateInfo():
     result = conn.update(sheet)
     return jsonify({"data": result}), 200
 
+@app.route("/get-account-by-id", methods = ["POST"])
+def getAccById():
+    data = request.json
+    result = db_acc.account(con_db).getAccById(data["idOfUser"])
+    return jsonify({"data": result}), 200
 
 @app.route("/get-account")
 def getAccount():
