@@ -33,6 +33,7 @@ function PlayTest() {
         setOpen(false);
     };
     //enddialog
+    const history = useHistory()
     const { idoftest } = useParams();
     const { idofuser } = useParams();
     let idTest = {
@@ -108,10 +109,9 @@ function PlayTest() {
         if (choose == yourChoose[index]) return "option active";
         return 'option';
     }
-    const history = useHistory()
-
+    
     const goBack = (item) => {
-        history.push('/choose-test/choose-test');
+        history.push('/'+idofuser + '/choose-test/');
     }
 
     return (

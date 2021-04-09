@@ -18,6 +18,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams
+} from "react-router-dom";
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
@@ -55,14 +61,16 @@ function PaginationComponent() {
     data['pdata'] = e.target.value;
     setPosData(data);
   }
+  
   let history = useHistory();
+  const { idofuser } = useParams();
   function handleOk(item) {
     console.log(data);
     console.log(item);
      if(item.passwdOfTest == posData.pdata){
-      history.push('/play-test/'+item.idOfTest);
+      history.push('/'+idofuser+'/play-test/'+item.idOfTest);
      }
-     console.log("id cua nguoi dung: "+item.idOfUser);
+     
   }
   const renderData = (data) => {
     const vaothi = (item) => {

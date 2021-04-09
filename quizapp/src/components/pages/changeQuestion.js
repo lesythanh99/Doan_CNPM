@@ -38,8 +38,8 @@ class App extends Component {
 
   handleget = () => {
     // var a = parseInt(idOfTest);
-    this.state.id.idOfTest = window.location.pathname.substr(-1);
-    console.log(this.state.id);
+    this.state.id.idOfTest = window.location.pathname.substr(19);
+    console.log(this.state.id.idOfTest);
     axios.post(CRUD.getQuestions, this.state.id).then(response => {
       this.setState({ data: response.data.data });
       console.log(response.data.data);
