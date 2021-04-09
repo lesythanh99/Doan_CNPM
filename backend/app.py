@@ -151,7 +151,7 @@ def getTestById():
 @app.route("/get-test-by-name", methods=["POST"] )
 def getTestByName():
     data = request.json
-    result = db_tes.test(con_db).getTestById(data['nameTest'])
+    result = db_tes.test(con_db).getTestByName(data['nameTest'])
     return jsonify({"data": result}), 200
 
 @app.route("/create-test", methods=["POST"])

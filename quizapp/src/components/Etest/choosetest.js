@@ -18,6 +18,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Search from "../Search";
 import {
   BrowserRouter as Router,
   Switch,
@@ -61,16 +62,16 @@ function PaginationComponent() {
     data['pdata'] = e.target.value;
     setPosData(data);
   }
-  
+
   let history = useHistory();
   const { idofuser } = useParams();
   function handleOk(item) {
     console.log(data);
     console.log(item);
-     if(item.passwdOfTest == posData.pdata){
-      history.push('/'+idofuser+'/play-test/'+item.idOfTest);
-     }
-     
+    if (item.passwdOfTest == posData.pdata) {
+      history.push('/' + idofuser + '/play-test/' + item.idOfTest);
+    }
+
   }
   const renderData = (data) => {
     const vaothi = (item) => {
@@ -138,7 +139,7 @@ function PaginationComponent() {
               Cancel
                     </Button>
             <Button onClick={() => handleOk(chooseNow)} color="primary">
-              Subscribe 
+              Subscribe
             </Button>
           </DialogActions>
         </Dialog>
@@ -180,7 +181,7 @@ function PaginationComponent() {
       //console.log(data);
       setData(res.data.data);
     });
-  }, []);
+  }, [data]);
 
   const handleNextbtn = () => {
     setcurrentPage(currentPage + 1);
@@ -213,7 +214,12 @@ function PaginationComponent() {
 
   return (
     <>
-      <Navbar />
+      <div style={{ 'marginBottom': '30px' }}>
+        <Navbar />
+      </div>
+      <div style={{ 'width': '500px', 'margin': 'auto' }}>
+        <Search setData = {setData} />
+      </div>
       {renderData(currentItems)}
 
       <ul className="pageNumbers">

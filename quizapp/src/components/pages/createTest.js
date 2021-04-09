@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../Navbar'
 import CRUD from "../../services/crud";
 
+
 let count = 1;
 
 class App extends Component {
@@ -118,7 +119,10 @@ class App extends Component {
     return (
 
       <div className="App">
-        <Navbar />
+        <div style={{ 'marginBottom' : '30px'}}>
+          <Navbar />
+        </div>
+        
         <button style={{ marginLeft: '600px', marginTop: '20px' }} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
         <br /><br />
         <table className="table ">
