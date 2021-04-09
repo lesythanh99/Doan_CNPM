@@ -64,13 +64,13 @@ function PlayTest() {
         var temp = 0;
         listDataQues.map((item, index) => {
             console.log(item.ansCorrect);
-           
+
             if (item.ansCorrect == yourChoose[index]) {
                 temp++;
             }
 
         });
-        var dt = { ...score, } 
+        var dt = { ...score, }
         dt['point'] = temp;
         setScore(dt);
         var mjson = {
@@ -80,7 +80,7 @@ function PlayTest() {
         }
         setMjson(mjson);
 
-        
+
         setOpen(true);
     }
     const isActive = (index) => {
@@ -126,19 +126,46 @@ function PlayTest() {
                                 <div className="timer-container">
                                     <p>
                                         {/* <span className="left" style={{float:'left'}}><span className="mdi mdi-set-center mdi-24px lifeline-icon">{index + 1}/10</span></span> */}
-                                        
+
                                     </p>
                                 </div>
                                 <h5>{"Question " + (index + 1) + " : " + item.content}</h5>
-                                
-                                <div className="options-container">
-                                    <p className={isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"A." + item.ansA} </p>
-                                    <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"B." + item.ansB} </p>
-                                </div>
-                                <div className="options-container">
-                                    <p className={isActive1(item.ansC, index)} onClick={() => isChoose(index, item, item.ansC)}>{"C." + item.ansC} </p>
-                                    <p className={isActive1(item.ansD, index)} onClick={() => isChoose(index, item, item.ansD)}>{"D." + item.ansD} </p>
-                                </div>
+                                {item.swapAns == 4 ?
+                                    <>
+                                        <div className="options-container">
+                                            <p className={isActive1(item.ansC, index)} onClick={() => isChoose(index, item, item.ansC)}>{"A." + item.ansC} </p>
+                                            <p className={isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"C." + item.ansA} </p>
+                                        </div>
+                                        <div className="options-container">
+                                            <p className={isActive1(item.ansD, index)} onClick={() => isChoose(index, item, item.ansD)}>{"D." + item.ansD} </p>
+                                            <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"B." + item.ansB} </p>
+
+                                        </div>
+                                    </> : item.swapAns == 3 ?
+                                        <>
+                                            <div className="options-container">
+                                                <p className={isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"A." + item.ansA} </p>
+                                                <p className={isActive1(item.ansC, index)} onClick={() => isChoose(index, item, item.ansC)}>{"C." + item.ansC} </p>
+                                            </div>
+                                            <div className="options-container">
+                                                <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"B." + item.ansB} </p>
+                                                <p className={isActive1(item.ansD, index)} onClick={() => isChoose(index, item, item.ansD)}>{"D." + item.ansD} </p>
+                                            </div>
+                                        </> :
+                                        <>
+                                            <div className="options-container">
+                                                <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"B." + item.ansB} </p>
+                                                <p className={isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"A." + item.ansA} </p>
+                                            </div>
+                                            <div className="options-container">
+                                                <p className={isActive1(item.ansC, index)} onClick={() => isChoose(index, item, item.ansC)}>{"C." + item.ansC} </p>
+                                                <p className={isActive1(item.ansD, index)} onClick={() => isChoose(index, item, item.ansD)}>{"D." + item.ansD} </p>
+                                            </div>
+                                        </>
+
+
+                                }
+
                                 {/* <div className="button-container">
                                     <button id="previous-button" onClick={() => goPre(index)}>Previous</button>
                                     <button id="next-button" onClick={() => goNext(index)}>Next</button>
@@ -149,10 +176,10 @@ function PlayTest() {
                     </div>
                 ))
             }
-            
-            <Button className="submit" onClick={() => handlsubmit(idTest, idUser)}>Hoàn thành {} </Button>
+
+            <Button className="submit" onClick={() => handlsubmit(idTest, idUser)}>Hoàn thành { } </Button>
             <span className="right">2:15 <span className="mdi mdi-clock-outline mdi-24px"></span></span>
-            <Button className="exit" onClick={goBack}>Thoát {} </Button>
+            <Button className="exit" onClick={goBack}>Thoát { } </Button>
 
             <div>
                 <Dialog
@@ -168,7 +195,7 @@ function PlayTest() {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        
+
                         <Button onClick={handleClose} color="primary" autoFocus>
                             OK
                     </Button>
