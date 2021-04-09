@@ -33,5 +33,4 @@ const updateQuestion = "http://192.168.1.17:5000/update-question";
 const addQuestion = "http://192.168.1.17:5000/create-question";
 
 
-
 export default {addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login , addTest, getTests};
