@@ -11,7 +11,7 @@ import PlayTest from './components/Etest/playtest';
 import makeTest from './components/pages/createTest';
 import ScoreBoard from './components/pages/ScoreBoard';
 import changeQ from './components/pages/changeQuestion';
-
+import User from './components/pages/User';
 function App() {
   return (
     <div>
@@ -20,11 +20,12 @@ function App() {
         
         <Route path="/" exact component = {Home}/>
         {/* <Route path="/:idofuser" exact component = {Home}/> */}
-        <Route path="/:idofuser/choose-test" eact component = {ChooseTest}/>
+        <Route path="/:idofuser/choose-test" exact component = {ChooseTest}/>
         <Route path="/:idofuser/play-test/:idoftest" component = {PlayTest}/>
         <Route path = '/login' component = {Login} />
         <Route path = '/:idofuser/createTest' component = {makeTest} />
         <Route path= '/:idofuser/scoreboard' component = {ScoreBoard}/>
+        <Route path= '/infor-user/:idofuser' component= {User} />
         <Route path="/:idofuser/change-question/:idoftest" component={changeQ} />
     </Router>
     </div>

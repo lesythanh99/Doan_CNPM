@@ -8,6 +8,7 @@ import {
   ListItemText,
   Container
 } from "@material-ui/core";
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Home } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link, useHistory } from 'react-router-dom';
@@ -30,7 +31,11 @@ const useStyles = makeStyles({
   linkText: {
     textDecoration: `none`,
     textTransform: `uppercase`,
-    color: `white`
+    color: `white`,
+    '&:hover': {
+      color: `white`,
+      textDecoration: `none`,
+   },
   }
 });
 
@@ -47,7 +52,9 @@ function Header(item) {
     { title: `faq`, path: `/faq` }
   ];
   const classes = useStyles();
-
+  const linkToUser = () => {
+    history.push("/infor-user/" + idofuser);
+  }
   
   return (
     <AppBar position="static">
@@ -67,8 +74,18 @@ function Header(item) {
                   <ListItemText primary={title} />
                 </ListItem>
               </a>
+              
             ))}
           </List>
+          <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit"
+                onClick={() => linkToUser()}
+              >
+                <AccountCircle />
+              </IconButton>
         </Container>
       </Toolbar>
     </AppBar>

@@ -10,15 +10,15 @@ data = {}
 # data['ansD'] = "Answer D"
 # data['ansCorrect'] = "Answer A"
 # data['swapAns'] = '2'
-data['idOfTest'] = '11'
+# data['idOfTest'] = '11'
 
 # data['idOfUser'] = '2'
-data['email'] = 'nhat_1751220074@dau.edu.vn'
-data['password'] = '123456789'
-data["nameUser"] = "Nguyen Cong Nhat"
-data["dateOfBirth"] = "21/08/1999"
-data["adress"] = 'Da Nang'
-data["company"] = "DAUer"
+# data['email'] = 'nhat_1751220074@dau.edu.vn'
+# data['password'] = '123456789'
+# data["nameUser"] = "Nguyen Cong Nhat"
+# data["dateOfBirth"] = "21/08/1999"
+# data["adress"] = 'Da Nang'
+# data["company"] = "DAUer"
 
 # data['timeStart'] = '07:30'
 # data['timeFinish'] = "07:50"
@@ -30,7 +30,7 @@ data["company"] = "DAUer"
 # data['passwdOfTest'] = '12345678'
 # data['limitOfNumUser'] = '20'
 
-# data['idOfUser'] = '2'
+data['idOfUser'] = '1'
 # data['idOfTest'] = '1'
 # data['scoreOfUser'] = '9.9'
 
@@ -39,5 +39,5 @@ data["company"] = "DAUer"
 
 # data['idOfUser'] = '1'
 
-report = requests.post('http://localhost:5000/register', json=data)
+report = requests.post('http://localhost:5000/get-account-by-id', json=data)
 print(report.text)

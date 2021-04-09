@@ -127,6 +127,11 @@ def updateInfo():
     result = conn.update(sheet)
     return jsonify({"data": result}), 200
 
+@app.route("/get-account-by-id", methods = ["POST"])
+def getAccById():
+    data = request.json
+    result = db_acc.account(con_db).getAccById(data["idOfUser"])
+    return jsonify({"data": result}), 200
 
 @app.route("/get-account")
 def getAccount():
@@ -151,7 +156,7 @@ def getTestById():
 @app.route("/get-test-by-name", methods=["POST"] )
 def getTestByName():
     data = request.json
-    result = db_tes.test(con_db).getTestById(data['nameTest'])
+    result = db_tes.test(con_db).getTestByName(data['nameTest'])
     return jsonify({"data": result}), 200
 
 @app.route("/create-test", methods=["POST"])

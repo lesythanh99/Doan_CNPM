@@ -137,8 +137,8 @@ function PlayTest() {
                                             <p className={isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"C." + item.ansA} </p>
                                         </div>
                                         <div className="options-container">
-                                            <p className={isActive1(item.ansD, index)} onClick={() => isChoose(index, item, item.ansD)}>{"D." + item.ansD} </p>
-                                            <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"B." + item.ansB} </p>
+                                            <p className={isActive1(item.ansD, index)} onClick={() => isChoose(index, item, item.ansD)}>{"B." + item.ansD} </p>
+                                            <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"D." + item.ansB} </p>
 
                                         </div>
                                     </> : item.swapAns == 3 ?
@@ -154,11 +154,11 @@ function PlayTest() {
                                         </> :
                                         <>
                                             <div className="options-container">
-                                                <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"B." + item.ansB} </p>
-                                                <p className={isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"A." + item.ansA} </p>
+                                                <p className={isActive1(item.ansB, index)} onClick={() => isChoose(index, item, item.ansB)}>{"A." + item.ansB} </p>
+                                                <p className={isActive1(item.ansA, index)} onClick={() => isChoose(index, item, item.ansA)}>{"C." + item.ansA} </p>
                                             </div>
                                             <div className="options-container">
-                                                <p className={isActive1(item.ansC, index)} onClick={() => isChoose(index, item, item.ansC)}>{"C." + item.ansC} </p>
+                                                <p className={isActive1(item.ansC, index)} onClick={() => isChoose(index, item, item.ansC)}>{"B." + item.ansC} </p>
                                                 <p className={isActive1(item.ansD, index)} onClick={() => isChoose(index, item, item.ansD)}>{"D." + item.ansD} </p>
                                             </div>
                                         </>

@@ -86,7 +86,7 @@ class test:
                 database=self.conn["database"],
             )
             cur = con.cursor()
-            sql = "select * from test where idOfnameTestUser = %s"
+            sql = "select * from test where nameTest = %s"
             cur.execute(sql, (name,))
             con.commit()
             rows = cur.fetchall()
