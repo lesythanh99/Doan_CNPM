@@ -63,6 +63,8 @@ function PaginationComponent() {
     setPosData(data);
   }
 
+  const [isChange, setIsChange] = React.useState(false);
+
   let history = useHistory();
   const { idofuser } = useParams();
   function handleOk(item) {
@@ -177,10 +179,13 @@ function PaginationComponent() {
   });
 
   React.useEffect(() => {
-    CRUD.getTest().then(res => {
-      //console.log(data);
-      setData(res.data.data);
-    });
+    if(isChange == false){
+      CRUD.getTest().then(res => {
+        //console.log(data);
+        setData(res.data.data);
+        setIsChange(true);
+      });
+    }
   }, [data]);
 
   const handleNextbtn = () => {

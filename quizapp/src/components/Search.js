@@ -16,7 +16,9 @@ function Search (props){
     const handleSearch = (e) => {
         if(e.key == 'Enter'){
             CRUD.searchTest(postData).then (res => {
-                console.log(res.data.data);
+                if(res.data.data.length > 0){
+                    setData(res.data.data);
+                }else alert("Không tìm thấy kết quả");
             });
         }
     } 
