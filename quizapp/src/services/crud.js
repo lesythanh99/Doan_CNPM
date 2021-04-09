@@ -26,18 +26,12 @@ const login = (data) => {
 const addTest = "http://localhost:5000/create-test";
 const getTests = "http://localhost:5000/get-test";
 
-const addTest = "http://localhost:5000/create-test";
-const getTests = "http://localhost:5000/get-test";
 
 const getQuestions="http://localhost:5000/play-test";
 const deleteQuestion = "http://localhost:5000/delete-question";
 const updateQuestion = "http://localhost:5000/update-question";
 const addQuestion = "http://localhost:5000/create-question";
 
-const getQuestions="http://localhost:5000/play-test";
-const deleteQuestion = "http://localhost:5000/delete-question";
-const updateQuestion = "http://localhost:5000/update-question";
-const addQuestion = "http://localhost:5000/create-question";
 
 
 export default {addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login , addTest, getTests};

@@ -30,7 +30,11 @@ const useStyles = makeStyles({
   linkText: {
     textDecoration: `none`,
     textTransform: `uppercase`,
-    color: `white`
+    color: `white`,
+    '&:hover': {
+      color: `white`,
+      textDecoration: `none`,
+   },
   }
 });
 
@@ -67,6 +71,7 @@ function Header(item) {
                   <ListItemText primary={title} />
                 </ListItem>
               </a>
+              
             ))}
           </List>
         </Container>
