@@ -30,7 +30,7 @@ data = {}
 # data['passwdOfTest'] = '12345678'
 # data['limitOfNumUser'] = '20'
 
-data['idOfUser'] = '2'
+data['idOfUser'] = '1'
 # data['idOfTest'] = '1'
 # data['scoreOfUser'] = '9.9'
 
