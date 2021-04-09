@@ -39,5 +39,5 @@ data['idOfUser'] = '2'
 
 # data['idOfUser'] = '1'
 
-report = requests.post('http://localhost:5000/register', json=data)
+report = requests.post('http://localhost:5000/get-account-by-id', json=data)
 print(report.text)

@@ -132,7 +132,7 @@ class account:
                 r = acc()
                 r.parseAccount(row)
                 con.close()
-                return r
+                return r.toJson()
             con.close()
         except (Exception, psycopg2.DatabaseError) as error:
             return str(error)
