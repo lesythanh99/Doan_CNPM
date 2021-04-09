@@ -25,6 +25,9 @@ const login = (data) => {
 const searchTest = (data) => {
     return HttpRequest.post("http://localhost:5000/get-test-by-name", data);
 }
+const getInfoAccountById = (data) => {
+    return HttpRequest.post("http://localhost:5000/get-account-by-id", data);
+}
 
 
 const addTest = "http://localhost:5000/create-test";
@@ -38,4 +41,4 @@ const addQuestion = "http://localhost:5000/create-question";
 
 
 
-export default { searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };
+export default {getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };
