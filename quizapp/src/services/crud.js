@@ -22,8 +22,16 @@ const login = (data) => {
     return HttpRequest.post("http://192.168.1.17:5000/login",data);
 }
 
-const urladd = "http://192.168.1.17:5000/create-test";
-const urladdques = "http://192.168.1.17:5000/create-question";
-const urlgettest = "http://192.168.1.17:5000/get-test";
 
-export default {  getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login , urladd, urladdques, urlgettest};
+const addTest = "http://192.168.1.17:5000/create-test";
+const getTests = "http://192.168.1.17:5000/get-test";
+
+
+const getQuestions="http://192.168.1.17:5000/play-test";
+const deleteQuestion = "http://192.168.1.17:5000/delete-question";
+const updateQuestion = "http://192.168.1.17:5000/update-question";
+const addQuestion = "http://192.168.1.17:5000/create-question";
+
+
+
+export default {addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login , addTest, getTests};

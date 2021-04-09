@@ -23,9 +23,9 @@ function App() {
         <Route path="/:idofuser/choose-test" eact component = {ChooseTest}/>
         <Route path="/:idofuser/play-test/:idoftest" component = {PlayTest}/>
         <Route path = '/login' component = {Login} />
-        <Route path = '/createTest' component = {makeTest} />
+        <Route path = '/:idofuser/createTest' component = {makeTest} />
         <Route path= '/:idofuser/scoreboard' component = {ScoreBoard}/>
-        <Route path="/change-question/:idoftest" component={changeQ} />
+        <Route path="/:idofuser/change-question/:idoftest" component={changeQ} />
     </Router>
     </div>
   );

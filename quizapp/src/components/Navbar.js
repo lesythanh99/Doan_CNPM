@@ -34,20 +34,21 @@ const useStyles = makeStyles({
   }
 });
 
-const navLinks = [
-  { title: `Trang chủ`, path: `/home` },
-  { title: `Bài thi`, path: `/choose-test` },
-  { title: `Tạo bài thi`, path: `/createTest` },
-  { title: `blog`, path: `/blog` },
-  { title: `contact`, path: `/contact` },
-  { title: `faq`, path: `/faq` }
-];
 
 function Header(item) {
+  let history = useHistory();
   const { idofuser } = useParams();
+  const navLinks = [
+    { title: `Trang chủ`, path: `/home` },
+    { title: `Bài thi`, path: `/`+idofuser+`/choose-test` },
+    { title: `Tạo bài thi`, path: `/`+idofuser+`/createTest` },
+    { title: `blog`, path: `/blog` },
+    { title: `contact`, path: `/contact` },
+    { title: `faq`, path: `/faq` }
+  ];
   const classes = useStyles();
 
-  let history = useHistory();
+  
   return (
     <AppBar position="static">
       <Toolbar>

@@ -5,14 +5,9 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar'
-import CRUD from '../../services/crud'
-
-const urladd = "http://192.168.43.169:5000/create-test";
-const urladdques = "http://192.168.43.169:5000/create-question";
+import CRUD from "../../services/crud";
 
 let count = 1;
-
-const urlgettest = "http://192.168.1.4:5000/get-test";
 
 class App extends Component {
   state = {
@@ -45,7 +40,7 @@ class App extends Component {
 
 
   handleget = () => {
-    axios.get(urlgettest).then(response => {
+    axios.get(CRUD.getTests).then(response => {
       this.setState({ data: response.data.data });
       console.log(response);
     }).catch(error => {
@@ -54,11 +49,12 @@ class App extends Component {
   }
 
   handlepost = async () => {
-    await axios.post(CRUD.urladd, this.state.form).then(response => {
+    await axios.post(CRUD.addTest, this.state.form).then(response => {
       this.handleinsert();
       this.state.form.idOfTest = response.data.data.idOfTest;
-      console.log("->" +this.state.form.idOfTest);
-      console.log(response);
+      // console.log("->" +this.state.form.idOfTest);
+      // console.log(response);
+      this.handleget();
       this.state.form.numQ = response.data.data.numOfQuestion;
     }).catch(error => {
       console.log(error.message);
@@ -67,7 +63,7 @@ class App extends Component {
   }
 
   handlepostquestion = async () => {
-    await axios.post(CRUD.urladdques, this.state.form).then(response => {
+    await axios.post(CRUD.addQuestion, this.state.form).then(response => {
       count += 1;
       console.log(count);
       //this.handleinsertquestion();
@@ -138,9 +134,8 @@ class App extends Component {
                 <tr>
                   <td>{item.nameTest}</td>
                   <td>
-                    <button className="btn btn-success" ><Link to={`/change-question/${item.idOfTest}`}>sửa</Link> </button>
-                    {"   "}
-                    <button className="btn btn-danger" >xóa</button>
+                    <button className="btn btn-primary" ><Link style={{color: 'white', textDecoration: 'none'}} to={`/`+`${item.idOfUser}/change-question/${item.idOfTest}`}>sửa</Link> </button>
+                    
                   </td>
                 </tr>
               )
