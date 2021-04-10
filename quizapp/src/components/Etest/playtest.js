@@ -111,7 +111,7 @@ function PlayTest() {
     }
     
     const goBack = (item) => {
-        history.push('/'+idofuser + '/choose-test/');
+        history.push( '/choose-test/' +idofuser);
     }
 
     return (

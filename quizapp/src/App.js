@@ -18,15 +18,15 @@ function App() {
       
     <Router>
         
-        <Route path="/" exact component = {Home}/>
-        {/* <Route path="/:idofuser" exact component = {Home}/> */}
-        <Route path="/:idofuser/choose-test" exact component = {ChooseTest}/>
-        <Route path="/:idofuser/play-test/:idoftest" component = {PlayTest}/>
-        <Route path = '/login' component = {Login} />
-        <Route path = '/:idofuser/createTest' component = {makeTest} />
-        <Route path= '/:idofuser/scoreboard' component = {ScoreBoard}/>
-        <Route path= '/infor-user/:idofuser' component= {User} />
-        <Route path="/:idofuser/change-question/:idoftest" component={changeQ} />
+        <Route path="/home" exact component = {Home}/>
+        <Route path="/home/:idofuser" exact component = {Home}/>
+        <Route path="/choose-test/:idofuser" exact component = {ChooseTest}/>
+        <Route path="/play-test/:idofuser/:idoftest" exact component = {PlayTest}/>
+        <Route path = '/login' exact component = {Login} />
+        <Route path = '/createTest/:idofuser' exact component = {makeTest} />
+        <Route path= '/scoreboard/:idofuser' exact component = {ScoreBoard}/>
+        <Route path= '/infor-user/:idofuser' exact component= {User} />
+        <Route path="/change-question/:idofuser/:idoftest" exact component={changeQ} />
     </Router>
     </div>
   );
