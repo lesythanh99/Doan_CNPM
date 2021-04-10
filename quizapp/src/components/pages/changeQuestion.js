@@ -126,6 +126,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+        <br /><br /><br />
         <button className="btn btn-success" style={{ marginLeft: '600px', marginTop: '20px' }} onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm</button>
         <br /><br />
         <table className="table ">

@@ -31,7 +31,6 @@ function PlayTest() {
             console.log(res);
         })
         setOpen(false);
-        history.push('/choose-test' + '/' + idofuser);
     };
     //enddialog
     const history = useHistory()
@@ -47,15 +46,38 @@ function PlayTest() {
     const [mjson, setMjson] = React.useState([]);
 
     const [listDataQues, setListDataQues] = React.useState([]);
+
+    const [time, setTime] = React.useState([]);
+    const [times, setTimes] = React.useState({ minutes: 0, seconds: 0 });
+
     const [activeNow, setActiveNow] = React.useState(0);
     const [yourChoose, setYourChoose] = React.useState([]);
 
 
     const notifyData = () => {
         console.log(idTest);
+
         CRUD.getQuestion(idTest).then((res) => {
             setListDataQues(res.data.data);
             console.log(res.data.data);
+        });
+        CRUD.getTestByIdTest(idTest).then((res) => {
+            setTime(res.data.data);
+            console.log(res.data.data);
+            //startTimer(res.data.data.timeStart, res.data.data.timeFinish);
+
+            const start = new Date(res.data.data.timeStart);
+            const finish = new Date(res.data.data.timeFinish);
+
+            const distance = finish.getTime() - start.getTime();
+            const minute = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
+            const second = Math.floor(distance % (1000 * 60) / (1000));
+
+            setTimes({
+                minutes: minute,
+                seconds: second
+            });
+
         });
     }
     React.useEffect(() => {
@@ -110,10 +132,32 @@ function PlayTest() {
         if (choose == yourChoose[index]) return "option active";
         return 'option';
     }
-    
-    // const goBack = (item) => {
-    //     history.push( '/choose-test/' +idofuser);
-    // }
+
+    const goBack = (item) => {
+        history.push('/choose-test/' + idofuser);
+    }
+
+    const startTimer = () => {
+
+        if (times.minutes === 0 && times.seconds === 0) {
+            handlsubmit(idTest, idUser);
+        } else if (times.seconds === 0) {
+            setTimes({
+                minutes: times.minutes - 1,
+                seconds: 59
+            });
+        } else {
+            setTimes({
+                minutes: times.minutes,
+                seconds: times.seconds - 1
+            });
+        }
+    }
+
+    React.useEffect(() => {
+        let timer = setInterval(() => startTimer(), 1000);
+        return () => clearInterval(timer);
+    });
 
     return (
         <div>
@@ -179,8 +223,8 @@ function PlayTest() {
             }
 
             <Button className="submit" onClick={() => handlsubmit(idTest, idUser)}>Hoàn thành { } </Button>
-            <span className="right">2:15 <span className="mdi mdi-clock-outline mdi-24px"></span></span>
-            
+            <span className="right">{times.minutes}:{times.seconds}<span className="mdi mdi-clock-outline mdi-24px"></span></span>
+            <Button className="exit" onClick={goBack}>Thoát { } </Button>
 
             <div>
                 <Dialog
