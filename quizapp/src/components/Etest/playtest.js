@@ -19,6 +19,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 function PlayTest() {
+    const history = useHistory()
+    const { idoftest } = useParams();
+    const { idofuser } = useParams();
+    
     //dialog
     const [open, setOpen] = React.useState(false);
 
@@ -32,20 +36,20 @@ function PlayTest() {
         })
         setOpen(false);
         history.push('/choose-test' + '/' + idofuser);
+        console.log(mjson);
     };
     //enddialog
-    const history = useHistory()
-    const { idoftest } = useParams();
-    const { idofuser } = useParams();
+    
     let idTest = {
         "idOfTest": idoftest
     }
     let idUser = {
         "idOfUser": idofuser
     }
+    console.log("id of user "+idUser);
+    
     const [score, setScore] = React.useState([]);
     const [mjson, setMjson] = React.useState([]);
-
     const [listDataQues, setListDataQues] = React.useState([]);
     const [activeNow, setActiveNow] = React.useState(0);
     const [yourChoose, setYourChoose] = React.useState([]);
@@ -62,26 +66,24 @@ function PlayTest() {
         notifyData();
     }, []);
     const handlsubmit = (idTest, idUser) => {
-        console.log(idUser);
+        
         var temp = 0;
         listDataQues.map((item, index) => {
-            console.log(item.ansCorrect);
-
             if (item.ansCorrect == yourChoose[index]) {
                 temp++;
             }
-
         });
         var dt = { ...score, }
         dt['point'] = temp;
+        console.log("diem temp " + dt.point);
         setScore(dt);
         var mjson = {
             'idOfTest': idTest.idOfTest,
             'idOfUser': idUser.idOfUser,
-            'scoreOfUser': score.point,
+            'scoreOfUser': dt.point,
         }
         setMjson(mjson);
-
+        console.log("aaaaaaaaaa "+score.point)
 
         setOpen(true);
     }

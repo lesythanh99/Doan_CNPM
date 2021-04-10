@@ -62,14 +62,7 @@ const useStyles = makeStyles({
 function Header(item) {
   let history = useHistory();
   const { idofuser } = useParams();
-  const navLinks = [
-    { title: `Trang chủ`, path: `/home/` + typeof (idofuser) == "undefined" ? "" : idofuser },
-    { title: `Bài thi`, path: `/choose-test` + "/" + typeof (idofuser) == "undefined" ? "" : idofuser },
-    { title: `Tạo bài thi`, path: `/createTest` + `/` + typeof (idofuser) == "undefined" ? "" : idofuser },
-    { title: `blog`, path: `/blog` },
-    { title: `contact`, path: `/contact` },
-    { title: `faq`, path: `/faq` }
-  ];
+
   const classes = useStyles();
   const linkToUser = () => {
     history.push("/infor-user/" + idofuser);
@@ -190,9 +183,9 @@ function Header(item) {
                 <ListItemText primary="Tạo bài thi" />
               </ListItem>
             </a>
-            <a href="/blog" className={classes.linkText}>
+            <a href={typeof (idofuser) == "undefined" ? "/login" : "/scoreboard/" + idofuser} className={classes.linkText}>
               <ListItem button>
-                <ListItemText primary="blog" />
+                <ListItemText primary="Xem điểm" />
               </ListItem>
             </a>
             <a href="/contact" className={classes.linkText}>

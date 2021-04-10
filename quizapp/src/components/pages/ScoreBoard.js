@@ -8,6 +8,7 @@ import {
   Route,
   useParams
 } from "react-router-dom";
+import { Container } from 'reactstrap';
 function ScoreBoard() {
   let { idofuser } = useParams();
   let idUser = {
@@ -40,10 +41,11 @@ function ScoreBoard() {
   return (
     <>
       <Navbar />
-      <div>
+      <Container>
+        <div style={{marginTop:'70px'}}>
         <h1>Điểm của bạn</h1>
         <div>
-          <Table dark>
+          <Table dark >
             <thead>
               <tr>
                 <th>#</th>
@@ -63,55 +65,56 @@ function ScoreBoard() {
           </Table>
         </div>
       </div>
-      <div>
-        <h1>Contest của bạn</h1>
         <div>
-          <Table dark>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>ID Test</th>
-                <th>#</th>
-              </tr>
-            </thead>
-            <tbody>
-              {listScoreOfTest.map((item, index) => (
-                <tr>
-                  <th scope="row">{index + 1}</th>
-                  <td>{item.idOfTest}</td>
-                  <td><Button onClick={() => showScoreBoard(item.idOfTest)}>Xem</Button></td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        <Modal isOpen={modal} toggle={toggle} >
-          <ModalHeader toggle={toggle}>Bảng điểm</ModalHeader>
-          <ModalBody>
+          <h1>Contest của bạn</h1>
+          <div>
             <Table dark>
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>ID User</th>
-                  <th>Score</th>
+                  <th>ID Test</th>
+                  <th>#</th>
                 </tr>
               </thead>
               <tbody>
-                {scoreBoard.map((item, index) => (
+                {listScoreOfTest.map((item, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{item.idOfUser}</td>
-                    <td>{item.scoreOfUser}</td>
+                    <td>{item.idOfTest}</td>
+                    <td><Button onClick={() => showScoreBoard(item.idOfTest)}>Xem</Button></td>
                   </tr>
                 ))}
               </tbody>
             </Table>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="secondary" onClick={toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
-      </div>
+          </div>
+          <Modal isOpen={modal} toggle={toggle} >
+            <ModalHeader toggle={toggle}>Bảng điểm</ModalHeader>
+            <ModalBody>
+              <Table dark>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>ID User</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scoreBoard.map((item, index) => (
+                    <tr>
+                      <th scope="row">{index + 1}</th>
+                      <td>{item.idOfUser}</td>
+                      <td>{item.scoreOfUser}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="secondary" onClick={toggle}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
+        </div>
+        </Container>
     </>
   );
 }

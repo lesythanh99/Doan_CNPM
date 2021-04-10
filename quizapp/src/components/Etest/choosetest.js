@@ -67,7 +67,6 @@ function PaginationComponent() {
 
   let history = useHistory();
   const { idofuser } = useParams();
-  console.log("day la idofuser: " + idofuser );
   function handleOk(item) {
     console.log(data);
     console.log(item);
