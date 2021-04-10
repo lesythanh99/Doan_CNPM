@@ -11,7 +11,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 class App extends Component {
     state = {
-        data: [[]],
+        data: [],
         handleinsert: false,
         handledelete: false,
         id: {
@@ -100,20 +100,21 @@ class App extends Component {
                 {this.state.data.map(item => {
                   return (
                       <div>
-                      <FormLabel>Email: </FormLabel>
-                      <FormLabel>{item.email}</FormLabel> <br />
-                      <FormLabel>Mật khẩu: </FormLabel>
-                      <FormLabel>{item.password}</FormLabel> <br />
-                      <FormLabel>Tên: </FormLabel>
-                      <FormLabel>{item.nameUser}</FormLabel> <br />
-                      <FormLabel>Ngày sinh: </FormLabel>
-                      <FormLabel>{item.dateOfBirth}</FormLabel> <br />
-                      <FormLabel>Địa chỉ: </FormLabel>
-                      <FormLabel>{item.adress}</FormLabel> <br />
-                      <FormLabel>Công ty: </FormLabel>
-                      <FormLabel>{item.company}</FormLabel> <br />
-                    
-                        <button className="btn btn-primary" onClick={() => { this.selectedItem(item); this.handleinsert() }}><FontAwesomeIcon icon={faEdit} /></button>
+                      <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Email:</b></FormLabel>
+                      <FormLabel style={{marginLeft: '60px'}}>{item.email}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Mật khẩu: </b></FormLabel>
+                      <FormLabel  style={{marginLeft: '31px'}}>{item.password}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Tên: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '75px'}}>{item.nameUser}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Ngày sinh: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '25px'}}>{item.dateOfBirth}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Địa chỉ: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '49px'}}>{item.adress}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Công ty: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '42px'}}>{item.company}</FormLabel> <br />
+                      <br />
+                        <button className="btn btn-primary"  style={{marginLeft: '300px'}} onClick={() => { this.selectedItem(item); this.handleinsert() }}>Chỉnh sửa thông tin cá nhân</button>
            
                     </div>
                   )

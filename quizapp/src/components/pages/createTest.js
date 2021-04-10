@@ -10,6 +10,9 @@ import CRUD from "../../services/crud";
 
 let count = 1;
 
+const test = new Date('2021-04-13T17:30');
+const test1 = new Date('2021-04-13T17:31');
+
 class App extends Component {
   state = {
     data: [],
@@ -41,9 +44,11 @@ class App extends Component {
 
 
   handleget = () => {
+    var a = test1.getTime() - test.getTime();
+    console.log(a);
     axios.get(CRUD.getTests).then(response => {
       this.setState({ data: response.data.data });
-      console.log(response);
+      console.log(response.data.data);
     }).catch(error => {
       console.log(error.message);
     })
@@ -53,8 +58,6 @@ class App extends Component {
     await axios.post(CRUD.addTest, this.state.form).then(response => {
       this.handleinsert();
       this.state.form.idOfTest = response.data.data.idOfTest;
-      // console.log("->" +this.state.form.idOfTest);
-      // console.log(response);
       this.handleget();
       this.state.form.numQ = response.data.data.numOfQuestion;
     }).catch(error => {
@@ -113,6 +116,7 @@ class App extends Component {
       }
     });
   }
+
 
   render() {
     const { form } = this.state;
