@@ -21,7 +21,6 @@ const getScoreOfTest = (data) => {
 const login = (data) => {
     return HttpRequest.post("http://192.168.1.17:5000/login", data);
 }
-
 const searchTest = (data) => {
     return HttpRequest.post("http://192.168.1.17:5000/get-test-by-name", data);
 }
@@ -40,6 +39,8 @@ const updateQuestion = "http://192.168.1.17:5000/update-question";
 const addQuestion = "http://192.168.1.17:5000/create-question";
 
 
+const getUser = "http://192.168.1.4:5000/get-account-by-id";
+const updateUser = "http://192.168.1.4:5000/update-info";
 
 
-export default {getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };
+export default {getUser, updateUser, register, getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };

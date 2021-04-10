@@ -12,6 +12,8 @@ import makeTest from './components/pages/createTest';
 import ScoreBoard from './components/pages/ScoreBoard';
 import changeQ from './components/pages/changeQuestion';
 import User from './components/pages/User';
+import Regis from './components/pages/register';
+
 function App() {
   return (
     <div>

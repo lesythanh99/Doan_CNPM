@@ -8,8 +8,6 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Navbar from '../Navbar';
 import CRUD from "../../services/crud";
 
-
-
 class App extends Component {
   state = {
     data: [],
