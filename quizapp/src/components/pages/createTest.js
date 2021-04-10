@@ -142,7 +142,7 @@ class App extends Component {
                 <tr>
                   <td>{item.nameTest}</td>
                   <td>
-                    <button className="btn btn-primary" ><Link style={{color: 'white', textDecoration: 'none'}} to={`/`+`${item.idOfUser}/change-question/${item.idOfTest}`}>sửa</Link> </button>
+                    <button className="btn btn-primary" ><Link style={{color: 'white', textDecoration: 'none'}} to={`/change-question/${item.idOfUser}/${item.idOfTest}`}>sửa</Link> </button>
                     
                   </td>
                 </tr>

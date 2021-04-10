@@ -104,7 +104,7 @@ class App extends Component {
                       <FormLabel style={{marginLeft: '300px'}}><b>Email:</b></FormLabel>
                       <FormLabel style={{marginLeft: '60px'}}>{item.email}</FormLabel> <br />
                       <FormLabel style={{marginLeft: '300px'}}><b>Mật khẩu: </b></FormLabel>
-                      <FormLabel  style={{marginLeft: '31px'}}>{item.password}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '31px'}}>{item.password}</FormLabel> <br />
                       <FormLabel style={{marginLeft: '300px'}}><b>Tên: </b></FormLabel>
                       <FormLabel style={{marginLeft: '75px'}}>{item.nameUser}</FormLabel> <br />
                       <FormLabel style={{marginLeft: '300px'}}><b>Ngày sinh: </b></FormLabel>
