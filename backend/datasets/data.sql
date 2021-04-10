@@ -12,8 +12,8 @@ create table listQuestion (
 
 create table test (
     idOfTest SERIAL PRIMARY KEY,
-    timeStart int,
-    timeFinish int,
+    timeStart text,
+    timeFinish text,
     status text,
     nameTest text,
     numOfQuestion smallint,
