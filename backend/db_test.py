@@ -75,6 +75,33 @@ class test:
         finally:
             if con is not None:
                 con.close()
+    def getTestByIdTest(self, id):
+        con = None
+        try:
+            con = psycopg2.connect(
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
+            )
+            cur = con.cursor()
+            sql = "select * from test where idOfTest = %s"
+            cur.execute(sql, (id,))
+            con.commit()
+            row = cur.fetchone()
+            if row :
+                r = tes()
+                r.parseTest(row)
+                con.close()
+                return r.toJson()
+            con.close()
+            return "Fail"
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()
     def getTestByName(self, name):
         con = None
         try:

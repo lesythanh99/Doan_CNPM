@@ -99,6 +99,7 @@ class App extends Component {
               <div style={{marginTop: '90px'}}>
                 {this.state.data.map(item => {
                   return (
+<<<<<<< HEAD
                           <div className="container" >
                             <div className="main-body">
                               <div className="row gutters-sm">
@@ -177,6 +178,26 @@ class App extends Component {
                           </div>
                         
                      
+=======
+                      <div>
+                      <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Email:</b></FormLabel>
+                      <FormLabel style={{marginLeft: '60px'}}>{item.email}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Mật khẩu: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '31px'}}>{item.password}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Tên: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '75px'}}>{item.nameUser}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Ngày sinh: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '25px'}}>{item.dateOfBirth}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Địa chỉ: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '49px'}}>{item.adress}</FormLabel> <br />
+                      <FormLabel style={{marginLeft: '300px'}}><b>Công ty: </b></FormLabel>
+                      <FormLabel style={{marginLeft: '42px'}}>{item.company}</FormLabel> <br />
+                      <br />
+                        <button className="btn btn-primary"  style={{marginLeft: '300px'}} onClick={() => { this.selectedItem(item); this.handleinsert() }}>Chỉnh sửa thông tin cá nhân</button>
+           
+                    </div>
+>>>>>>> c4274f9bb7ff157536c1d5f860ca4d496d050aa2
                   )
                 })}
                 </div>
