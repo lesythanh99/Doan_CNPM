@@ -12,6 +12,8 @@ import makeTest from './components/pages/createTest';
 import ScoreBoard from './components/pages/ScoreBoard';
 import changeQ from './components/pages/changeQuestion';
 import User from './components/pages/User';
+import Regis from './components/pages/register';
+
 function App() {
   return (
     <div>
@@ -27,6 +29,7 @@ function App() {
         <Route path= '/:idofuser/scoreboard' component = {ScoreBoard}/>
         <Route path= '/infor-user/:idofuser' component= {User} />
         <Route path="/:idofuser/change-question/:idoftest" component={changeQ} />
+        <Route path="/register" component={Regis} />
     </Router>
     </div>
   );

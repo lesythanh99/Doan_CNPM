@@ -159,8 +159,8 @@ class App extends Component {
           <ModalBody>
             <div>
               <AvForm >
-                <AvField name="timeStart" label="Thời gian bắt đầu" type="text" onChange={this.handleChange} value={form ? form.timeStart : ''} required />
-                <AvField name="timeFinish" label="Thời gian kết thúc" type="text" onChange={this.handleChange} value={form ? form.timeFinish : ''} required />
+                <AvField name="timeStart" label="Thời gian bắt đầu" type="datetime-local" onChange={this.handleChange} value={form ? form.timeStart : ''} required />
+                <AvField name="timeFinish" label="Thời gian kết thúc" type="datetime-local" onChange={this.handleChange} value={form ? form.timeFinish : ''} required />
                 <AvField name="nameTest" label="Tên bài thi" type="text" onChange={this.handleChange} value={form ? form.nameTest : ''} required />
                 <AvField name="passwdOfTest" label="mật khẩu" type="text" onChange={this.handleChange} value={form ? form.passwdOfTest : ''} required />
                 <AvField name="limitOfNumUser" label="giới hạn lượt làm bài" type="text" onChange={this.handleChange} value={form ? form.limitOfNumUser : ''} required />
