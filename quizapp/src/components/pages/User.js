@@ -11,7 +11,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 class App extends Component {
     state = {
-        data: [[]],
+        data: [],
         handleinsert: false,
         handledelete: false,
         id: {
