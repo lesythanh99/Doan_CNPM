@@ -67,11 +67,12 @@ function PaginationComponent() {
 
   let history = useHistory();
   const { idofuser } = useParams();
+  console.log("day la idofuser: " + idofuser );
   function handleOk(item) {
     console.log(data);
     console.log(item);
     if (item.passwdOfTest == posData.pdata) {
-      history.push('/' + idofuser + '/play-test/' + item.idOfTest);
+      history.push('/play-test/' + idofuser + "/" + item.idOfTest);
     }
 
   }
@@ -92,8 +93,6 @@ function PaginationComponent() {
         <h2 style={{ textAlign: 'center' }}>Chọn bài thi</h2>
         {data.map((todo) => (
           <div>
-
-
             <Container>
               <Typography
                 color="textPrimary"
