@@ -169,7 +169,9 @@ export default function Login(props) {
     console.log("Send data : " + JSON.stringify(postData));
 
   }
-
+  const register = ()=>{
+    history.push("/register");
+  }
 
   const [form, setForm] = useState(0);
   return (
@@ -230,9 +232,9 @@ export default function Login(props) {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <a onClick={register}>
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </a>
               </Grid>
             </Grid>
             <Box mt={5}>

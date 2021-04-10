@@ -31,6 +31,7 @@ function PlayTest() {
             console.log(res);
         })
         setOpen(false);
+        history.push('/choose-test' + '/' + idofuser);
     };
     //enddialog
     const history = useHistory()
@@ -110,9 +111,9 @@ function PlayTest() {
         return 'option';
     }
     
-    const goBack = (item) => {
-        history.push( '/choose-test/' +idofuser);
-    }
+    // const goBack = (item) => {
+    //     history.push( '/choose-test/' +idofuser);
+    // }
 
     return (
         <div>
@@ -179,7 +180,7 @@ function PlayTest() {
 
             <Button className="submit" onClick={() => handlsubmit(idTest, idUser)}>Hoàn thành { } </Button>
             <span className="right">2:15 <span className="mdi mdi-clock-outline mdi-24px"></span></span>
-            <Button className="exit" onClick={goBack}>Thoát { } </Button>
+            
 
             <div>
                 <Dialog

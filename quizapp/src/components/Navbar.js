@@ -20,6 +20,8 @@ import {
   Route,
   useParams
 } from "react-router-dom";
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 const useStyles = makeStyles({
   navbarDisplayFlex: {
     display: `flex`,
@@ -74,17 +76,58 @@ function Header(item) {
   }
   React.useEffect(() => {
   }, []);
+  const logout = () => {
+    history.push("/login/");
+  }
+  const classess = useStyles();
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleChange = (event) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  // end profile
+
 
   const iconUser = (
-    <IconButton
-      aria-label="account of current user"
-      aria-controls="menu-appbar"
-      aria-haspopup="true"
-      color="inherit"
-      onClick={() => linkToUser()}
-    >
-      <AccountCircle />
-    </IconButton>
+    <div>
+                  <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleMenu}
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={open}
+                    onClose={handleClose}
+                  >
+                    <MenuItem onClick={() => linkToUser()}>Profile</MenuItem>
+                    <MenuItem onClick={() => logout()}>Logout</MenuItem>
+                  </Menu>
+                </div>
   );
   const iconLogin = (
 
@@ -97,12 +140,26 @@ function Header(item) {
     if (typeof (idofuser) != "undefined") {
       return path;
     }
-    history.push("/login");
-
+    history.push("/home");
   }
+  // profile
+  // const useStyles = makeStyles((theme) => ({
+  //   root: {
+  //     flexGrow: 1,
+  //   },
+  //   menuButton: {
+  //     marginRight: theme.spacing(2),
+  //   },
+  //   title: {
+  //     flexGrow: 1,
+  //   },
+  // }));
+
+  
 
   return (
-    <AppBar position="sticky">
+    <div style={{position:'absolute', width:'100%'}}>
+    <AppBar position="fixed">
       <Toolbar>
         <Container maxWidth="md" className={classes.navbarDisplayFlex}>
           <IconButton edge="start" color="inherit" aria-label="home">
@@ -151,12 +208,15 @@ function Header(item) {
 
           </List>
 
-          {typeof (idofuser) != "undefined" ? iconUser : iconLogin}
-
-
+         
         </Container>
+            {/* {auth && (
+                
+              )} */}
+               {typeof (idofuser) != "undefined" ? iconUser : iconLogin}
       </Toolbar>
     </AppBar>
+    </div>
   );
 };
 export default Header;

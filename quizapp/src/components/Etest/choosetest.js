@@ -218,11 +218,12 @@ function PaginationComponent() {
 
   return (
     <>
-      <div style={{ 'marginBottom': '30px' }}>
+    <div style={{position: 'fixed',width:'100%'}}>
+      {/* <div  > */}
         <Navbar />
-      </div>
-      <div style={{ 'width': '500px', 'margin': 'auto' }}>
-        <Search setData = {setData} />
+      {/* </div> */}
+      <div style={{ 'width': '500px', 'margin': 'auto','marginTop':'73px'}}>
+        <Search  setData = {setData} />
       </div>
       {renderData(currentItems)}
 
@@ -248,7 +249,7 @@ function PaginationComponent() {
             </button>
         </li>
       </ul>
-
+      </div>
     </>
   );
 }

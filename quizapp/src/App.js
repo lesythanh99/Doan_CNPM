@@ -29,6 +29,7 @@ function App() {
         <Route path= '/scoreboard/:idofuser' exact component = {ScoreBoard}/>
         <Route path= '/infor-user/:idofuser' exact component= {User} />
         <Route path="/change-question/:idofuser/:idoftest" exact component={changeQ} />
+        <Route path="/register/" exact component={Regis} />
     </Router>
     </div>
   );

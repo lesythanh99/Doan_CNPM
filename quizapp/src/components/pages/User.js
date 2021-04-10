@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader,Table } from 'reactstrap';
 import Navbar from '../Navbar';
 import CRUD from "../../services/crud";
 import FormLabel from '@material-ui/core/FormLabel';
@@ -94,48 +94,110 @@ class App extends Component {
       render() {
         const { form } = this.state;
         return (
-          <div className="App">
+          <div className="App" style={{position: 'fixed',width:'100%'}} >
             <Navbar />
-            
+              <div style={{marginTop: '90px'}}>
                 {this.state.data.map(item => {
                   return (
-                      <div>
-                      <FormLabel>Email: </FormLabel>
-                      <FormLabel>{item.email}</FormLabel> <br />
-                      <FormLabel>Mật khẩu: </FormLabel>
-                      <FormLabel>{item.password}</FormLabel> <br />
-                      <FormLabel>Tên: </FormLabel>
-                      <FormLabel>{item.nameUser}</FormLabel> <br />
-                      <FormLabel>Ngày sinh: </FormLabel>
-                      <FormLabel>{item.dateOfBirth}</FormLabel> <br />
-                      <FormLabel>Địa chỉ: </FormLabel>
-                      <FormLabel>{item.adress}</FormLabel> <br />
-                      <FormLabel>Công ty: </FormLabel>
-                      <FormLabel>{item.company}</FormLabel> <br />
-                    
-                        <button className="btn btn-primary" onClick={() => { this.selectedItem(item); this.handleinsert() }}><FontAwesomeIcon icon={faEdit} /></button>
-           
-                    </div>
+                          <div className="container" >
+                            <div className="main-body">
+                              <div className="row gutters-sm">
+                                <div className="col-md-4 mb-3">
+                                  <div className="card">
+                                    <div className="card-body">
+                                      <div className="d-flex flex-column align-items-center text-center">
+                                        <img src="https://scontent.fdad2-1.fna.fbcdn.net/v/t1.6435-9/117770934_1207267669672121_7134104150954454109_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=JEefvoFUhasAX-lWCWh&_nc_ht=scontent.fdad2-1.fna&oh=be249c45a810b40ef3017a300459c7e7&oe=609603CA" alt="Admin" className="rounded-circle" width={150} />
+                                        {/* https://bootdey.com/img/Content/avatar/avatar7.png */}
+                                        <div className="mt-3">
+                                          <h4>{item.nameUser}</h4>
+                                          <p className="text-secondary mb-1">Full Stack Developer</p>
+                                          <p className="text-muted font-size-sm">Da Nang - Viet Nam</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                                <div className="col-md-8">
+                                  <div className="card mb-3">
+                                    <div className="card-body">
+                                      <div className="row">
+                                        <div className="col-sm-3">
+                                          <h6 className="mb-0">Full Name</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                          {item.nameUser}
+                                        </div>
+                                      </div>
+                                      <hr />
+                                      <div className="row">
+                                        <div className="col-sm-3">
+                                          <h6 className="mb-0">Email</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                          {item.email}
+                                        </div>
+                                      </div>
+                                      <hr />
+                                      <div className="row">
+                                        <div className="col-sm-3">
+                                          <h6 className="mb-0">Birthday</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                          {item.dateOfBirth}
+                                        </div>
+                                      </div>
+                                      <hr />
+                                      <div className="row">
+                                        <div className="col-sm-3">
+                                          <h6 className="mb-0">Company</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                          {item.company}
+                                        </div>
+                                      </div>
+                                      <hr />
+                                      <div className="row">
+                                        <div className="col-sm-3">
+                                          <h6 className="mb-0">Address</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                          {item.adress}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            <div style={{width: '100%',textAlign:'center'}}>
+                             <button style={{width: '15%'}} className="btn btn-primary" onClick={() => { this.selectedItem(item); this.handleinsert() }}>Thay đổi</button>
+                            </div> 
+                          </div>
+                        
+                     
                   )
                 })}
+                </div>
     
             <Modal isOpen={this.state.handleinsert}>
-          <ModalHeader style={{ display: 'block' }}>
+          <ModalHeader style={{  }}>
             {this.state.cc === 'insert' ?
               <span>Nhập thông tin</span> :
               <span>Sửa thông tin</span>
             }
-            <span style={{ float: 'right' }} onClick={() => this.handleinsert()}>x</span>
+            <span style={{ marginLeft:'330px' }} onClick={() => this.handleinsert()}>x</span>
           </ModalHeader>
           <ModalBody>
             <div>
               <AvForm >
-                <AvField name="email" label="email" type="text" onChange={this.handleChange} value={form ? form.email : ''} required />
-                <AvField name="password" label="password" type="text" onChange={this.handleChange} value={form ? form.password : ''} required />
-                <AvField name="nameUser" label="nameUser" type="text" onChange={this.handleChange} value={form ? form.nameUser : ''} required />
-                <AvField name="dateOfBirth" label="dateOfBirth" type="date" onChange={this.handleChange} value={form ? form.dateOfBirth : ''} required />
-                <AvField name="adress" label="adress" type="text" onChange={this.handleChange} value={form ? form.adress : ''} required />
-                <AvField name="company" label="company" type="text" onChange={this.handleChange} value={form ? form.company : ''} required />
+                <AvField name="email" label="" type="hidden" onChange={this.handleChange} value={form ? form.email : ''}  required />
+                <AvField name="password" label="Password" type="text" onChange={this.handleChange} value={form ? form.password : ''} required />
+                <AvField name="nameUser" label="Name" type="text" onChange={this.handleChange} value={form ? form.nameUser : ''} required />
+                <AvField name="dateOfBirth" label="Birth Day" type="date" onChange={this.handleChange} value={form ? form.dateOfBirth : ''} required />
+                <AvField name="adress" label="Adress" type="text" onChange={this.handleChange} value={form ? form.adress : ''} required />
+                <AvField name="company" label="Company" type="text" onChange={this.handleChange} value={form ? form.company : ''} required />
                 </AvForm>
             </div>
 

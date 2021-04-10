@@ -117,12 +117,11 @@ class App extends Component {
   render() {
     const { form } = this.state;
     return (
-
-      <div className="App">
+      <div className="App" style={{position: 'fixed',width:'100%'}}>
         <div style={{ 'marginBottom' : '30px'}}>
           <Navbar />
         </div>
-        
+        <div style={{marginTop: '64px'}}>
         <button style={{ marginLeft: '600px', marginTop: '20px' }} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
         <br /><br />
         <table className="table ">
@@ -223,6 +222,7 @@ class App extends Component {
             <button className="btn btn-danger" onClick={() => this.handleinsertquestion()}>Hủy</button>
           </ModalFooter>
         </Modal>
+        </div>
       </div>
     );
   }
