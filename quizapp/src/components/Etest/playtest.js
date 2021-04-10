@@ -77,7 +77,7 @@ function PlayTest() {
             const distance = finish.getTime() - start.getTime();
             const minute = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
             const second = Math.floor(distance % (1000 * 60) / (1000));
-
+                console.log(minute);
             setTimes({
                 minutes: minute,
                 seconds: second
