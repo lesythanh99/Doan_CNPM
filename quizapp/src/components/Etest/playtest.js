@@ -106,7 +106,7 @@ function PlayTest() {
             'scoreOfUser': dt.point,
         }
         setMjson(mjson);
-        console.log("aaaaaaaaaa "+score.point)
+        console.log("aaaaaaaaaaaaaa " + score.point);
 
         setOpen(true);
     }
