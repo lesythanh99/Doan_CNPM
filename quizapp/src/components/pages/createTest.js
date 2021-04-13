@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar'
 import CRUD from "../../services/crud";
-
 
 let count = 1;
 
@@ -127,13 +126,18 @@ class App extends Component {
         <div style={{ 'marginBottom' : '30px'}}>
           <Navbar />
         </div>
+        
         <div style={{marginTop: '64px'}}>
-        <button style={{ marginLeft: '600px', marginTop: '20px' }} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
+        <button style={{ marginLeft: '45%', marginTop: '20px' }} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
         <br /><br />
+        <Container>
         <table className="table ">
           <thead>
             <tr>
               <th>Tên bài thi</th>
+              <th>Thời gian bắt đầu</th>
+              <th>Thời gian kết thúc</th>
+              <th>status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -142,6 +146,9 @@ class App extends Component {
               return (
                 <tr>
                   <td>{item.nameTest}</td>
+                  <td>{item.timeStart}</td>
+                  <td>{item.timeFinish}</td>
+                  <td>{item.status}</td>
                   <td>
                     <button className="btn btn-primary" ><Link style={{color: 'white', textDecoration: 'none'}} to={`/change-question/${item.idOfUser}/${item.idOfTest}`}>sửa</Link> </button>
                     
@@ -151,7 +158,7 @@ class App extends Component {
             })}
           </tbody>
         </table>
-
+        </Container>
         
         <Modal isOpen={this.state.handleinsert} style={{ maxHeight: '100%' }}>
           <ModalHeader style={{ display: 'block' }}>

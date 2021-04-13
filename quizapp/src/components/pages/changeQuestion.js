@@ -129,11 +129,11 @@ class App extends Component {
         <br /><br /><br />
         <button className="btn btn-success" style={{ marginLeft: '600px', marginTop: '20px' }} onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm</button>
         <br /><br />
+
         <table className="table ">
           <thead>
             <tr>
               <th>ID</th>
-              <th>idOfTest</th>
               <th>content</th>
               <th>ansA</th>
               <th>ansB</th>
@@ -141,14 +141,14 @@ class App extends Component {
               <th>ansD</th>
               <th>ansCorrect</th>
               <th>swapAns</th>
+              <th>action</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.data.map(item => {
+            {this.state.data.map((item,index) => {
               return (
                 <tr>
-                  <td>{item.idOfQuestion}</td>
-                  <td>{item.idOfTest}</td>
+                  <td>{index+1}</td>
                   <td>{item.content}</td>
                   <td>{item.ansA}</td>
                   <td>{item.ansB}</td>
@@ -166,7 +166,6 @@ class App extends Component {
             })}
           </tbody>
         </table>
-
 
 
         <Modal isOpen={this.state.handleinsert}>
