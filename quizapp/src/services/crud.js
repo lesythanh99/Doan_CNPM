@@ -38,6 +38,7 @@ const getInfoAccountById = (data) => {
 
 const addTest = "http://192.168.1.4:5000/create-test";
 const getTests = "http://192.168.1.4:5000/get-test";
+const getTestId = "http://192.168.1.4:5000/get-test-by-id";
 
 
 const getQuestions = "http://192.168.1.4:5000/play-test";
@@ -49,4 +50,4 @@ const getUser = "http://192.168.1.4:5000/get-account-by-id";
 const updateUser = "http://192.168.1.4:5000/update-info";
 
 
-export default {getTestByIdTest, getUser, updateUser, register, getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };
+export default {getTestId, getTestByIdTest, getUser, updateUser, register, getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };

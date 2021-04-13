@@ -10,14 +10,14 @@ import CRUD from "../../services/crud";
 
 let count = 1;
 
-const test = new Date('2021-04-13T17:30');
-const test1 = new Date('2021-04-13T17:31');
-
 class App extends Component {
   state = {
     data: [],
     handleinsert: false,
     handleinsertquestion: false,
+    id:{
+      idOfUser: '',
+    },
     form: {
       timeStart: '',
       timeFinish: '',
@@ -25,7 +25,7 @@ class App extends Component {
       nameTest: '',
       numOfQuestion: '',
       isEnable: 1,
-      idOfUser: 0,
+      idOfUser: '',
       passwdOfTest: '',
       limitOfNumUser: '',
       idOfTest: '',
@@ -44,9 +44,9 @@ class App extends Component {
 
 
   handleget = () => {
-    var a = test1.getTime() - test.getTime();
-    console.log(a);
-    axios.get(CRUD.getTests).then(response => {
+    this.state.id.idOfUser = window.location.pathname.substr(12);
+    console.log(this.state.id);
+    axios.post(CRUD.getTestId, this.state.id).then(response => {
       this.setState({ data: response.data.data });
       console.log(response.data.data);
     }).catch(error => {
@@ -55,8 +55,10 @@ class App extends Component {
   }
 
   handlepost = async () => {
+    
     await axios.post(CRUD.addTest, this.state.form).then(response => {
       this.handleinsert();
+      console.log(response.data.data.idOfTest);
       this.state.form.idOfTest = response.data.data.idOfTest;
       this.handleget();
       this.state.form.numQ = response.data.data.numOfQuestion;
@@ -168,7 +170,7 @@ class App extends Component {
                 <AvField name="passwdOfTest" label="mật khẩu" type="text" onChange={this.handleChange} value={form ? form.passwdOfTest : ''} required />
                 <AvField name="limitOfNumUser" label="giới hạn lượt làm bài" type="text" onChange={this.handleChange} value={form ? form.limitOfNumUser : ''} required />
                 <AvField name="status" label="status" type="text" onChange={this.handleChange} value={form ? form.status : ''} required />
-                <AvField name="idOfUser" type="hidden" onChange={this.handleChange} value={form ? form.idOfUser = 1 : ''} required />
+                <AvField name="idOfUser" type="hidden" onChange={this.handleChange} value={form ? form.idOfUser = this.state.id.idOfUser : ''} required />
                 <AvField name="numOfQuestion" label="số câu hỏi" type="text" onChange={this.handleChange} value={form ? form.numOfQuestion : ''} required />
                 <AvField name="isEnable" type="hidden" onChange={this.handleChange} value={form ? form.isEnable = '1' : ''} required />
               </AvForm>

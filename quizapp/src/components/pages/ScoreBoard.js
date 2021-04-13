@@ -35,6 +35,7 @@ function ScoreBoard() {
     });
     CRUD.getTestById(idUser).then(res => {
       setListScoreOfTest(res.data.data);
+      console.log(res.data.data);
     });
   }, []);
 
