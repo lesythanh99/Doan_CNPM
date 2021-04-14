@@ -4,6 +4,9 @@ import axios from "axios";
 import { Link, useHistory } from 'react-router-dom';
 import CRUD from "../../services/crud";
 
+
+ 
+
 function Register(props) {
   const [postData, setPostData] = React.useState({
     email: "",
@@ -13,6 +16,8 @@ function Register(props) {
     adress: "",
     company: "",
   });
+
+ let history = useHistory();
 
   function onChangeData(e) {
     e.preventDefault();
@@ -27,7 +32,11 @@ function Register(props) {
     CRUD.register(postData)
       .then((response) => {
         console.log(response);
-        alert('Đăng ký thành công');
+        if(response.data.data.nameUser != ''){
+          history.push('/login');
+        }else{
+          alert('đăng ký thất bại');
+        }
       })
       .catch((error) => {
         console.log(error.message);

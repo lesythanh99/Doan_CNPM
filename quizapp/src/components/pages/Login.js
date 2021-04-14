@@ -232,9 +232,9 @@ export default function Login(props) {
                 </Link>
               </Grid>
               <Grid item>
-                <a onClick={register}>
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
-                </a>
+                </Link>
               </Grid>
             </Grid>
             <Box mt={5}>

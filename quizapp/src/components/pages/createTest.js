@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar'
 import CRUD from "../../services/crud";
 
-
 let count = 1;
-
-const test = new Date('2021-04-13T17:30');
-const test1 = new Date('2021-04-13T17:31');
 
 class App extends Component {
   state = {
     data: [],
     handleinsert: false,
     handleinsertquestion: false,
+    id:{
+      idOfUser: '',
+    },
     form: {
       timeStart: '',
       timeFinish: '',
@@ -25,7 +24,7 @@ class App extends Component {
       nameTest: '',
       numOfQuestion: '',
       isEnable: 1,
-      idOfUser: 0,
+      idOfUser: '',
       passwdOfTest: '',
       limitOfNumUser: '',
       idOfTest: '',
@@ -44,9 +43,9 @@ class App extends Component {
 
 
   handleget = () => {
-    var a = test1.getTime() - test.getTime();
-    console.log(a);
-    axios.get(CRUD.getTests).then(response => {
+    this.state.id.idOfUser = window.location.pathname.substr(12);
+    console.log(this.state.id);
+    axios.post(CRUD.getTestId, this.state.id).then(response => {
       this.setState({ data: response.data.data });
       console.log(response.data.data);
     }).catch(error => {
@@ -55,8 +54,10 @@ class App extends Component {
   }
 
   handlepost = async () => {
+    
     await axios.post(CRUD.addTest, this.state.form).then(response => {
       this.handleinsert();
+      console.log(response.data.data.idOfTest);
       this.state.form.idOfTest = response.data.data.idOfTest;
       this.handleget();
       this.state.form.numQ = response.data.data.numOfQuestion;
@@ -125,13 +126,18 @@ class App extends Component {
         <div style={{ 'marginBottom' : '30px'}}>
           <Navbar />
         </div>
+        
         <div style={{marginTop: '64px'}}>
-        <button style={{ marginLeft: '600px', marginTop: '20px' }} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
+        <button style={{ marginLeft: '45%', marginTop: '20px' }} className="btn btn-success" onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm bài thi mới</button>
         <br /><br />
+        <Container>
         <table className="table ">
           <thead>
             <tr>
               <th>Tên bài thi</th>
+              <th>Thời gian bắt đầu</th>
+              <th>Thời gian kết thúc</th>
+              <th>status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -140,6 +146,9 @@ class App extends Component {
               return (
                 <tr>
                   <td>{item.nameTest}</td>
+                  <td>{item.timeStart}</td>
+                  <td>{item.timeFinish}</td>
+                  <td>{item.status}</td>
                   <td>
                     <button className="btn btn-primary" ><Link style={{color: 'white', textDecoration: 'none'}} to={`/change-question/${item.idOfUser}/${item.idOfTest}`}>sửa</Link> </button>
                     
@@ -149,7 +158,7 @@ class App extends Component {
             })}
           </tbody>
         </table>
-
+        </Container>
         
         <Modal isOpen={this.state.handleinsert} style={{ maxHeight: '100%' }}>
           <ModalHeader style={{ display: 'block' }}>
@@ -168,7 +177,7 @@ class App extends Component {
                 <AvField name="passwdOfTest" label="mật khẩu" type="text" onChange={this.handleChange} value={form ? form.passwdOfTest : ''} required />
                 <AvField name="limitOfNumUser" label="giới hạn lượt làm bài" type="text" onChange={this.handleChange} value={form ? form.limitOfNumUser : ''} required />
                 <AvField name="status" label="status" type="text" onChange={this.handleChange} value={form ? form.status : ''} required />
-                <AvField name="idOfUser" type="hidden" onChange={this.handleChange} value={form ? form.idOfUser = 1 : ''} required />
+                <AvField name="idOfUser" type="hidden" onChange={this.handleChange} value={form ? form.idOfUser = this.state.id.idOfUser : ''} required />
                 <AvField name="numOfQuestion" label="số câu hỏi" type="text" onChange={this.handleChange} value={form ? form.numOfQuestion : ''} required />
                 <AvField name="isEnable" type="hidden" onChange={this.handleChange} value={form ? form.isEnable = '1' : ''} required />
               </AvForm>
