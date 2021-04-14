@@ -130,7 +130,7 @@ function PaginationComponent() {
               margin="dense"
               id="name"
               label="code"
-              type="text"
+              type="password"
               fullWidth
             />
           </DialogContent>

@@ -188,16 +188,12 @@ function Header(item) {
                 <ListItemText primary="Xem điểm" />
               </ListItem>
             </a>
-            <a href="/contact" className={classes.linkText}>
+            <a href="https://www.facebook.com/" className={classes.linkText}>
               <ListItem button>
                 <ListItemText primary="contact" />
               </ListItem>
             </a>
-            <a href="/faq" className={classes.linkText}>
-              <ListItem button>
-                <ListItemText primary="faq" />
-              </ListItem>
-            </a>
+
 
           </List>
 

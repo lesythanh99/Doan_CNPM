@@ -46,7 +46,6 @@ function PlayTest() {
     let idUser = {
         "idOfUser": idofuser
     }
-    console.log("id of user "+idUser);
     
     const [score, setScore] = React.useState([]);
     const [mjson, setMjson] = React.useState([]);
@@ -100,13 +99,13 @@ function PlayTest() {
         dt['point'] = temp;
         console.log("diem temp " + dt.point);
         setScore(dt);
-        var mjson = {
+        var mmjson = {
             'idOfTest': idTest.idOfTest,
             'idOfUser': idUser.idOfUser,
             'scoreOfUser': dt.point,
         }
-        setMjson(mjson);
-        console.log("aaaaaaaaaaaaaa " + score.point);
+        setMjson(mmjson);
+       
 
         setOpen(true);
     }
@@ -135,11 +134,6 @@ function PlayTest() {
         if (choose == yourChoose[index]) return "option active";
         return 'option';
     }
-
-    const goBack = (item) => {
-        history.push('/choose-test/' + idofuser);
-    }
-
     const startTimer = () => {
 
         if (times.minutes === 0 && times.seconds === 0) {
@@ -227,7 +221,6 @@ function PlayTest() {
 
             <Button className="submit" onClick={() => handlsubmit(idTest, idUser)}>Hoàn thành { } </Button>
             <span className="right">{times.minutes}:{times.seconds}<span className="mdi mdi-clock-outline mdi-24px"></span></span>
-            <Button className="exit" onClick={goBack}>Thoát { } </Button>
 
             <div>
                 <Dialog
