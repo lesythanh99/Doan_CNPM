@@ -7,13 +7,13 @@ const getScore = (data) => {
     return HttpRequest.post("http://192.168.1.17:5000/get-score", data);
 }
 const getTest = async () => {
-    return HttpRequest.get("http://192.168.1.17:5000/get-test");
+    return  await  HttpRequest.get("http://192.168.1.17:5000/get-test");
 }
 const getTestById = (data) => {
     return HttpRequest.post("http://192.168.1.17:5000/get-test-by-id", data);
 }
-const getTestByIdTest = (data) => {
-    return HttpRequest.post("http://192.168.1.17:5000/get-test-by-id-test", data);
+const getTestByIdTest = async (data) => {
+    return  await HttpRequest.post("http://192.168.1.17:5000/get-test-by-id-test", data);
 }
 const getScoreOfMe = (data) => {
     return HttpRequest.post("http://192.168.1.17:5000/score-of-me", data);

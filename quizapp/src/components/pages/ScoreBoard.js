@@ -17,6 +17,7 @@ function ScoreBoard() {
   const [listScoreOfMe, setListScoreOfMe] = React.useState([]);
   const [listScoreOfTest, setListScoreOfTest] = React.useState([]);
   const [scoreBoard, setScoreBoard] = React.useState([]);
+  const [nameTest, setNameTest] = React.useState([]);
   const [modal, setModal] = React.useState(false);
   const toggle = () => setModal(!modal);
   const showScoreBoard = (idOfTest) => {
@@ -27,7 +28,7 @@ function ScoreBoard() {
     });
   }
 
-
+  const [a, setA] = React.useState([]);
 
   React.useEffect(() => {
     CRUD.getScoreOfMe(idUser).then(res => {
@@ -37,7 +38,10 @@ function ScoreBoard() {
       setListScoreOfTest(res.data.data);
     });
   }, []);
+  
 
+    
+    
   return (
     <>
       <Navbar />
@@ -49,18 +53,21 @@ function ScoreBoard() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>ID Test</th>
+                <th>Name Test</th>
                 <th>Score</th>
               </tr>
             </thead>
             <tbody>
-              {listScoreOfMe.map((item, index) => (
-                <tr>
-                  <th scope="row">{index + 1}</th>
-                  <td>{item.idOfTest}</td>
-                  <td>{item.scoreOfUser}</td>
-                </tr>
-              ))}
+              {/* {nameTest.map((data) => ( */}
+                {listScoreOfMe.map((item, index) => (
+                  <tr>
+                    <th scope="row">{index + 1}</th>
+                    <td>{item.idOfTest}</td>
+                    <td>{item.scoreOfUser}</td>
+                  </tr>
+                ))}
+              {/* ))} */}
+              
             </tbody>
           </Table>
         </div>
@@ -77,13 +84,15 @@ function ScoreBoard() {
                 </tr>
               </thead>
               <tbody>
+              {/* {nameTest.map((data) => ( */}
                 {listScoreOfTest.map((item, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{item.idOfTest}</td>
+                    <td>{item.idOfUser}</td>
                     <td><Button onClick={() => showScoreBoard(item.idOfTest)}>Xem</Button></td>
                   </tr>
                 ))}
+                {/* ))} */}
               </tbody>
             </Table>
           </div>
@@ -99,12 +108,14 @@ function ScoreBoard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {scoreBoard.map((item, index) => (
+                {nameTest.map((data) => (
+                  scoreBoard.map((item, index) => (
                     <tr>
                       <th scope="row">{index + 1}</th>
-                      <td>{item.idOfUser}</td>
+                      <td>{data.nameTest}</td>
                       <td>{item.scoreOfUser}</td>
                     </tr>
+                  ))
                   ))}
                 </tbody>
               </Table>
