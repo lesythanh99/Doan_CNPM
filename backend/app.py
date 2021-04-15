@@ -146,6 +146,7 @@ def updateTest():
     conn = db_tes.test(con_db)
     data = request.json
     sheet = tes.test(
+        data["idOfTest"],
         data["timeStart"],
         data["timeFinish"],
         data["status"],
@@ -155,7 +156,7 @@ def updateTest():
         data["idOfUser"],
         data["passwdOfTest"],
         data["limitOfNumUser"],
-        data["idOfTest"],
+        
     )
     result = conn.update(sheet)
     return jsonify({"data": result}), 200
