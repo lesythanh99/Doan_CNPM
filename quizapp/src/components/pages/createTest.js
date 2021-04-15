@@ -67,6 +67,15 @@ class App extends Component {
 
   }
 
+  handleput = () => {
+    // this.state.id2.idOfQuestion = this.state.form.idOfQuestion;
+    // console.log(this.state.id2);
+    axios.put(CRUD.updateTest, this.state.form).then(response => {
+      this.handleinsert();
+      this.handleget();
+    })
+  }
+
   handlepostquestion = async () => {
     await axios.post(CRUD.addQuestion, this.state.form).then(response => {
       count += 1;
@@ -108,6 +117,27 @@ class App extends Component {
       document.getElementById('swapAns').value = '';
     }
   }
+
+  selectedItem = (item) => {
+    this.setState({
+      cc: 'update',
+      form: {
+        idOfTest: item.idOfTest,
+        timeStart: item.timeStart,
+        timeFinish: item.timeFinish,
+        status: item.status,
+        nameTest: item.nameTest,
+        numOfQuestion: item.numOfQuestion,
+        isEnable: item.isEnable,
+        idOfUser: item.idOfUser,
+        passwdOfTest: item.passwdOfTest,
+        limitOfNumUser: item.limitOfNumUser,
+        
+
+      }
+    })
+  }
+
   handleChange = async e => {
     e.persist();
     await this.setState({
@@ -150,8 +180,9 @@ class App extends Component {
                   <td>{item.timeFinish}</td>
                   <td>{item.status}</td>
                   <td>
-                    <button className="btn btn-primary" ><Link style={{color: 'white', textDecoration: 'none'}} to={`/change-question/${item.idOfUser}/${item.idOfTest}`}>sửa</Link> </button>
-                    
+                    <Link  to={`/change-question/${item.idOfUser}/${item.idOfTest}`}>Sửa câu hỏi</Link>
+                    {"        "}
+                    <button className="btn btn-primary" onClick={() => { this.selectedItem(item); this.handleinsert() }}> Sửa bài thi</button>
                   </td>
                 </tr>
               )
@@ -164,7 +195,7 @@ class App extends Component {
           <ModalHeader style={{ display: 'block' }}>
             {this.state.cc === 'insert' ?
               <span>Nhập thông tin</span> :
-              <span></span>
+              <span>Sửa thông tin</span>
             }
             <span style={{ float: 'right' }} onClick={() => this.handleinsert()}>x</span>
           </ModalHeader>
@@ -190,9 +221,9 @@ class App extends Component {
             {this.state.cc === 'insert' ?
               <button className="btn btn-success" onClick={() => { this.handlepost(); this.handleinsertquestion() }}>
                 Thêm
-                  </button> : <button className="btn btn-primary">
-
-              </button>
+                </button> : <button className="btn btn-primary" onClick={() => this.handleput()}>
+                Sửa
+                </button>
             }
             <button className="btn btn-danger" onClick={() => this.handleinsert()}>Hủy</button>
           </ModalFooter>
