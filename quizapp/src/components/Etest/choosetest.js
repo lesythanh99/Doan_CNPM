@@ -217,7 +217,7 @@ function PaginationComponent() {
 
   return (
     <>
-    <div style={{position: 'fixed',width:'100%'}}>
+    <div style={{width:'100%'}}>
       {/* <div  > */}
         <Navbar />
       {/* </div> */}
@@ -225,6 +225,7 @@ function PaginationComponent() {
         <Search  setData = {setData} />
       </div>
       {renderData(currentItems)}
+      <div className="clearfix"></div>
 
       <ul className="pageNumbers">
         <li>
