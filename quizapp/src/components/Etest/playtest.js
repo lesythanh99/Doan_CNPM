@@ -219,7 +219,10 @@ function PlayTest() {
                 ))
             }
 
-            <Button className="submit" onClick={() => handlsubmit(idTest, idUser)}>Hoàn thành { } </Button>
+            <div className="btnsubmit">
+                <Button className="submit" onClick={() => handlsubmit(idTest, idUser)}>Hoàn thành { } </Button>
+            </div>
+            <div style={{height:"50px"}} ></div>
             <span className="right">{times.minutes}:{times.seconds}<span className="mdi mdi-clock-outline mdi-24px"></span></span>
 
             <div>

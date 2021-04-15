@@ -36,7 +36,6 @@ function ScoreBoard() {
     });
     CRUD.getTestById(idUser).then(res => {
       setListScoreOfTest(res.data.data);
-      console.log(res.data.data);
     });
   }, []);
   
@@ -44,12 +43,13 @@ function ScoreBoard() {
     
     
   return (
-    <div style={{width:'100%'}}>
-       <div >
-          <Navbar />
-        </div>
+    
+    <>
+    <div style={{position: "fixed", width:"100%"}}><Navbar /></div>
+    
+      
       <Container>
-        <div style={{marginTop:'70px',}} >
+        <div style={{marginTop:'70px'}}>
         <h1>Điểm của bạn</h1>
         <div>
           <Table dark >
@@ -91,7 +91,7 @@ function ScoreBoard() {
                 {listScoreOfTest.map((item, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{item.idOfTest}</td>
+                    <td>{item.idOfUser}</td>
                     <td><Button onClick={() => showScoreBoard(item.idOfTest)}>Xem</Button></td>
                   </tr>
                 ))}
@@ -100,7 +100,7 @@ function ScoreBoard() {
             </Table>
           </div>
           <Modal isOpen={modal} toggle={toggle} >
-            <ModalHeader toggle={toggle}> Bảng điểm</ModalHeader>
+            <ModalHeader toggle={toggle}>Bảng điểm</ModalHeader>
             <ModalBody>
               <Table dark>
                 <thead>
@@ -111,13 +111,14 @@ function ScoreBoard() {
                   </tr>
                 </thead>
                 <tbody>
-              
-                  {scoreBoard.map((item, index) => (
+                {nameTest.map((data) => (
+                  scoreBoard.map((item, index) => (
                     <tr>
                       <th scope="row">{index + 1}</th>
-                      <td>{item.idOfUser}</td>
+                      <td>{data.nameTest}</td>
                       <td>{item.scoreOfUser}</td>
                     </tr>
+                  ))
                   ))}
                 </tbody>
               </Table>
@@ -128,7 +129,7 @@ function ScoreBoard() {
           </Modal>
         </div>
         </Container>
-    </div>
+    </>
   );
 }
 

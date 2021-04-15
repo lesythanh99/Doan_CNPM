@@ -189,9 +189,14 @@
     }
 }
 .submit{
-    position: fixed;
+    //position: fixed;
     top: 105px;
     left: 23px;
+}
+.btnsubmit {
+    width: 100%;
+    text-align: center;
+    margin-top: 17px;
 }
 .exit {
     position: fixed;
