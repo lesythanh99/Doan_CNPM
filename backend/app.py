@@ -141,6 +141,24 @@ def getAccount():
 
 # ------------------------------------------------------------------------------------------------
 
+@app.route("/update-test", methods=["PUT"])
+def updateTest():
+    conn = db_tes.test(con_db)
+    data = request.json
+    sheet = acc.test(
+        data["timeStart"],
+        data["timeFinish"],
+        data["status"],
+        data["nameTest"],
+        data["numOfQuestion"],
+        data["isEnable"],
+        data["idOfUser"],
+        data["passwdOfTest"],
+        data["limitOfNumUser"],
+        data["comidOfTestpany"],
+    )
+    result = conn.update(sheet)
+    return jsonify({"data": result}), 200
 
 @app.route("/get-test")
 def getTest():
