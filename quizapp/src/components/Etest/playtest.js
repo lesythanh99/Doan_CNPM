@@ -69,9 +69,22 @@ function PlayTest() {
             setTime(res.data.data);
             console.log(res.data.data);
             //startTimer(res.data.data.timeStart, res.data.data.timeFinish);
-
+            // setTime({
+            //     ts: res.data.data.timeStart,
+            //     tf: res.data.data.timeFinish
+            // });
+            
             const start = new Date(res.data.data.timeStart);
             const finish = new Date(res.data.data.timeFinish);
+
+            var today = new Date();
+
+            if(today > start && today < finish){
+                
+            }else{
+                alert('Chưa đến giờ làm bài');
+                history.push("/choose-test/" + idofuser);
+            }
 
             const distance = finish.getTime() - start.getTime();
             const minute = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));

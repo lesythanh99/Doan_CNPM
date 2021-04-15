@@ -145,7 +145,7 @@ def getAccount():
 def updateTest():
     conn = db_tes.test(con_db)
     data = request.json
-    sheet = acc.test(
+    sheet = tes.test(
         data["timeStart"],
         data["timeFinish"],
         data["status"],
