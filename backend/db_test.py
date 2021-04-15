@@ -157,3 +157,38 @@ class test:
         finally:
             if con is not None:
                 con.close()
+    def update(self, data):
+        con = None
+        try:
+            con = psycopg2.connect(
+                user=self.conn["user"],
+                password=self.conn["password"],
+                host=self.conn["host"],
+                port=self.conn["port"],
+                database=self.conn["database"],
+            )
+            cur = con.cursor()
+            sql = "UPDATE test SET timeStart = %s, timeFinish = %s, status = %s, nameTest = %s, numOfQuestion = %s, isEnable = %s, idOfUser = %s, passwdOfTest = %s, limitOfNumUser = %s WHERE idOfTest = %s"
+            result = (
+                data.timeStart,
+                data.timeFinish,
+                data.status,
+                data.nameTest,
+                data.numOfQuestion,
+                data.isEnable,
+                data.idOfUser,
+                data.passwdOfTest,
+                data.limitOfNumUser,
+                data.idOfTest,
+                
+            )
+            cur.execute(sql, result)
+            con.commit()
+            con.close()
+            return "RE"
+
+        except (Exception, psycopg2.DatabaseError) as error:
+            return str(error)
+        finally:
+            if con is not None:
+                con.close()
