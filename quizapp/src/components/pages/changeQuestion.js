@@ -124,8 +124,10 @@ class App extends Component {
   render() {
     const { form } = this.state;
     return (
-      <div className="App">
-        <Navbar />
+      <div className="App" style={{position: 'fixed',width:'100%'}} >
+        <div style={{ 'marginBottom' : '30px'}}>
+          <Navbar />
+        </div>
         <br /><br /><br />
         <button className="btn btn-success" style={{ marginLeft: '600px', marginTop: '20px' }} onClick={() => { this.setState({ form: null, cc: 'insert' }); this.handleinsert() }}>Thêm</button>
         <br /><br />

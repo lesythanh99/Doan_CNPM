@@ -36,7 +36,6 @@ function ScoreBoard() {
     });
     CRUD.getTestById(idUser).then(res => {
       setListScoreOfTest(res.data.data);
-      console.log(res.data.data);
     });
   }, []);
   
@@ -44,8 +43,11 @@ function ScoreBoard() {
     
     
   return (
+    
     <>
-      <Navbar />
+    <div style={{position: "fixed", width:"100%"}}><Navbar /></div>
+    
+      
       <Container>
         <div style={{marginTop:'70px'}}>
         <h1>Điểm của bạn</h1>

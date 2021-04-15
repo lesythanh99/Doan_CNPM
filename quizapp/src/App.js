@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route ,Redirect} from 'react-router-dom';
 import Home from './components/Home.js';
 import quizInstructions from './components/Quiz/intructions';
 import Play from './components/Quiz/Play';
@@ -19,7 +19,9 @@ function App() {
     <div>
       
     <Router>
-        
+        <Route path="/" exact>
+          <Redirect to="/home"></Redirect>
+        </Route>
         <Route path="/home" exact component = {Home}/>
         <Route path="/home/:idofuser" exact component = {Home}/>
         <Route path="/choose-test/:idofuser" exact component = {ChooseTest}/>

@@ -130,7 +130,7 @@ function PaginationComponent() {
               margin="dense"
               id="name"
               label="code"
-              type="text"
+              type="password"
               fullWidth
             />
           </DialogContent>
@@ -221,7 +221,7 @@ function PaginationComponent() {
       {/* <div  > */}
         <Navbar />
       {/* </div> */}
-      <div style={{ 'width': '500px', 'margin': 'auto','marginTop':'73px'}}>
+      <div className="search" style={{ 'width': '500px', 'margin': 'auto','marginTop':'73px'}}>
         <Search  setData = {setData} />
       </div>
       {renderData(currentItems)}
