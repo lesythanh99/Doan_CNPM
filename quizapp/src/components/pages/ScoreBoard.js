@@ -111,14 +111,12 @@ function ScoreBoard() {
                   </tr>
                 </thead>
                 <tbody>
-                {nameTest.map((data) => (
-                  scoreBoard.map((item, index) => (
+                  {scoreBoard.map((item, index) => (
                     <tr>
                       <th scope="row">{index + 1}</th>
-                      <td>{data.nameTest}</td>
+                      <td>{item.idOfUser}</td>
                       <td>{item.scoreOfUser}</td>
                     </tr>
-                  ))
                   ))}
                 </tbody>
               </Table>
