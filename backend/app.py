@@ -155,7 +155,7 @@ def updateTest():
         data["idOfUser"],
         data["passwdOfTest"],
         data["limitOfNumUser"],
-        data["comidOfTestpany"],
+        data["idOfTest"],
     )
     result = conn.update(sheet)
     return jsonify({"data": result}), 200
