@@ -44,11 +44,20 @@ const deleteQuestion = "http://192.168.1.17:5000/delete-question";
 const updateQuestion = "http://192.168.1.17:5000/update-question";
 const addQuestion = "http://192.168.1.17:5000/create-question";
 
+<<<<<<< HEAD
 const getUser = "http://192.168.1.17:5000/get-account-by-id";
 const updateUser = "http://192.168.1.17:5000/update-info";
 const addTest = "http://192.168.1.17:5000/create-test";
 const getTests = "http://192.168.1.17:5000/get-test";
 const getTestId = "http://192.168.1.17:5000/get-test-by-id";
+=======
+const getUser = "http://192.168.1.4:5000/get-account-by-id";
+const updateUser = "http://192.168.1.4:5000/update-info";
+const addTest = "http://192.168.1.4:5000/create-test";
+const getTests = "http://192.168.1.4:5000/get-test";
+const getTestId = "http://192.168.1.4:5000/get-test-by-id";
+const updateTest = "http://192.168.1.4:5000/update-test";
+>>>>>>> ffb07a19547bcb7c1e15748d2e9419ba962d7ae6
 
 
-export default {getTestId, getTestByIdTest, getUser, updateUser, register, getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };
+export default {updateTest, getTestId, getTestByIdTest, getUser, updateUser, register, getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };
