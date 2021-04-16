@@ -92,7 +92,7 @@ class App extends Component {
         idOfQuestion: item.idOfQuestion,
         idOfTest: item.idOfTest,
         content: item.content,
-        ansA: item.ansB,
+        ansA: item.ansA,
         ansB: item.ansB,
         ansC: item.ansC,
         ansD: item.ansD,
