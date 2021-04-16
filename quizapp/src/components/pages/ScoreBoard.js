@@ -56,7 +56,7 @@ function ScoreBoard() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name Test</th>
+                <th>ID Test</th>
                 <th>Score</th>
               </tr>
             </thead>
@@ -91,7 +91,7 @@ function ScoreBoard() {
                 {listScoreOfTest.map((item, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{item.idOfUser}</td>
+                    <td>{item.idOfTest}</td>
                     <td><Button onClick={() => showScoreBoard(item.idOfTest)}>Xem</Button></td>
                   </tr>
                 ))}
@@ -111,14 +111,12 @@ function ScoreBoard() {
                   </tr>
                 </thead>
                 <tbody>
-                {nameTest.map((data) => (
-                  scoreBoard.map((item, index) => (
+                  {scoreBoard.map((item, index) => (
                     <tr>
                       <th scope="row">{index + 1}</th>
-                      <td>{data.nameTest}</td>
+                      <td>{item.idOfUser}</td>
                       <td>{item.scoreOfUser}</td>
                     </tr>
-                  ))
                   ))}
                 </tbody>
               </Table>
