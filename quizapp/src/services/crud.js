@@ -37,8 +37,6 @@ const getInfoAccountById = (data) => {
 }
 
 
-
-
 const getQuestions = "http://192.168.1.22:5000/play-test";
 const deleteQuestion = "http://192.168.1.22:5000/delete-question";
 const updateQuestion = "http://192.168.1.22:5000/update-question";
@@ -50,6 +48,12 @@ const addTest = "http://192.168.1.22:5000/create-test";
 const getTests = "http://192.168.1.22:5000/get-test";
 const getTestId = "http://192.168.1.22:5000/get-test-by-id";
 const updateTest = "http://192.168.1.22:5000/update-test";
+
+const getUser = "http://192.168.1.17:5000/get-account-by-id";
+const updateUser = "http://192.168.1.17:5000/update-info";
+const addTest = "http://192.168.1.17:5000/create-test";
+const getTests = "http://192.168.1.17:5000/get-test";
+const getTestId = "http://192.168.1.17:5000/get-test-by-id";
 
 
 export default {updateTest, getTestId, getTestByIdTest, getUser, updateUser, register, getInfoAccountById, searchTest , addQuestion, updateQuestion, deleteQuestion, getQuestions, getQuestion, getScore, getTest, getTestById, getScoreOfMe, getScoreOfTest, login, addTest, getTests };

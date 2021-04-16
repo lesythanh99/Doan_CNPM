@@ -173,6 +173,7 @@ export default function Login(props) {
     history.push("/register");
   }
 
+
   const [form, setForm] = useState(0);
   return (
     <Grid container component="main" className={classes.root}>
@@ -217,7 +218,7 @@ export default function Login(props) {
             />
             <Button
               onClick={handleOnClickSubmit}
-              //type="submit"
+              type="submit"
               fullWidth
               variant="contained"
               color="primary"
