@@ -92,7 +92,7 @@ class App extends Component {
         idOfQuestion: item.idOfQuestion,
         idOfTest: item.idOfTest,
         content: item.content,
-        ansA: item.ansB,
+        ansA: item.ansA,
         ansB: item.ansB,
         ansC: item.ansC,
         ansD: item.ansD,
@@ -136,13 +136,13 @@ class App extends Component {
           <thead>
             <tr>
               <th>ID</th>
-              <th>content</th>
-              <th>ansA</th>
-              <th>ansB</th>
-              <th>ansC</th>
-              <th>ansD</th>
-              <th>ansCorrect</th>
-              <th>swapAns</th>
+              <th>Nội dung câu hỏi</th>
+              <th>Đáp án A</th>
+              <th>Đáp án B</th>
+              <th>Đáp án C</th>
+              <th>Đáp án D</th>
+              <th>Đáp án đúng</th>
+              <th>Xáo đáp án</th>
               <th>action</th>
             </tr>
           </thead>
@@ -182,13 +182,13 @@ class App extends Component {
             <div>
               <AvForm >
                 <AvField name="idOfTest" type="hidden" onChange={this.handleChange} value={form ? form.idOfTest = this.state.id.idOfTest : ''} required />
-                <AvField name="content" label="content" type="text" onChange={this.handleChange} value={form ? form.content : ''} required />
-                <AvField name="ansA" label="ansA" type="text" onChange={this.handleChange} value={form ? form.ansA : ''} required />
-                <AvField name="ansB" label="ansB" type="text" onChange={this.handleChange} value={form ? form.ansB : ''} required />
-                <AvField name="ansC" label="ansC" type="text" onChange={this.handleChange} value={form ? form.ansC : ''} required />
-                <AvField name="ansD" label="ansD" type="text" onChange={this.handleChange} value={form ? form.ansD : ''} required />
-                <AvField name="ansCorrect" label="ansCorrect" type="text" onChange={this.handleChange} value={form ? form.ansCorrect : ''} required />
-                <AvField name="swapAns" label="swapAns" type="text" onChange={this.handleChange} value={form ? form.swapAns : ''} required />
+                <AvField name="content" label="Nội dung câu hỏi" type="text" onChange={this.handleChange} value={form ? form.content : ''} required />
+                <AvField name="ansA" label="Đáp án A" type="text" onChange={this.handleChange} value={form ? form.ansA : ''} required />
+                <AvField name="ansB" label="Đáp án B" type="text" onChange={this.handleChange} value={form ? form.ansB : ''} required />
+                <AvField name="ansC" label="Đáp án C" type="text" onChange={this.handleChange} value={form ? form.ansC : ''} required />
+                <AvField name="ansD" label="Đáp án D" type="text" onChange={this.handleChange} value={form ? form.ansD : ''} required />
+                <AvField name="ansCorrect" label="Đáp án đúng" type="text" onChange={this.handleChange} value={form ? form.ansCorrect : ''} required />
+                <AvField name="swapAns" label="Xáo đáp án" type="text" onChange={this.handleChange} value={form ? form.swapAns : ''} required />
               </AvForm>
 
             </div>

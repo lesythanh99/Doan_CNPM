@@ -50,12 +50,12 @@ function Register(props) {
       <h1>Trang đăng ký</h1>
       <div className="col-sm-6 offset-sm-3">
         <AvForm >
-          <AvField name="email" label="email" type="text" onChange={onChangeData} value={postData.email} required />
-          <AvField name="password" label="password" type="password" onChange={onChangeData} value={postData.password} required />
-          <AvField name="nameUser" label="nameUser" type="text" onChange={onChangeData} value={postData.nameUser} required />
-          <AvField name="dateOfBirth" label="dateOfBirth" type="date" onChange={onChangeData} value={postData.dateOfBirth} required />
-          <AvField name="adress" label="adress" type="text" onChange={onChangeData} value={postData.adress} required />
-          <AvField name="company" label="company" type="text" onChange={onChangeData} value={postData.company} required />
+          <AvField name="email" label="Email" type="text" onChange={onChangeData} value={postData.email} required />
+          <AvField name="password" label="Mật khẩu" type="password" onChange={onChangeData} value={postData.password} required />
+          <AvField name="nameUser" label="Tên người dùng" type="text" onChange={onChangeData} value={postData.nameUser} required />
+          <AvField name="dateOfBirth" label="Ngày sinh" type="date" onChange={onChangeData} value={postData.dateOfBirth} required />
+          <AvField name="adress" label="Địa chỉ" type="text" onChange={onChangeData} value={postData.adress} required />
+          <AvField name="company" label="Company" type="text" onChange={onChangeData} value={postData.company} required />
         </AvForm>
         <button className="btn btn-success" onClick={handleOnClickSubmit}>Đăng ký </button>
         <Link to={"/Login"}>   Đăng nhập ngay</Link>

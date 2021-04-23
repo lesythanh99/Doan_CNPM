@@ -7,19 +7,33 @@ import {
 function Search (props){
     const {setData} = props;
     const [postData, setPostData] = React.useState([]);
+
+    var temp = {...postData};
+
     const onChangeData = (e) =>{
         e.preventDefault();
-        var temp = {...postData};
+        
         temp['nameTest'] = e.target.value;
         setPostData(temp);
+        console.log(temp);
+
     }
     const handleSearch = (e) => {
         if(e.key == 'Enter'){
-            CRUD.searchTest(postData).then (res => {
+            if(temp['nameTest'] == ""){
+                CRUD.getTest().then(res => {
+                    setData(res.data.data);
+                });
+            }else{
+                CRUD.searchTest(postData).then (res => {
                 if(res.data.data.length > 0){
+                    console.log(res.data.data);
                     setData(res.data.data);
                 }else alert("Không tìm thấy kết quả");
             });
+            }
+
+            
         }
     } 
     return (
