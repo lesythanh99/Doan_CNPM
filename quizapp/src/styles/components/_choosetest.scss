@@ -35,15 +35,23 @@
   .pageNumbers li button:focus {
     outline: none;
   }
+  .clearfix{
+    height: 200px;
+  }
   @media (max-width: 768px){
     .pageNumbers {
         padding: 0 1rem;
         width: 50%;
         height: 50%;
         left: 30%;
+        top: 100%;
     }
     .search{
       padding-top: 50px;
+      
+    }
+    .pageNumbers {
+      height: 100%;
     }
 
 }
